@@ -1,36 +1,37 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Layout from "../elements/layout";
+import Header from "../../elements/header";
 
-const Home = () => {
+const AddOne = () => {
   const navigate = useNavigate();
   return (
-    <Layout>
+    <>
+      <Header />
       <div>
         <button
           onClick={() => {
-            navigate("/addmain");
+            navigate("/addtwo");
           }}
         >
-          파티추가메인
+          다음페이지로(파티추가2 로ㄱㄱ)
         </button>
         <button
           onClick={() => {
-            navigate("/myone");
+            navigate("/leaderone");
           }}
         >
-          my파티1
+          다음페이지로(파티장 으로ㄱㄱ)
         </button>
         <button
           onClick={() => {
-            navigate("/mypage");
+            navigate("/");
           }}
         >
-          마이페이지
+          홈으로!!!
         </button>
       </div>
-    </Layout>
+    </>
   );
 };
 
-export default Home;
+export default AddOne;

@@ -1,12 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const MyPage = () => {
+const LeaderFive = () => {
   const navigate = useNavigate();
   return (
     <>
       <div>
-        {" "}
         <button
           onClick={() => {
             navigate("/");
@@ -19,4 +18,4 @@ const MyPage = () => {
   );
 };
 
-export default MyPage;
+export default LeaderFive;

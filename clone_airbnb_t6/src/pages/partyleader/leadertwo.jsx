@@ -1,12 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const MyPage = () => {
+const LeaderTwo = () => {
   const navigate = useNavigate();
   return (
     <>
       <div>
-        {" "}
+        <button
+          onClick={() => {
+            navigate("/leaderfour");
+          }}
+        >
+          다음페이지로(리더장4 로ㄱㄱ)
+        </button>
         <button
           onClick={() => {
             navigate("/");
@@ -19,4 +25,4 @@ const MyPage = () => {
   );
 };
 
-export default MyPage;
+export default LeaderTwo;

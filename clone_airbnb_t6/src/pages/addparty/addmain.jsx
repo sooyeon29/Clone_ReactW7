@@ -1,12 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../../elements/header";
 
-const MyPage = () => {
+const AddMain = () => {
   const navigate = useNavigate();
   return (
     <>
+      <Header />
       <div>
-        {" "}
+        <button
+          onClick={() => {
+            navigate("/addone");
+          }}
+        >
+          파티추가
+        </button>
         <button
           onClick={() => {
             navigate("/");
@@ -19,4 +27,4 @@ const MyPage = () => {
   );
 };
 
-export default MyPage;
+export default AddMain;

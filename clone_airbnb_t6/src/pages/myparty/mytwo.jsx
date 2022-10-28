@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const MyPage = () => {
+const MyTwo = () => {
   const navigate = useNavigate();
   return (
     <>
@@ -19,4 +19,4 @@ const MyPage = () => {
   );
 };
 
-export default MyPage;
+export default MyTwo;
