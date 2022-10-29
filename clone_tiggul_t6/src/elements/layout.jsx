@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "./header";
+import Header from "../test/header";
 
 const Layout = ({ children }) => {
   return (
@@ -22,7 +22,7 @@ const Wrap = styled.div`
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  background-color: blue;
+  background-color: var(--gray-050);
 `;
 
 const Container = styled.div`

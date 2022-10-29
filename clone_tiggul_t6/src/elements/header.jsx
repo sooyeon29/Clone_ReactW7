@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import logo from "../style/img/logo.svg";
+import ModalBasic from "../components/loginmodal";
 
-const Header = () => {
+const Header = (props) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const showModal = () => {
+    setModalOpen(true);
+  };
+
   const navigate = useNavigate();
   return (
     <>
@@ -14,39 +21,50 @@ const Header = () => {
                 navigate(`/`);
               }}
             >
-              {" "}
-              로고(홈으로이동)
+              <img src={logo} />
             </StLogo>
           </StLogoWrap>
           <StButtonsWrap>
             <StButtons>
-              <StButton
-                onClick={() => {
-                  navigate(`/`);
-                }}
-              >
-                홈(홈으로이동)
+              <StButton>
+                <Sta
+                  onClick={() => {
+                    navigate(`/`);
+                  }}
+                >
+                  홈
+                </Sta>
               </StButton>
-              <StButton
-                onClick={() => {
-                  navigate(`/addmain`);
-                }}
-              >
-                파티추가
+              <StButton>
+                <Sta
+                  onClick={() => {
+                    navigate(`/`);
+                  }}
+                >
+                  파티추가
+                </Sta>
               </StButton>
-              <StButton
-                onClick={() => {
-                  navigate(`/myone`);
-                }}
-              >
-                MY파티
+              <StButton>
+                <Sta
+                  onClick={() => {
+                    navigate(`/`);
+                  }}
+                >
+                  MY파티
+                </Sta>
               </StButton>
             </StButtons>
           </StButtonsWrap>
           <StMypageWrap>
-            <StMypage>마이페이지</StMypage>
+            <StUserbox>
+              <StLogin onClick={showModal}>로그인</StLogin>
+              {modalOpen && <ModalBasic setModalOpen={setModalOpen} />}
+              <StLine2></StLine2>
+              <StLogin>회원가입</StLogin>
+            </StUserbox>
           </StMypageWrap>
         </StWrap>
+        <Stline />
       </StNav>
     </>
   );
@@ -75,6 +93,13 @@ const StWrap = styled.div`
   -webkit-box-align: center;
   align-items: center;
 `;
+const Stline = styled.div`
+  width: 100%;
+  height: 1px;
+  background-color: var(--gray-100);
+  box-sizing: border-box;
+  display: block;
+`;
 
 const StLogoWrap = styled.div`
   width: 169px;
@@ -87,6 +112,14 @@ const StLogo = styled.a`
   cursor: pointer;
   width: 86px;
   height: 28px;
+  margin-bottom: 20px;
+
+  > img {
+    display: block;
+    cursor: pointer;
+    width: 106px;
+    height: 48px;
+  }
 `;
 
 const StButtonsWrap = styled.nav`
@@ -100,12 +133,40 @@ const StButtons = styled.ul`
   list-style: none;
   margin: 0px;
   padding: 0px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
 `;
 
 const StButton = styled.li`
   display: list-item;
   text-align: -webkit-match-parent;
   list-style: none;
+`;
+
+const Sta = styled.a`
+  padding: 12px;
+  margin-right: 22px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: normal;
+  color: var(--gray-700);
+  cursor: pointer;
+  border-radius: 10px;
+  text-decoration: none;
+  font-family: "SpoqaHanSansNeo-Regular";
+
+  &:focus {
+    font-weight: bold;
+  }
+  &:active {
+    font-weight: bold;
+  }
+  &:hover {
+    background-color: var(--gray-100);
+  }
 `;
 const StMypageWrap = styled.div`
   display: flex;
@@ -114,12 +175,35 @@ const StMypageWrap = styled.div`
   width: 169px;
 `;
 
-const StMypage = styled.div`
+const StUserbox = styled.div`
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 169px;
+  box-sizing: border-box;
+`;
+
+const StLogin = styled.button`
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 12px;
+  color: var(--gray-600);
   cursor: pointer;
-  width: 32;
-  height: 32;
-  fill: var(--gray-900);
+  border-radius: 10px;
+  border: none;
+  font-family: SpoqaHanSansNeo;
+  background-color: var(--white);
   &:hover {
-    fill: var(--primary-600);
+    background-color: var(--gray-100);
   }
+`;
+const StLine2 = styled.div`
+  width: 1px;
+  height: 24px;
+  background-color: rgb(196, 196, 196);
+  margin: 0px 8px;
+  display: block;
+  box-sizing: border-box;
 `;

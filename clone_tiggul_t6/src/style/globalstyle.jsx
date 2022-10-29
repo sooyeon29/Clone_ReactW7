@@ -1,18 +1,27 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@font-face {
+  font-family: 'Noto Sans KR', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap')
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+  unicode-range: U+AC00-U+D7A3;
+}
 
-.notosanskr * { 
- font-family: 'Noto Sans KR', sans-serif;
+@font-face {
+    font-family: 'SpoqaHanSansNeo-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
+
 }
   *, *::before, *::after {
-    font-family: 'ImcreSoojin';
+  font-family: 'Noto Sans KR', sans-serif;
     box-sizing: border-box;
   }
 
   body {
-    font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
