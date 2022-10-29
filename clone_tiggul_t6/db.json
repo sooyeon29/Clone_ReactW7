@@ -1,0 +1,100 @@
+{
+  "addparty": [
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 1
+    },
+    {
+      "ottService": "Wavve",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 2
+    },
+    {
+      "ottService": "Watcha",
+      "price": 12900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 3
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 4
+    },
+    {
+      "ottService": "Wavve",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 5
+    },
+    {
+      "ottService": "Watcha",
+      "price": 12900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 6
+    },
+    {
+      "ottService": "Laftel",
+      "price": 14900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 7
+    },
+    {
+      "ottService": "Tving",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 8
+    },
+    {
+      "ottService": "Disney",
+      "price": 9900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 9
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 10
+    },
+    {
+      "ottService": "Wavve",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 11
+    },
+    {
+      "ottService": "Watcha",
+      "price": 12900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 12
+    }
+  ]
+}
