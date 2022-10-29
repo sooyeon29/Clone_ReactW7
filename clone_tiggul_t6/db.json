@@ -1,0 +1,24 @@
+{
+  "addparty": [
+    {
+      "ottService": "",
+      "id": 0
+    },
+    {
+      "ottService": "Netflix",
+      "id": 1
+    },
+    {
+      "ottService": "Wavve",
+      "id": 2
+    },
+    {
+      "ottService": "Netflix",
+      "id": 3
+    },
+    {
+      "ottService": "Netflix",
+      "id": 4
+    }
+  ]
+}
