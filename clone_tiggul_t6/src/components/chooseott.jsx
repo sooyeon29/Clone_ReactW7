@@ -63,6 +63,18 @@ const ChooseOtt = () => {
   // 리덕스에서 꺼낸 ott중 isclick값이 true 인것만 선택
   const clickedglobalOtt = globalOtt.filter((ott) => ott.isClick === true);
   console.log(clickedglobalOtt);
+
+  const nextChooseHost = () => {
+    navigate("/addtwo");
+    const ChooseOtt = { myOtt: clickedglobalOtt.ottService };
+    window.sessionStorage.setItem(
+      "lickedglobalOtt.ottService",
+      JSON.stringify(ChooseOtt)
+    );
+  };
+  // const ChooseOtt = { ottService: myott };
+  // window.sessionStorage.setItem("myott", JSON.stringify(ChooseOtt));
+
   return (
     <>
       <WrapAll>
@@ -96,7 +108,7 @@ const ChooseOtt = () => {
         <OttPrice>
           {clickedglobalOtt.map((clickOtt) => {
             return (
-              <PriceBox>
+              <PriceBox key={clickOtt.id}>
                 <div>
                   {clickOtt.ottService}프리미엄 {clickOtt.price}원 나의부담금
                   {clickOtt.price / 4}
@@ -110,9 +122,12 @@ const ChooseOtt = () => {
           })}
         </OttPrice>
         <button
-          onClick={() => {
-            navigate("/addtwo");
-          }}
+          onClick={
+            nextChooseHost
+            // () => {
+            // navigate("/addtwo");
+            // }
+          }
         >
           다음
         </button>
