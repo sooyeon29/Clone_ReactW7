@@ -66,14 +66,14 @@ const ChooseOtt = () => {
 
   const nextChooseHost = () => {
     navigate("/addtwo");
-    const ChooseOtt = { myOtt: clickedglobalOtt.ottService };
-    window.sessionStorage.setItem(
-      "lickedglobalOtt.ottService",
-      JSON.stringify(ChooseOtt)
-    );
+    // const ChooseOtt = { myOtt: clickedglobalOtt.ottService };
+    // window.sessionStorage.setItem("choosedOtt", JSON.stringify(ChooseOtt));
   };
   // const ChooseOtt = { ottService: myott };
   // window.sessionStorage.setItem("myott", JSON.stringify(ChooseOtt));
+
+  let a = sessionStorage.getItem("myott");
+  console.log(a);
 
   return (
     <>
@@ -121,6 +121,8 @@ const ChooseOtt = () => {
             );
           })}
         </OttPrice>
+        <p>{window.sessionStorage.getItem("myott")}</p>
+
         <button
           onClick={
             nextChooseHost
@@ -203,3 +205,18 @@ const OttPrice = styled.div`
   }
 `;
 const PriceBox = styled.div``;
+
+const OttPriceTwo = styled.div`
+  flex-direction: row;
+  width: 100%;
+  max-width: 311px;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 12px;
+  background-color: olive;
+  margin: auto;
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+`;

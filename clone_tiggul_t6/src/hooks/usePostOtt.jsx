@@ -18,8 +18,10 @@ const usePostOtt = () => {
     const click = { ...myott, isClick: !false };
     setOtt({ ...ott, ...click });
     dispatch(__postMyOtt({ ...ott, ...click }));
-    // const ChooseOtt = { ottService: myott };
-    // window.sessionStorage.setItem("myott", JSON.stringify(ChooseOtt));
+    // 각 ott를 선택하는 경우 선택한 ott의 정보가 세션 스토리지에 값이 저장된다
+    const ChooseOtt = { ottService: myott };
+    sessionStorage.setItem("myott", JSON.stringify(ChooseOtt));
+    // sessionStorage.setItem("myott", ChooseOtt);
   };
 
   return [ChooseOttHandler];
