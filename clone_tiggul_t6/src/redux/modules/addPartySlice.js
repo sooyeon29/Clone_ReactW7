@@ -16,7 +16,15 @@ export const __postMyOtt = createAsyncThunk(
 );
 
 const initialState = {
-  addparty: [{ ottService: "", id: 0 }],
+  addparty: [
+    {
+      ottService: "",
+      price: 0,
+      hostCommision: 0,
+      memberCommision: 0,
+      id: 0,
+    },
+  ],
   isLoading: false,
   error: null,
 };

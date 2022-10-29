@@ -1,24 +1,46 @@
 {
   "addparty": [
     {
-      "ottService": "",
-      "id": 0
-    },
-    {
       "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
       "id": 1
     },
     {
       "ottService": "Wavve",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
       "id": 2
     },
     {
-      "ottService": "Netflix",
+      "ottService": "Watcha",
+      "price": 12900,
+      "hostCommision": 490,
+      "memberCommision": 990,
       "id": 3
     },
     {
-      "ottService": "Netflix",
+      "ottService": "Laftel",
+      "price": 14900,
+      "hostCommision": 490,
+      "memberCommision": 990,
       "id": 4
+    },
+    {
+      "ottService": "Tving",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "id": 5
+    },
+    {
+      "ottService": "Disney",
+      "price": 9900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "id": 6
     }
   ]
 }
