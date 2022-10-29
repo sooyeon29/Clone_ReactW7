@@ -15,7 +15,7 @@ const Header = () => {
               }}
             >
               {" "}
-              로고
+              로고(홈으로이동)
             </StLogo>
           </StLogoWrap>
           <StButtonsWrap>
@@ -25,18 +25,18 @@ const Header = () => {
                   navigate(`/`);
                 }}
               >
-                홈
+                홈(홈으로이동)
               </StButton>
               <StButton
                 onClick={() => {
-                  navigate(`/addpartymain`);
+                  navigate(`/addmain`);
                 }}
               >
                 파티추가
               </StButton>
               <StButton
                 onClick={() => {
-                  navigate(`/mypartyone`);
+                  navigate(`/myone`);
                 }}
               >
                 MY파티

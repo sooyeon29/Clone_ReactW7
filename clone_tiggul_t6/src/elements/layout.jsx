@@ -22,7 +22,7 @@ const Wrap = styled.div`
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  background-color: #f8f9fd;
+  background-color: blue;
 `;
 
 const Container = styled.div`
