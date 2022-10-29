@@ -1,14 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import ChooseOtt from "../../components/chooseott";
-import Header from "../../elements/header";
+import Layout from "../../elements/layout";
 
 const AddMain = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Header />
-      <ChooseOtt />
+      <Layout>
+        <ChooseOtt />
+      </Layout>
     </>
   );
 };

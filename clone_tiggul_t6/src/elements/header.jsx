@@ -38,7 +38,7 @@ const Header = (props) => {
               <StButton>
                 <Sta
                   onClick={() => {
-                    navigate(`/`);
+                    navigate(`/addmain`);
                   }}
                 >
                   파티추가
