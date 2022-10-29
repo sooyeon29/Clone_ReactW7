@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../test/header";
+import Header from "../elements/header";
 
 const Layout = ({ children }) => {
   return (
