@@ -10,23 +10,18 @@ const usePostOtt = () => {
     price: 0,
     hostCommision: 0,
     memberCommision: 0,
+    isClick: false,
   });
 
   const ChooseOttHandler = (myott) => {
     console.log("핸들러에서 왔니?", myott);
-    setOtt({ ...ott, ...myott });
-    dispatch(__postMyOtt({ ...ott, ...myott }));
+    const click = { ...myott, isClick: !false };
+    setOtt({ ...ott, ...click });
+    dispatch(__postMyOtt({ ...ott, ...click }));
     // const ChooseOtt = { ottService: myott };
     // window.sessionStorage.setItem("myott", JSON.stringify(ChooseOtt));
   };
 
-  //   const ChooseOttHandler = (myott) => {
-  //     console.log("핸들러에서 왔니?", myott);
-  //     setOtt({ ...ott, ottService: myott });
-  //     dispatch(__postMyOtt({ ...ott, ottService: myott }));
-  //     const ChooseOtt = { ottService: myott };
-  //     window.sessionStorage.setItem("myott", JSON.stringify(ChooseOtt));
-  //   };
   return [ChooseOttHandler];
 };
 

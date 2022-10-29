@@ -1,54 +1,68 @@
 import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom/dist";
 import styled from "styled-components";
 import usePostOtt from "../hooks/usePostOtt";
 
 const ChooseOtt = () => {
+  const navigate = useNavigate();
+  // 각 ott onClickHandler
   const [ChooseNetflix] = usePostOtt();
   const [ChooseWavve] = usePostOtt();
   const [ChooseWatcha] = usePostOtt();
   const [ChooseLaftel] = usePostOtt();
   const [ChooseTving] = usePostOtt();
   const [ChooseDisney] = usePostOtt();
-  const [click, setClick] = useState(false);
-
+  // 각 ott별 정보
   const Netflix = {
     ottService: "Netflix",
     price: 17000,
     hostCommision: 490,
     memberCommision: 990,
+    isClick: false,
   };
   const Wavve = {
     ottService: "Wavve",
     price: 13900,
     hostCommision: 490,
     memberCommision: 990,
+    isClick: false,
   };
   const Watcha = {
     ottService: "Watcha",
     price: 12900,
     hostCommision: 490,
     memberCommision: 990,
+    isClick: false,
   };
   const Laftel = {
     ottService: "Laftel",
     price: 14900,
     hostCommision: 490,
     memberCommision: 990,
+    isClick: false,
   };
   const Tving = {
     ottService: "Tving",
     price: 13900,
     hostCommision: 490,
     memberCommision: 990,
+    isClick: false,
   };
   const Disney = {
     ottService: "Disney",
     price: 9900,
     hostCommision: 490,
     memberCommision: 990,
+    isClick: false,
   };
-
+  // 선택한 ott를 리덕스에서 꺼내옴
+  const globalOtt = useSelector((state) => state.addparty.addparty);
+  console.log(globalOtt);
+  // 리덕스에서 꺼낸 ott중 isclick값이 true 인것만 선택
+  const clickedglobalOtt = globalOtt.filter((ott) => ott.isClick === true);
+  console.log(clickedglobalOtt);
   return (
     <>
       <WrapAll>
@@ -79,11 +93,35 @@ const ChooseOtt = () => {
             <Match>즉시매칭가능</Match>
           </Ott>
         </OttWrap>
+        <OttPrice>
+          {clickedglobalOtt.map((clickOtt) => {
+            return (
+              <PriceBox>
+                <div>
+                  {clickOtt.ottService}프리미엄 {clickOtt.price}원 나의부담금
+                  {clickOtt.price / 4}
+                </div>
+                <div>
+                  수수료 파티장{clickOtt.hostCommision}|파티원
+                  {clickOtt.memberCommision}
+                </div>
+              </PriceBox>
+            );
+          })}
+        </OttPrice>
+        <button
+          onClick={() => {
+            navigate("/addtwo");
+          }}
+        >
+          다음
+        </button>
       </WrapAll>
     </>
   );
 };
 export default ChooseOtt;
+
 const WrapAll = styled.div`
   width: 100%;
   max-width: 640px;
@@ -135,3 +173,18 @@ const Match = styled(OttWrap)`
   transition: height 0.3s ease-out 0s;
   overflow: hidden;
 `;
+const OttPrice = styled.div`
+  flex-direction: row;
+  width: 100%;
+  max-width: 311px;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 12px;
+  background-color: pink;
+  margin: auto;
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+const PriceBox = styled.div``;

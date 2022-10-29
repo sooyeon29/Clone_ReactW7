@@ -22,6 +22,7 @@ const initialState = {
       price: 0,
       hostCommision: 0,
       memberCommision: 0,
+      isClick: false,
       id: 0,
     },
   ],
