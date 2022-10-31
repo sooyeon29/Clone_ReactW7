@@ -1,16 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faUser } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 import styled from "styled-components";
 import kakao from "../style/img/kakao.png";
 // import test from "../style/img/test.JPG";
 import MyRole from "./myRole";
+import useToggle from "../hooks/useToggle";
 
 const PickRole = ({ toggle }) => {
-  const [toggle2, setToggle2] = useState(false);
-  const clickedToggle2 = () => {
-    setToggle2((prev) => !prev);
-  };
+  const [toggle2, clickedToggle2] = useToggle();
+
   // const [isHost, setIsHost] = useState(false);
 
   return (

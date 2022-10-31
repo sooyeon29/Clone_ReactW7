@@ -5,12 +5,10 @@ import matchingnum from "../style/img/matchingnum.png";
 import PickRole from "./pickRole";
 import tving from "../style/img/tving.png";
 import PickMyOtt from "./pickMyOtt";
+import useToggle from "../hooks/useToggle";
 
 const AddPartyPage = () => {
-  const [toggle, setToggle] = useState(false);
-  const clickedToggle = () => {
-    setToggle((prev) => !prev);
-  };
+  const [toggle, setToggle, clickedToggle] = useToggle();
 
   return (
     <>

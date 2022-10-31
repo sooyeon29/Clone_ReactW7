@@ -599,6 +599,22 @@
       "memberCommision": 990,
       "isClick": true,
       "id": 75
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 76
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 77
     }
   ]
 }
