@@ -5,6 +5,9 @@ import Layout from "../elements/layout";
 
 const Home = () => {
   const navigate = useNavigate();
+  const goToAddMain = () => {
+    navigate("/addmain");
+  };
   return (
     <Layout>
       <Main>
@@ -22,7 +25,7 @@ const Home = () => {
               <Text>넷플릭스, 티빙, 웨이브, 디즈니플러스 등…</Text>
               <Text>매달 나가는 구독료 부담스럽다면?</Text>
               <Text>⛓ 안전한 계정 공유로 더 저렴하게!</Text>
-              <Bt>계정공유 시작하기</Bt>
+              <Bt onClick={goToAddMain}> 계정공유 시작하기</Bt>
               <Imgbox>
                 <Img>
                   <img
