@@ -1,14 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import ChooseOtt from "../../components/chooseott";
-import Header from "../../elements/header";
+import AddPartyPage from "../../components/addpartypage";
+import Layout from "../../elements/layout";
 
 const AddMain = () => {
-  const navigate = useNavigate();
   return (
     <>
-      <Header />
-      <ChooseOtt />
+      <Layout>
+        <AddPartyPage />
+      </Layout>
     </>
   );
 };
