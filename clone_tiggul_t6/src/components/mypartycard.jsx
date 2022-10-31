@@ -8,56 +8,45 @@ import {
   faCirclePlus,
 } from "@fortawesome/free-solid-svg-icons";
 
-const MyOne = () => {
+const MypartyCard = () => {
   const navigate = useNavigate();
+
   return (
-    <Layout>
-      <StDiv />
-      <StContainer
-        onClick={() => {
-          navigate("/addmain");
-        }}
-      >
-        <StAddPartyWrap>
-          <div>
-            <StPlus>
-              <FontAwesomeIcon
-                style={{
-                  color: "#AEB4BF",
-                }}
-                icon={faCirclePlus}
-              />
-            </StPlus>
-            <div />
-            <StAddParty>
-              <h3>파티 추가</h3>
-              <div></div>
-              <h5>새로운 파티를 이용해보세요</h5>
-            </StAddParty>
-          </div>
-          <StIcon>
+    <StContainer
+      onClick={() => {
+        navigate("/addmain");
+      }}
+    >
+      <StAddPartyWrap>
+        <div>
+          <StPlus>
             <FontAwesomeIcon
               style={{
-                color: "#7a7a7a",
+                color: "#AEB4BF",
               }}
-              icon={faChevronRight}
+              icon={faCirclePlus}
             />
-          </StIcon>
-        </StAddPartyWrap>
-      </StContainer>
-      <br />
-      <StOttPrice>
-        <h3>
-          OTT 2개를 <br />
-          <span>17,205원</span> 에 즐기고 있어요.
-        </h3>
-        <div>혼자 쓸 때보다 월 13,695원씩 절약중!</div>
-      </StOttPrice>
-    </Layout>
+          </StPlus>
+          <div />
+          <StAddParty>
+            <h3>파티 추가</h3>
+            <div></div>
+            <h5>새로운 파티를 이용해보세요</h5>
+          </StAddParty>
+        </div>
+        <StIcon>
+          <FontAwesomeIcon
+            style={{
+              color: "#7a7a7a",
+            }}
+            icon={faChevronRight}
+          />
+        </StIcon>
+      </StAddPartyWrap>
+    </StContainer>
   );
 };
-
-export default MyOne;
+export default MypartyCard;
 
 const StContainer = styled.div`
   padding: 8px 0px;
@@ -65,34 +54,6 @@ const StContainer = styled.div`
   box-shadow: var(--shadow-low);
   border-radius: 16px;
   background-color: var(--white);
-  &:hover {
-    color: var(--gray-800);
-  }
-`;
-
-const StDiv = styled.div`
-  width: 100%;
-  height: 32px;
-`;
-
-const StOttPrice = styled.div`
-  color: white;
-  padding: 20px 16px;
-  background-color: var(--blue-400);
-  border-radius: 16px;
-  border: 1px solid var(--blue-500);
-  box-shadow: var(--shadow-low);
-  position: relative;
-  > h3 {
-    font-family: "SpoqaHanSansNeo-Regular";
-    > span {
-      font-family: "SpoqaHanSansNeo-Regular";
-      color: var(--yellow-300);
-    }
-  }
-  > div {
-    font-family: "SpoqaHanSansNeo-Regular";
-  }
 `;
 
 const StAddPartyWrap = styled.div`

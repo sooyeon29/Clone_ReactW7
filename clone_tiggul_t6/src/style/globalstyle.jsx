@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
 }
   *, *::before, *::after {
-  font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'SpoqaHanSansNeo-Regular';
     box-sizing: border-box;
   }
 

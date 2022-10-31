@@ -38,7 +38,7 @@ const Header = (props) => {
               <StButton>
                 <Sta
                   onClick={() => {
-                    navigate(`/`);
+                    navigate(`/addmain`);
                   }}
                 >
                   파티추가
@@ -47,7 +47,7 @@ const Header = (props) => {
               <StButton>
                 <Sta
                   onClick={() => {
-                    navigate(`/`);
+                    navigate(`/myone`);
                   }}
                 >
                   MY파티
@@ -60,7 +60,7 @@ const Header = (props) => {
               <StLogin onClick={showModal}>로그인</StLogin>
               {modalOpen && <ModalBasic setModalOpen={setModalOpen} />}
               <StLine2></StLine2>
-              <StLogin>회원가입</StLogin>
+              <StLogin onClick={showModal}>회원가입</StLogin>
             </StUserbox>
           </StMypageWrap>
         </StWrap>
