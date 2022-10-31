@@ -30,19 +30,19 @@ const Home = () => {
                 <Img>
                   <img
                     style={{ transform: "scale(0.35)" }}
-                    src="/img/icon_netflix.png"
+                    src="/img/netflix.png"
                   />
                 </Img>
                 <Img>
                   <img
                     style={{ transform: "scale(0.35)" }}
-                    src="/img/icon_watcha.png"
+                    src="/img/watcha.png"
                   />
                 </Img>
                 <Img>
                   <img
                     style={{ transform: "scale(0.35)" }}
-                    src="/img/icon_wavve.png"
+                    src="/img/wavve.png"
                   />
                 </Img>
               </Imgbox>
@@ -50,19 +50,19 @@ const Home = () => {
                 <Img>
                   <img
                     style={{ transform: "scale(0.35)" }}
-                    src="/img/icon_laftel.png"
+                    src="/img/laftel.png"
                   />
                 </Img>
                 <Img>
                   <img
                     style={{ transform: "scale(0.35)" }}
-                    src="/img/icon_tving.png"
+                    src="/img/tving.png"
                   />
                 </Img>
                 <Img>
                   <img
                     style={{ transform: "scale(0.4)" }}
-                    src="/img/icon_disney.png"
+                    src="/img/disney.png"
                   />
                 </Img>
               </Imgbox>
