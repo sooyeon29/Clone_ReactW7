@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
+import kakao from "../style/img/kakao.png";
 
 function ModalBasic({ setModalOpen }) {
   // 모달 끄기
@@ -7,36 +8,20 @@ function ModalBasic({ setModalOpen }) {
     setModalOpen(false);
   };
 
-  //모달 바깥쪽 클릭시 닫기
-  // const modalEl = useRef();
-  // const [isOpen, setOpen] = useState(false);
-
-  // const handleClickOutside = ({ target }) => {
-  //   if (isOpen && !modalEl.current.contains(target)) setOpen(false);
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("click", handleClickOutside);
-  //   return () => {
-  //     window.removeEventListener("click", handleClickOutside);
-  //   };
-  // }, []);
-
   return (
-    //<StWrap ref={modalEl}>
     <StWrap>
       <StContainer>
-        <button onClick={closeModal}>X</button>
         <h4>로그인 | 회원가입</h4>
         <div></div>
         <StButton>
           <div>
+            <img src={kakao} />
             <h5>카카오로 시작하기</h5>
           </div>
         </StButton>
       </StContainer>
-      <StBackground />
-      <button onClick={closeModal}>X</button>
+      <StBackground onClick={closeModal} />
+      {/* <button onClick={closeModal}>X</button> */}
     </StWrap>
   );
 }
@@ -55,7 +40,7 @@ const StContainer = styled.div`
   position: fixed;
   width: 328px;
   left: 50%;
-  top: 950%;
+  top: 50vh;
   transform: translate(-50%, -50%);
   border-radius: 12px;
   padding: 24px 24px 40px;
@@ -94,7 +79,12 @@ const StButton = styled.div`
     align-items: center;
     box-sizing: border-box;
     display: flex;
-    padding-left: 30%;
+    padding-left: 20%;
+    > img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
     > h5 {
       display: block;
       font-size: 16px;
