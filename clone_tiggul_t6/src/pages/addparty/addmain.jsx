@@ -1,28 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import Header from "../../elements/header";
+import AddPartyPage from "../../components/addpartypage";
+import Layout from "../../elements/layout";
 
 const AddMain = () => {
-  const navigate = useNavigate();
   return (
     <>
-      <Header />
-      <div>
-        <button
-          onClick={() => {
-            navigate("/addone");
-          }}
-        >
-          파티추가
-        </button>
-        <button
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          홈으로!!!
-        </button>
-      </div>
+      <Layout>
+        <AddPartyPage />
+      </Layout>
     </>
   );
 };

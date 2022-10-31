@@ -1,0 +1,404 @@
+{
+  "addparty": [
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 1
+    },
+    {
+      "ottService": "Wavve",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 2
+    },
+    {
+      "ottService": "Watcha",
+      "price": 12900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 3
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 4
+    },
+    {
+      "ottService": "Wavve",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 5
+    },
+    {
+      "ottService": "Watcha",
+      "price": 12900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 6
+    },
+    {
+      "ottService": "Laftel",
+      "price": 14900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 7
+    },
+    {
+      "ottService": "Tving",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 8
+    },
+    {
+      "ottService": "Disney",
+      "price": 9900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 9
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 10
+    },
+    {
+      "ottService": "Wavve",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 11
+    },
+    {
+      "ottService": "Watcha",
+      "price": 12900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 12
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 13
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 14
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 15
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 16
+    },
+    {
+      "ottService": "Wavve",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 17
+    },
+    {
+      "ottService": "Watcha",
+      "price": 12900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 18
+    },
+    {
+      "ottService": "Laftel",
+      "price": 14900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 19
+    },
+    {
+      "ottService": "Tving",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 20
+    },
+    {
+      "ottService": "Disney",
+      "price": 9900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 21
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 22
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 23
+    },
+    {
+      "ottService": "Wavve",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 24
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 25
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 26
+    },
+    {
+      "ottService": "Wavve",
+      "price": 13900,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 27
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 28
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 29
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 30
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 31
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 32
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 33
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 34
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 35
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 36
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 37
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 38
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 39
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 40
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 41
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 42
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 43
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 44
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 45
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 46
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 47
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 48
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 49
+    },
+    {
+      "ottService": "Netflix",
+      "price": 17000,
+      "hostCommision": 490,
+      "memberCommision": 990,
+      "isClick": true,
+      "id": 50
+    }
+  ]
+}
