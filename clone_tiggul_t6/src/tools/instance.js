@@ -3,11 +3,12 @@ import axios from "axios";
 
 // 인스턴스 사용 예시코드!!!!
 const instance = axios.create({
-  baseURL: "http://localhost:3001/",
+  // baseURL: "http://localhost:3001/",
+  baseURL: "https://hi-prac.shop",
 });
 
 export const MyOttApi = {
-  postOtt: (payload) => instance.post("/addparty", payload),
+  getOtt: (num) => instance.get(`/api/ott/${num}`),
 };
 
 // 로그인할때 헤더에 토큰 붙여서 주는 방식사용할때 쓰는 식

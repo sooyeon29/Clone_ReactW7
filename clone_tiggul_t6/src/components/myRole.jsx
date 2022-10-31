@@ -7,11 +7,6 @@ import useToggle from "../hooks/useToggle";
 
 const MyRole = () => {
   const [toggle2, clickedToggle2] = useToggle();
-  //   const [toggle2, setToggle2] = useState(false);
-  //   const clickedToggle2 = () => {
-  //     setToggle2((prev) => !prev);
-  //   };
-
   const [isHost, setIsHost] = useState(false);
 
   return (
