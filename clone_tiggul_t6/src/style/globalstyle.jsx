@@ -16,12 +16,12 @@ const GlobalStyle = createGlobalStyle`
 
 }
   *, *::before, *::after {
-  font-family: 'SpoqaHanSansNeo-Regular', sans-serif;
+    font-family: 'SpoqaHanSansNeo-Regular';
     box-sizing: border-box;
   }
 
   body {
-  font-family: 'SpoqaHanSansNeo-Regular', sans-serif;
+    font-family: 'SpoqaHanSansNeo-Regular';
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
