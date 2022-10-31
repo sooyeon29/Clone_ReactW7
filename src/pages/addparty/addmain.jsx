@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import ChooseOtt from "../../components/chooseott";
 import Header from "../../elements/header";
 
 const AddMain = () => {
@@ -7,22 +8,7 @@ const AddMain = () => {
   return (
     <>
       <Header />
-      <div>
-        <button
-          onClick={() => {
-            navigate("/addone");
-          }}
-        >
-          파티추가
-        </button>
-        <button
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          홈으로!!!
-        </button>
-      </div>
+      <ChooseOtt />
     </>
   );
 };
