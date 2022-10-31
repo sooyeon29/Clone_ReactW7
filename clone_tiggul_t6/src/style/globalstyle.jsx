@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'SpoqaHanSansNeo-Regular';
+  font-family: 'SpoqaHanSansNeo-Regular';
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
