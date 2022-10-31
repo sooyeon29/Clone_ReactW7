@@ -1,4 +1,5 @@
 test/
+package-lock.json
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,react
