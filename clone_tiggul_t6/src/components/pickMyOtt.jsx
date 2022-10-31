@@ -1,26 +1,25 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom/dist";
 import styled from "styled-components";
 import usePostOtt from "../hooks/usePostOtt";
-import matchingnum from "../style/img/matchingnum.png";
 import netflix from "../style/img/netflix.png";
 import wavve from "../style/img/wavve.png";
 import watcha from "../style/img/watcha.png";
 import laftel from "../style/img/laftel.png";
 import tving from "../style/img/tving.png";
 import disney from "../style/img/disney.png";
+import { lighten } from "polished";
 
-const ChooseOtt = () => {
-  const navigate = useNavigate();
+const PickMyOtt = ({ toggle, setToggle }) => {
   // 각 ott onClickHandler
-  const [ChooseNetflix] = usePostOtt();
+  const [height, ChooseNetflix] = usePostOtt();
   const [ChooseWavve] = usePostOtt();
   const [ChooseWatcha] = usePostOtt();
   const [ChooseLaftel] = usePostOtt();
   const [ChooseTving] = usePostOtt();
   const [ChooseDisney] = usePostOtt();
+
   // 각 ott별 정보
   const Netflix = {
     ottService: "Netflix",
@@ -71,31 +70,26 @@ const ChooseOtt = () => {
   const clickedglobalOtt = globalOtt.filter((ott) => ott.isClick === true);
   console.log(clickedglobalOtt);
 
-  let a = sessionStorage.getItem("myott");
-  console.log(a);
+  //   const [toggle, setToggle] = useState(false);
+  const clickedToggle = () => {
+    setToggle((prev) => !prev);
+  };
 
   return (
     <>
-      <WeekMatch>
-        최근 일주일 매칭 현황{" "}
-        <div>
-          <span>0000명 </span>
-          <img src={matchingnum} width="60" />
-        </div>
-      </WeekMatch>
-      <WrapAll>
+      <WrapAll boxheight={height}>
         <Title>보고싶은 OTT를 선택해주세요</Title>
         <OttWrap>
           <Ott>
             <Icon onClick={() => ChooseNetflix(Netflix)}>
-              <img src={netflix} width="40" />
+              <img alt="" src={netflix} width="40" />
               넷플릭스
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
             <Icon onClick={() => ChooseWavve(Wavve)}>
-              <img src={wavve} width="40" />
+              <img alt="" src={wavve} width="40" />
               웨이브
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
@@ -103,14 +97,14 @@ const ChooseOtt = () => {
           <Ott>
             <Icon onClick={() => ChooseWatcha(Watcha)}>
               {" "}
-              <img src={watcha} width="40" />
+              <img alt="" src={watcha} width="40" />
               왓차
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
             <Icon onClick={() => ChooseLaftel(Laftel)}>
-              <img src={laftel} width="40" />
+              <img alt="" src={laftel} width="40" />
               라프텔
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
@@ -118,14 +112,14 @@ const ChooseOtt = () => {
           <Ott>
             <Icon onClick={() => ChooseTving(Tving)}>
               {" "}
-              <img src={tving} width="40" />
+              <img alt="" src={tving} width="40" />
               티빙
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
             <Icon onClick={() => ChooseDisney(Disney)}>
-              <img src={disney} width="40" />
+              <img alt="" src={disney} width="40" />
               디즈니+
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
@@ -154,50 +148,35 @@ const ChooseOtt = () => {
               </HideBox>
             );
           })}
+          <button
+            // onClick={() => {
+            //   navigate("/addone");
+            // }}
+            onClick={clickedToggle}
+            toggle={toggle}
+          >
+            다음
+          </button>
         </OttPrice>
         {/* <p>{window.sessionStorage.getItem("myott")}</p> */}
-
-        <button
-          onClick={() => {
-            navigate("/addone");
-          }}
-        >
-          다음
-        </button>
       </WrapAll>
-      <Next>
-        <div>2</div>
-        <h4>이용 역할 선택</h4>
-      </Next>
     </>
   );
 };
-export default ChooseOtt;
-const WeekMatch = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  padding: 12px 10px 12px 12px;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  background-color: var(--white);
-  border: 1px solid var(--gray-100);
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-  margin-top: 20px;
-`;
+
+export default PickMyOtt;
 
 const WrapAll = styled.div`
   width: 100%;
+  /* height: 320px; */
+  height: ${(props) => (props.boxheight ? "auto" : "315px")};
   max-width: 640px;
   padding: 16px 16px;
   margin: 24px auto;
   background-color: white;
   box-shadow: rgb(0 0 0 / 10%) 0px 2px 8px;
   border-radius: 15px;
+  overflow: hidden;
 `;
 const Title = styled.div`
   display: block;
@@ -238,15 +217,16 @@ const Icon = styled.button`
   padding-top: 7px;
   z-index: 0;
   &:hover {
-    background-color: var(--primary-600);
-    opacity: 0.2;
+    background-color: ${lighten(0.3, "#4DCA9A")};
+    /* opacity: 0.2; */
     /* z-index: 999; */
   }
 `;
 const Match = styled(OttWrap)`
+  /* 즉시매칭가능 */
   height: 34px;
   transition: height 0.3s ease-out 0s;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -258,23 +238,24 @@ const Match = styled(OttWrap)`
   font-weight: bold;
   color: var(--primary-600);
 `;
-
-const HideBox = styled.div`
-  margin: 20px auto;
+const OttPrice = styled.div`
+  /* overflow: hidden; */
 `;
-const OttPrice = styled(HideBox)`
+const HideBox = styled(OttPrice)`
+  margin: 20px auto;
+  padding: 10px;
   flex-direction: row;
   width: 100%;
   max-width: 311px;
   -webkit-box-align: center;
   align-items: center;
-
   background-color: var(--gray-050);
   border: 1px solid var(--gray-200);
   box-sizing: border-box;
   border-radius: 16px;
   display: flex;
 `;
+
 const PriceBox = styled.div`
   display: flex;
   flex-direction: row;
@@ -300,31 +281,5 @@ const Howmuch = styled.div`
     color: var(--gray-400);
     font-size: 11px;
     line-height: 15px;
-  }
-`;
-const Next = styled.div`
-  transform: translateZ(0px);
-  border: 1px solid var(--gray-100);
-  border-radius: 16px;
-  background-color: var(--white);
-  font-weight: 900;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--gray-900);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: var(--gray-400);
-  font-size: 16px;
-  div {
-    display: flex;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--gray-400);
-    color: var(--white);
-    margin: 0 15px;
   }
 `;
