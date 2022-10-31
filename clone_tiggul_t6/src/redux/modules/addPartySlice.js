@@ -33,6 +33,9 @@ const initialState = {
 const addPartySlice = createSlice({
   name: "addparty",
   initialState,
+  reducers: {
+    // 동기적인 액션은 리듀서에서 관리
+  },
   extraReducers: {
     // 선택한 ott 서비스를 POST
     [__postMyOtt.pending]: (state) => {

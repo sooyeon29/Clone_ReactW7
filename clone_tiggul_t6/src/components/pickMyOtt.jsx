@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import usePostOtt from "../hooks/usePostOtt";
@@ -75,6 +74,10 @@ const PickMyOtt = ({ toggle, setToggle }) => {
     setToggle((prev) => !prev);
   };
 
+  // 제이슨 스트링을 풀어주는 방법! JSON.parse
+  // console.log(JSON.parse(window.sessionStorage.getItem("myott")));
+  // JSON.parse(window.sessionStorage.getItem("myott"))
+
   return (
     <>
       <WrapAll boxheight={height}>
@@ -148,17 +151,12 @@ const PickMyOtt = ({ toggle, setToggle }) => {
               </HideBox>
             );
           })}
-          <button
-            // onClick={() => {
-            //   navigate("/addone");
-            // }}
-            onClick={clickedToggle}
-            toggle={toggle}
-          >
+          <button onClick={clickedToggle} toggle={toggle}>
             다음
           </button>
         </OttPrice>
-        {/* <p>{window.sessionStorage.getItem("myott")}</p> */}
+
+        {/* <p>{JSON.parse(window.sessionStorage.getItem("myott"))}</p> */}
       </WrapAll>
     </>
   );
