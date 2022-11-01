@@ -18,6 +18,10 @@ export const MyOttApi = {
   login: (payload) => instance.post(`/api/user/login`, payload),
 };
 
+// export const UserApi = {
+//   getOtt: (num) => instance.get(`/api/addparty/host`),
+// };
+
 // 로그인할때 헤더에 토큰 붙여서 주는 방식사용할때 쓰는 식
 // {
 //   headers: {

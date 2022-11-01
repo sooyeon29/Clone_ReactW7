@@ -7,6 +7,19 @@ const initialState = {
   error: null,
 };
 
+// export const __getPartys = createAsyncThunk(
+//   "GET_PARTYS",
+//   async (payload, thunkAPI) => {
+//     try {
+//       const { data } = await detailApi.party(payload);
+//       //console.log('데이터', data);
+//       return thunkAPI.fulfillWithValue(data.data);
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error);
+//     }
+//   }
+// );
+
 export const __postUserInfo = createAsyncThunk(
   "leaderSlice/getUserInfo",
   async (payload, thunkAPI) => {
