@@ -1,78 +1,84 @@
-import React from "react";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import usePostOtt from "../hooks/usePostOtt";
-import netflix from "../style/img/netflix.png";
-import wavve from "../style/img/wavve.png";
-import watcha from "../style/img/watcha.png";
-import laftel from "../style/img/laftel.png";
-import tving from "../style/img/tving.png";
-import disney from "../style/img/disney.png";
+import usePostOtt from "../../hooks/usePostOtt";
+import netflix from "../../style/img/netflix.png";
+import wavve from "../../style/img/wavve.png";
+import watcha from "../../style/img/watcha.png";
+import laftel from "../../style/img/laftel.png";
+import tving from "../../style/img/tving.png";
+import disney from "../../style/img/disney.png";
 import { lighten } from "polished";
+import useToggle from "../../hooks/useToggle";
+import { __getMyOtt } from "../../redux/modules/addPartySlice";
 
 const PickMyOtt = ({ toggle, setToggle }) => {
   // 각 ott onClickHandler
-  const [height, ChooseNetflix] = usePostOtt();
-  const [ChooseWavve] = usePostOtt();
-  const [ChooseWatcha] = usePostOtt();
-  const [ChooseLaftel] = usePostOtt();
-  const [ChooseTving] = usePostOtt();
-  const [ChooseDisney] = usePostOtt();
+  // const [ChooseNetflix] = usePostOtt();
+  // const [ChooseWavve] = usePostOtt();
+  // const [ChooseWatcha] = usePostOtt();
+  // const [ChooseLaftel] = usePostOtt();
+  // const [ChooseTving] = usePostOtt();
+  // const [ChooseDisney] = usePostOtt();
+  // const [height] = usePostOtt();
 
-  // 각 ott별 정보
-  const Netflix = {
-    ottService: "Netflix",
-    price: 17000,
-    hostCommision: 490,
-    memberCommision: 990,
-    isClick: false,
-  };
-  const Wavve = {
-    ottService: "Wavve",
-    price: 13900,
-    hostCommision: 490,
-    memberCommision: 990,
-    isClick: false,
-  };
-  const Watcha = {
-    ottService: "Watcha",
-    price: 12900,
-    hostCommision: 490,
-    memberCommision: 990,
-    isClick: false,
-  };
-  const Laftel = {
-    ottService: "Laftel",
-    price: 14900,
-    hostCommision: 490,
-    memberCommision: 990,
-    isClick: false,
-  };
-  const Tving = {
-    ottService: "Tving",
-    price: 13900,
-    hostCommision: 490,
-    memberCommision: 990,
-    isClick: false,
-  };
-  const Disney = {
-    ottService: "Disney",
-    price: 9900,
-    hostCommision: 490,
-    memberCommision: 990,
-    isClick: false,
-  };
   // 선택한 ott를 리덕스에서 꺼내옴
-  const globalOtt = useSelector((state) => state.addparty.addparty);
-  console.log(globalOtt);
+  // const globalOtt = useSelector((state) => state.addparty.addparty);
+  // console.log(globalOtt);
   // 리덕스에서 꺼낸 ott중 isclick값이 true 인것만 선택
-  const clickedglobalOtt = globalOtt.filter((ott) => ott.isClick === true);
-  console.log(clickedglobalOtt);
+  // const clickedglobalOtt = globalOtt.filter((ott) => ott.isClick === true);
+  // console.log(clickedglobalOtt);
 
   //   const [toggle, setToggle] = useState(false);
   const clickedToggle = () => {
     setToggle((prev) => !prev);
+  };
+  // const [clickedToggle] = useToggle();
+
+  // 제이슨 스트링을 풀어주는 방법! JSON.parse
+  // console.log(JSON.parse(window.sessionStorage.getItem("myott")));
+  // JSON.parse(window.sessionStorage.getItem("myott"))
+
+  const getOtt = useSelector((state) => state.data.data);
+  console.log("과연 디비값을가져올수 있을까", getOtt);
+
+  const [height, setheight] = useState(false);
+  const dispatch = useDispatch();
+  const ChooseNetflix = (my) => {
+    setheight(!height);
+    dispatch(__getMyOtt(my));
+    const PickOtt = { name: getOtt };
+    window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
+  };
+  const ChooseWavve = (my) => {
+    setheight(!height);
+    dispatch(__getMyOtt(my));
+    const PickOtt = { name: getOtt };
+    window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
+  };
+  const ChooseWatcha = (my) => {
+    setheight(!height);
+    dispatch(__getMyOtt(my));
+    const PickOtt = { name: getOtt };
+    window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
+  };
+  const ChooseLaftel = (my) => {
+    setheight(!height);
+    dispatch(__getMyOtt(my));
+    const PickOtt = { name: getOtt };
+    window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
+  };
+  const ChooseTving = (my) => {
+    setheight(!height);
+    dispatch(__getMyOtt(my));
+    const PickOtt = { name: getOtt };
+    window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
+  };
+  const ChooseDisney = (my) => {
+    setheight(!height);
+    dispatch(__getMyOtt(my));
+    const PickOtt = { name: getOtt };
+    window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
   };
 
   return (
@@ -81,21 +87,21 @@ const PickMyOtt = ({ toggle, setToggle }) => {
         <Title>보고싶은 OTT를 선택해주세요</Title>
         <OttWrap>
           <Ott>
-            <Icon onClick={() => ChooseNetflix(Netflix)}>
+            <Icon onClick={() => ChooseNetflix(1)}>
               <img alt="" src={netflix} width="40" />
               넷플릭스
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
-            <Icon onClick={() => ChooseWavve(Wavve)}>
+            <Icon onClick={() => ChooseWavve(2)}>
               <img alt="" src={wavve} width="40" />
               웨이브
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
-            <Icon onClick={() => ChooseWatcha(Watcha)}>
+            <Icon onClick={() => ChooseWatcha(3)}>
               {" "}
               <img alt="" src={watcha} width="40" />
               왓차
@@ -103,14 +109,14 @@ const PickMyOtt = ({ toggle, setToggle }) => {
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
-            <Icon onClick={() => ChooseLaftel(Laftel)}>
+            <Icon onClick={() => ChooseLaftel(4)}>
               <img alt="" src={laftel} width="40" />
               라프텔
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
-            <Icon onClick={() => ChooseTving(Tving)}>
+            <Icon onClick={() => ChooseTving(5)}>
               {" "}
               <img alt="" src={tving} width="40" />
               티빙
@@ -118,7 +124,7 @@ const PickMyOtt = ({ toggle, setToggle }) => {
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
-            <Icon onClick={() => ChooseDisney(Disney)}>
+            <Icon onClick={() => ChooseDisney(6)}>
               <img alt="" src={disney} width="40" />
               디즈니+
             </Icon>
@@ -126,39 +132,39 @@ const PickMyOtt = ({ toggle, setToggle }) => {
           </Ott>
         </OttWrap>
         <OttPrice>
-          {clickedglobalOtt.map((clickOtt) => {
-            return (
-              <HideBox>
-                <PriceBox key={clickOtt.id}>
-                  💵
-                  <Mymoney>
-                    {clickOtt.ottService}프리미엄
-                    <Howmuch>
-                      <span>{clickOtt.price}원</span> → {clickOtt.price / 4}원
-                    </Howmuch>
-                  </Mymoney>
-                  <Mymoney>
-                    수수료
-                    <Howmuch>
-                      파티장{clickOtt.hostCommision} | 파티원
-                      {clickOtt.memberCommision}
-                    </Howmuch>
-                  </Mymoney>
-                </PriceBox>
-              </HideBox>
-            );
-          })}
-          <button
-            // onClick={() => {
-            //   navigate("/addone");
-            // }}
-            onClick={clickedToggle}
-            toggle={toggle}
-          >
+          {/* {clickedglobalOtt.map((clickOtt) => { */}
+          return (
+          <HideBox>
+            <PriceBox
+            // key={clickOtt.id}
+            >
+              💵
+              <Mymoney>
+                {/* {clickOtt.ottService} */}
+                프리미엄
+                <Howmuch>
+                  <span>{/* {clickOtt.price} */}원</span> →
+                  {/* {clickOtt.price / 4} */}원
+                </Howmuch>
+              </Mymoney>
+              <Mymoney>
+                수수료
+                <Howmuch>
+                  파티장
+                  {/* {clickOtt.hostCommision} */}| 파티원
+                  {/* {clickOtt.memberCommision} */}
+                </Howmuch>
+              </Mymoney>
+            </PriceBox>
+          </HideBox>
+          );
+          {/* })} */}
+          <button onClick={clickedToggle} toggle={toggle}>
             다음
           </button>
         </OttPrice>
-        {/* <p>{window.sessionStorage.getItem("myott")}</p> */}
+
+        {/* <p>{JSON.parse(window.sessionStorage.getItem("myott"))}</p> */}
       </WrapAll>
     </>
   );

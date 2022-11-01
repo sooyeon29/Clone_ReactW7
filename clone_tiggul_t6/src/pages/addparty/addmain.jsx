@@ -1,5 +1,5 @@
 import React from "react";
-import AddPartyPage from "../../components/addpartypage";
+import AddPartyPage from "../../components/addparty/addpartypage";
 import Layout from "../../elements/layout";
 
 const AddMain = () => {
