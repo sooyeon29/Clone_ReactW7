@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../style/img/logo.svg";
-import ModalBasic from "../components/loginmodal";
-// import { useCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
+import LoginModal from "../components/loginmodal";
+import SignupModal from "../components/signupModal";
 
 const Header = (props) => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const showModal = () => {
-    setModalOpen(true);
+  const [show, setShow] = useState(true);
+  const [LoginModalOpen, setLoginModalOpen] = useState(false);
+  const showLModal = () => {
+    setLoginModalOpen(true);
+  };
+  const [SignupModalOpen, setSignupModalOpen] = useState(false);
+  const showSModal = () => {
+    setSignupModalOpen(true);
   };
   // const [cookies, setCookie, removeCookie] = useCookies(["Authorization"]);
 
@@ -63,12 +69,20 @@ const Header = (props) => {
             </StButtons>
           </StButtonsWrap>
           <StMypageWrap>
-            <StUserbox>
-              <StLogin onClick={showModal}>로그인</StLogin>
-              {modalOpen && <ModalBasic setModalOpen={setModalOpen} />}
-              <StLine2></StLine2>
-              <StLogin onClick={showModal}>회원가입</StLogin>
-            </StUserbox>
+            {show && (
+              <StUserbox>
+                <StLogin onClick={showLModal}>로그인</StLogin>
+                {LoginModalOpen && (
+                  <LoginModal setLoginModalOpen={setLoginModalOpen} />
+                )}
+                <StLine2></StLine2>
+                <StLogin onClick={showSModal}>회원가입</StLogin>
+                {SignupModalOpen && (
+                  <SignupModal setSignupModalOpen={setSignupModalOpen} />
+                )}
+              </StUserbox>
+            )}
+            <StLogin>마이페이지</StLogin>
           </StMypageWrap>
         </StWrap>
         <Stline />
