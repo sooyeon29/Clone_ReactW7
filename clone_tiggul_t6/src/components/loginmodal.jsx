@@ -18,11 +18,11 @@ function ModalBasic({ setModalOpen }) {
         <div></div>
         <StButton
           onClick={() => {
-            navigate("https://hi-prac.shop/api/auth/kakao");
+            navigate("http://hi-prac.shop:3000/");
           }}
         >
           <div>
-            <img src={kakao} />
+            <img alt="" src={kakao} />
             <h5>카카오로 시작하기</h5>
           </div>
         </StButton>

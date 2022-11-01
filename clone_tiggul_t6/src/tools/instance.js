@@ -4,7 +4,7 @@ import axios from "axios";
 // 인스턴스 사용 예시코드!!!!
 const instance = axios.create({
   // baseURL: "http://localhost:3001/",
-  baseURL: "https://hi-prac.shop",
+  baseURL: "http://hi-prac.shop:3000/",
 });
 
 export const MyOttApi = {
