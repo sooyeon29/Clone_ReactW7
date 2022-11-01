@@ -1,38 +1,96 @@
-import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import kakao from "../style/img/kakao.png";
-import { useNavigate } from "react-router-dom";
+import React, { useRef, useCallback } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useCookies } from "react-cookie"; // useCookies import
+import useInput from "../hooks/useInput";
+import { MyOttApi } from "../tools/instance";
 
-function ModalBasic({ setModalOpen }) {
-  const navigate = useNavigate;
-
+function LoginModal({ setLoginModalOpen }) {
+  const navigate = useNavigate();
   // 모달 끄기
   const closeModal = () => {
-    setModalOpen(false);
+    setLoginModalOpen(false);
+  };
+
+  const [loginid, onChangeId] = useInput("");
+  const [loginpwd, onChangePwd] = useInput("");
+
+  const formRef = useRef();
+  const [tokens, setTokens] = useCookies(["token"]); // 쿠키 훅
+
+  //   console.log(typeof loginid);
+  //   console.log(typeof loginpwd);
+
+  const login = (e) => {
+    console.log(formRef.current.nickname.value);
+    console.log(formRef.current.password.value);
+
+    e.preventDefault();
+    MyOttApi.login({
+      nickname: formRef.current.nickname.value,
+      password: formRef.current.password.value,
+    })
+      .then((res) => {
+        console.log(res);
+        setTokens("token", res.data.token); // 쿠키(token이라는 이름의)에 토큰 저장
+        // alert(res.data.message);
+        //window.location.replace(`/Mainpage`);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log(error.response.data.errorMessage);
+        //alert(error.response.data.errorMessage);
+      });
   };
 
   return (
     <StWrap>
       <StContainer>
-        <h4>로그인 | 회원가입</h4>
-        <div></div>
-        <StButton
-          onClick={() => {
-            navigate("https://hi-prac.shop/api/auth/kakao");
-          }}
-        >
-          <div>
-            <img src={kakao} />
-            <h5>카카오로 시작하기</h5>
-          </div>
-        </StButton>
+        <StWraps>
+          <h1>로그인</h1>
+          <form ref={formRef} onSubmit={login}>
+            <div>
+              <div>
+                <Stinput
+                  placeholder="아이디를 입력하세요."
+                  id="nickname"
+                  type="text"
+                  minLength="1"
+                  value={loginid}
+                  onChange={onChangeId}
+                />
+              </div>
+              <div>
+                <Stinput
+                  placeholder="비밀번호를 입력하세요."
+                  id="password"
+                  type="password"
+                  minLength="1"
+                  value={loginpwd}
+                  onChange={onChangePwd}
+                />
+              </div>
+            </div>
+            <Button size="md" type="submit">
+              로그인
+            </Button>
+          </form>
+          <BtContain>
+            <Link to="/signUp">
+              <Button size="md">회원가입</Button>
+            </Link>
+          </BtContain>
+          <Link to="/PasswordEdit" style={{ textDecoration: "none" }}>
+            <Stp> 비밀번호를 잊어버리셨나요?</Stp>
+          </Link>
+        </StWraps>
       </StContainer>
       <StBackground onClick={closeModal} />
-      {/* <button onClick={closeModal}>X</button> */}
     </StWrap>
   );
 }
-export default ModalBasic;
+export default LoginModal;
 
 const StWrap = styled.div`
   position: fixed;
@@ -45,7 +103,7 @@ const StWrap = styled.div`
 
 const StContainer = styled.div`
   position: fixed;
-  width: 328px;
+  width: 400px;
   left: 50%;
   top: 50vh;
   transform: translate(-50%, -50%);
@@ -75,31 +133,61 @@ const StBackground = styled.div`
   display: block;
 `;
 
-const StButton = styled.div`
-  border-radius: 12px;
+const StWraps = styled.div`
+  > h1 {
+    font-weight: bold;
+  }
+
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+`;
+
+const Stinput = styled.input`
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0 30px 0;
+  width: 100%;
+  min-width: 300px;
+  font-family: "MonoplexKR-Regular";
+`;
+
+const BtContain = styled.div`
+  margin-bottom: 30px;
+  margin-top: 10px;
+`;
+
+const Stp = styled.p`
+  color: #626262;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+  font-family: "LeferiPoint-WhiteObliqueA";
+`;
+const Button = styled.button`
+  border-radius: 20px;
+  border: none;
+  background-color: #ffcd29;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  width: 145px;
   height: 45px;
-  padding: 11px 0px 10px;
-  background: rgb(254, 229, 0);
-  > div {
-    text-align: center;
-    -webkit-box-align: center;
-    align-items: center;
-    box-sizing: border-box;
-    display: flex;
-    padding-left: 20%;
-    > img {
-      width: 24px;
-      height: 24px;
-      margin-right: 10px;
-    }
-    > h5 {
-      display: block;
-      font-size: 16px;
-      line-height: 22px;
-      margin: 0px;
-      font-weight: bold;
-      color: var(--black);
-      font-family: "SpoqaHanSansNeo-Regular";
-    }
+  text-decoration-line: none;
+  &:active {
+    transform: scale(0.95);
+  }
+  &:hover {
+    color: white;
+    cursor: pointer;
+    scale: 95%;
   }
 `;

@@ -3,6 +3,9 @@ import Layout from "../../elements/layout";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import lock from "../../style/img/lock.png";
+import Button from "../../elements/buttons";
+import { MyOttApi } from "../../tools/instance";
+import { useForm } from "react-hook-form";
 
 const LeaderFour = () => {
   const navigate = useNavigate();
@@ -13,34 +16,43 @@ const LeaderFour = () => {
   };
   const [accountinfo, setAccountinfo] = useState(initialState);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ mode: "onBlur" });
+
   const onAccountHandler = (e) => {
-    // if (accountinfo.bank === "" || accountinfo.account === "") {
-    //   return alert("모든 항목을 입력해주세요");
-    // } else {
-    //   console.log("클릭", accountinfo);
-    //   MyOttApi.accountinfo({
-    //     bank: accountinfo.bank,
-    //     account: accountinfo.account,
-    //   })
-    //     .then((res) => {
-    //       alert(res.data.message);
-    //       setAccountinfo(initialState);
-    //     })
-    //     .catch((error) => {
-    //       alert(error);
-    //     });
-    // }
+    console.log("클릭했다.");
+    if (accountinfo.bank === "" || accountinfo.account === "") {
+      return alert("모든 항목을 입력해주세요");
+    } else {
+      //console.log("클릭", accountinfo);
+      MyOttApi.postBankAccount({
+        bank: accountinfo.bank,
+        account: accountinfo.account,
+      })
+        .then((res) => {
+          console.log(res);
+          //alert(res.data.message);
+          setAccountinfo(initialState);
+          navigate("/leaderfive");
+        })
+        .catch((error) => {
+          console.log("에러", error);
+        });
+    }
   };
 
   return (
     <Layout>
-      <StDiv />
       <form
-        onSubmit={(event) => {
-          event.preventDefault();
+        onSubmit={handleSubmit((event) => {
           onAccountHandler(accountinfo);
-        }}
+          // event.preventDefault();
+        })}
       >
+        <StDiv />
         <Stcontainer>
           <div>
             <h4>계좌번호를 입력해주세요</h4>
@@ -52,6 +64,17 @@ const LeaderFour = () => {
             <StInputWrap>
               <StInputs>
                 <Stinput
+                  {...register("bank", {
+                    required: "은행 이름을 입력해주세요",
+                    minLength: {
+                      value: 1,
+                      message: "1글자 이상 입력해주세요.",
+                    },
+                    pattern: {
+                      value: /^[가-힣]{1,10}$/,
+                      message: "한글만 가능합니다.",
+                    },
+                  })}
                   onChange={(ev) => {
                     const { value } = ev.target;
                     setAccountinfo({
@@ -61,9 +84,21 @@ const LeaderFour = () => {
                   }}
                   placeholder="은행 이름을 입력해주세요"
                 ></Stinput>
+                <Warn>{errors?.bank?.message}</Warn>
               </StInputs>
               <StInputs>
                 <Stinput
+                  {...register("account", {
+                    required: "계좌번호를 입력해주세요",
+                    minLength: {
+                      value: 3,
+                      message: "3글자 이상 입력해주세요.",
+                    },
+                    pattern: {
+                      value: /^[0-9]{3,15}$/,
+                      message: "숫자만 가능합니다",
+                    },
+                  })}
                   onChange={(ev) => {
                     const { value } = ev.target;
                     setAccountinfo({
@@ -71,21 +106,16 @@ const LeaderFour = () => {
                       account: value,
                     });
                   }}
-                  placeholder="본인명의의 계좌번호를 입력해주세요"
+                  placeholder="-를 뺀 본인명의의 계좌번호를 숫자로 입력해주세요"
                 ></Stinput>
+                <Warn>{errors?.account?.message}</Warn>
               </StInputs>
             </StInputWrap>
           </div>
         </Stcontainer>
-        <button
-          onClick={() => {
-            navigate("/leaderfive");
-          }}
-        >
-          다음
-        </button>
+        <Button type="submit">다음</Button>
+        <StDiv />
       </form>
-      <StDiv />
     </Layout>
   );
 };
@@ -94,6 +124,14 @@ export default LeaderFour;
 const StDiv = styled.div`
   width: 100%;
   height: 8px;
+`;
+const Warn = styled.div`
+  color: red;
+  padding-left: 17px;
+  font-size: 0.8rem;
+  font-weight: 00;
+  margin-top: 5px;
+  margin-left: -180px;
 `;
 
 const StInputWrap = styled.div`
@@ -121,11 +159,11 @@ const Stinput = styled.input`
   height: 46px;
   font-family: SpoqaHanSansNeo;
   font-size: 16px;
-  font-weight: normal;
+  font-weight: bold;
   line-height: 22px;
   text-align: left;
-  color: var(--gray-400);
-  border: 1px solid var(--gray-100);
+  color: var(--gray-700);
+  border: 1px solid var(--primary-500);
 `;
 
 const Stcontainer = styled.div`
