@@ -33,7 +33,7 @@ const PartysSlice = createSlice({
     },
     [__getPartys.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.items = action.payload;
+      state.partys = action.payload;
     },
     [__getPartys.rejected]: (state, action) => {
       state.isLoading = false;

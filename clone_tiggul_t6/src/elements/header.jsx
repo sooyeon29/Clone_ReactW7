@@ -21,7 +21,7 @@ const Header = (props) => {
                 navigate(`/`);
               }}
             >
-              <img src={logo} />
+              <img src={logo} alt="" />
             </StLogo>
           </StLogoWrap>
           <StButtonsWrap>
