@@ -11,7 +11,7 @@ export const __getUserInfo = createAsyncThunk(
   "leader/postOne",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get("http://localhost:3001/leader");
+      const data = await axios.get("https://hi-prac.shop/api/ott/1");
       console.log(data);
     } catch (error) {
       console.log(error);

@@ -10,6 +10,9 @@ import {
 
 const MyOne = () => {
   const navigate = useNavigate();
+  const goToNext = () => {
+    navigate("/leaderfour");
+  };
   return (
     <Layout>
       <StDiv />

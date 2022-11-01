@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import Layout from "../../elements/layout";
 import Button from "../../elements/buttons";
+import { useNavigate, useParams } from "react-router-dom";
+import { Cookies } from "react-cookie";
+
+// const cookies = new Cookies();
+
+// export const setCookie = (name, value, option) => {
+//   return cookies.set(name, value, { ...option });
+// };
+
+// export const getCookie = (name) => {
+//   return cookies.get(name);
+// };
 
 const LeaderFive = () => {
+  const idRef = useRef("");
+  const pwRef = useRef("");
+  const navigate = useNavigate();
+  const goToNext = () => {
+    navigate("/mypage");
+  };
+
+  const param = useParams();
+
   return (
     <Layout>
       <Before>
@@ -30,12 +51,17 @@ const LeaderFive = () => {
         <Inbox>
           <Id>
             ID
-            <input placeholder="아이디 입력" />
+            <input ref={idRef} placeholder="아이디 입력" />
+          </Id>
+        </Inbox>
+        <Inbox>
+          <Id>
+            PW
+            <input ref={pwRef} type="password" placeholder="패스워드 입력" />
           </Id>
         </Inbox>
       </Before>
-      <Button></Button>
-      파티생성 후 등록하기
+      <Button onClick={goToNext}>다음</Button>
     </Layout>
   );
 };
@@ -109,14 +135,6 @@ const Inbox = styled.div`
 
 const Id = styled.div`
   display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  width: 33px;
-  color: var(--gray-600);
-  font-weight: bold;
-  padding: 0px 16px;
-  height: 48px;
-  border-radius: 8px;
 
   > input {
     width: 100%;
