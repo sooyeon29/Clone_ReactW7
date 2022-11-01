@@ -16,8 +16,8 @@ const MyRole = ({ toggle, clickedToggle }) => {
 
   // 제이슨 스트링을 풀어주는 방법! JSON.parse
   // 세션스토리지에 저장한 선택한 ott
-  const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt")).data;
-  console.log(myOttName.price);
+  const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt"));
+  console.log(myOttName.data.price);
   return (
     <>
       <WrapAll>
@@ -113,8 +113,8 @@ const MyRole = ({ toggle, clickedToggle }) => {
         )}
         <Button onClick={clickedToggle} toggle={toggle}>
           {!isLeader
-            ? `파티장으로 월 ${myOttName.price / 4}원에 이용하기`
-            : `파티원으로 월 ${myOttName.price / 4}원에 이용하기`}
+            ? `파티장으로 월 ${myOttName.data.price / 4}원에 이용하기`
+            : `파티원으로 월 ${myOttName.data.price / 4}원에 이용하기`}
         </Button>
       </WrapAll>
     </>

@@ -16,7 +16,7 @@ const AddPartyPage = () => {
   //   JSON.parse(window.sessionStorage.getItem("getOtt"))
   // );
 
-  const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt")).data;
+  const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt"));
   console.log("나는너가고른고!!", myOttName);
 
   return (
@@ -34,7 +34,7 @@ const AddPartyPage = () => {
         <Before>
           <div>
             {/* <img alt="" src={a} width="20" /> */}
-            <span>{myOttName.ottService}</span>
+            <span>{myOttName.data.ottService}</span>
             {/* .toLowerCase() 를 붙이면 오류가남
             파일명을 만들어서 myOttName으로 만들어 주서서 써주었는데 이방식으로는 파일을 가져올수 없나용?ㅠㅠ */}
             <h4>프리미엄 • 최고화질 • 4인공유</h4>

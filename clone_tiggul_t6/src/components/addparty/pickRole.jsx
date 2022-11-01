@@ -7,9 +7,7 @@ import useToggle from "../../hooks/useToggle";
 
 const PickRole = () => {
   const [toggle, setToggle, clickedToggle] = useToggle();
-  const iAmLeader = JSON.parse(
-    window.sessionStorage.getItem("isLeader")
-  ).isLeader;
+  const iAmLeader = JSON.parse(window.sessionStorage.getItem("isLeader"));
   console.log(iAmLeader);
   return (
     <>
@@ -26,7 +24,9 @@ const PickRole = () => {
                   icon={faUser}
                 />
               </div>
-              <h4>{iAmLeader ? "파티장으로 이용" : "파티원으로 이동"}</h4>
+              <h4>
+                {iAmLeader.isLeader ? "파티장으로 이용" : "파티원으로 이동"}
+              </h4>
             </form>
             <button onClick={clickedToggle} setToggle={setToggle}>
               변경
@@ -34,7 +34,7 @@ const PickRole = () => {
           </Before>
           <KakaoButton>
             <img alt="" src={kakao} width="24" />
-            카카오로 계속하기
+            로그인하고 계속하기
           </KakaoButton>
         </>
       )}
