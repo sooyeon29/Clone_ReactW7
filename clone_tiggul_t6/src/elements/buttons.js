@@ -1,18 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { lighten } from "polished";
+import { darken } from "polished";
 
-const Button = ({ children }) => {
+const Button = (props) => {
   return (
-    <>
-      <Btn>{children}</Btn>
-    </>
+    <Btn {...props} disabled={props.disabled}>
+      {props.children}
+    </Btn>
   );
 };
-
 export default Button;
 
-const Btn = styled.div`
+const Btn = styled.button`
   display: flex;
   flex-direction: row;
   -webkit-box-pack: center;
@@ -35,6 +34,6 @@ const Btn = styled.div`
   border: none;
   margin-top: 30px;
   &:hover {
-    background-color: ${lighten(0.2, "#4DCA9A")};
+    background-color: ${darken(0.01, "#4DCA9A")};
   }
 `;
