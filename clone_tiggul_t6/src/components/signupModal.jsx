@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
-import kakao from "../style/img/kakao.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { MyOttApi } from "../tools/instance";
 
 function SignupModal({ setSignupModalOpen }) {
   const navigate = useNavigate();
@@ -11,64 +11,58 @@ function SignupModal({ setSignupModalOpen }) {
     setSignupModalOpen(false);
   };
 
-  const onlogin = () => {
-    navigate("/addmain");
-  };
-
   const [data, setData] = useState([]);
 
   const initialState = {
     nickname: "",
     password: "",
     confirm: "",
-    email: "",
-    address: "",
+    phone: "",
   };
   const [personal, setPersonal] = useState(initialState);
 
-  console.log(personal);
+  //console.log(personal);
 
   const onPersonalHandler = (e) => {
-    //    personal.id === "" ? alert("아이디를 입력하세요!") : <></>;
-    //    if (personal.nickname.length === 1 && personal.nickname.length <= 3) {
-    //      alert("닉네임이 너무 짧습니다");
-    //      return;
-    //    }
-    //    if (
-    //      personal.id === "" ||
-    //      personal.nickname === "" ||
-    //      personal.password === "" ||
-    //      personal.confirm === "" ||
-    //      personal.address === "" ||
-    //      personal.email === ""
-    //    ) {
-    //      return alert("모든 항목을 입력해주세요");
-    //    } else {
-    //      console.log("클릭", personal);
-    //      RandomsApi.personal({
-    //        nickname: personal.nickname,
-    //        password: personal.password,
-    //        confirm: personal.confirm,
-    //        email: personal.email,
-    //        address: personal.address,
-    //      })
-    //        .then((res) => {
-    //          alert(res.data.message);
-    //          setPersonal(initialState);
-    //          navigate(-1);
-    //        })
-    //        .catch((error) => {
-    //          alert(error);
-    //        });
+    personal.id === "" ? alert("아이디를 입력하세요!") : <></>;
+    if (personal.nickname.length === 1 && personal.nickname.length <= 3) {
+      alert("닉네임이 너무 짧습니다");
+      return;
+    }
+    if (
+      personal.nickname === "" ||
+      personal.password === "" ||
+      personal.confirm === "" ||
+      personal.phone === ""
+    ) {
+      return alert("모든 항목을 입력해주세요");
+    } else {
+      //console.log("클릭", personal);
+      MyOttApi.signup({
+        nickname: personal.nickname,
+        password: personal.password,
+        confirm: personal.confirm,
+        phone: personal.phone,
+      })
+        .then((res) => {
+          alert(res.data.message);
+          setPersonal(initialState);
+          navigate(-1);
+        })
+        .catch((error) => {
+          // console.log(error);
+          alert(error.response.data.errorMessage);
+        });
+    }
   };
 
   return (
     <StWrap>
       <StContainer>
         <StWraps>
-          <Stxbutton onClick={() => navigate(-1)}>❌</Stxbutton>
-          <h1>개인정보 수정</h1>
-          <p>{data.message}</p>
+          {/* <Stxbutton onClick={() => navigate(-1)}>❌</Stxbutton> */}
+          <h1>회원가입</h1>
+          {/* <p>{data.message}</p> */}
           <form
             onSubmit={(event) => {
               event.preventDefault();
@@ -85,7 +79,7 @@ function SignupModal({ setSignupModalOpen }) {
                     nickname: value,
                   });
                 }}
-                placeholder="수정할 닉네임을 입력하세요."
+                placeholder="닉네임을 입력하세요."
               ></Stinput>
               {personal.nickname.length === 0 ? (
                 <div></div>
@@ -150,42 +144,19 @@ function SignupModal({ setSignupModalOpen }) {
               )}
             </Stbox>
             <Stbox>
-              <p>이메일 </p>
+              <p>핸드폰 번호</p>
               <Stinput
                 onChange={(ev) => {
                   const { value } = ev.target;
                   setPersonal({
                     ...personal,
-                    email: value,
+                    phone: value,
                   });
                 }}
-                placeholder="수정할 이메일을 입력하세요."
-              ></Stinput>
-              {personal.email.length === 0 ? (
-                <div></div>
-              ) : !personal.email.includes("@") ||
-                !personal.email.includes(".") ? (
-                <ErrorMessage>
-                  @를 포함한 정상적인 이메일을 써주세요.
-                </ErrorMessage>
-              ) : (
-                <div></div>
-              )}
-            </Stbox>
-            <Stbox>
-              <p>주소 </p>
-              <Stinput
-                onChange={(ev) => {
-                  const { value } = ev.target;
-                  setPersonal({
-                    ...personal,
-                    address: value,
-                  });
-                }}
-                placeholder="수정할 주소를 입력하세요."
+                placeholder="숫자로 된 핸드폰 번호를 입력하세요."
               ></Stinput>
             </Stbox>
-            <Button size="md">수정 완료 </Button>
+            <Button>회원가입</Button>
           </form>
         </StWraps>
       </StContainer>

@@ -23,8 +23,8 @@ function LoginModal({ setLoginModalOpen }) {
   //   console.log(typeof loginpwd);
 
   const login = (e) => {
-    console.log(formRef.current.nickname.value);
-    console.log(formRef.current.password.value);
+    // console.log(formRef.current.nickname.value);
+    // console.log(formRef.current.password.value);
 
     e.preventDefault();
     MyOttApi.login({
@@ -32,15 +32,17 @@ function LoginModal({ setLoginModalOpen }) {
       password: formRef.current.password.value,
     })
       .then((res) => {
-        console.log(res);
-        setTokens("token", res.data.token); // 쿠키(token이라는 이름의)에 토큰 저장
-        // alert(res.data.message);
+        // console.log(res);
+        setTokens("token", res.data.token);
+        // 쿠키(token이라는 이름의)에 토큰 저장
+        alert("로그인 성공!");
+        navigate(-1);
         //window.location.replace(`/Mainpage`);
       })
       .catch((error) => {
-        console.log(error);
-        console.log(error.response.data.errorMessage);
-        //alert(error.response.data.errorMessage);
+        // console.log(error);
+        // console.log(error.response.data.errorMessage);
+        alert(error.response.data.errorMessage);
       });
   };
 
