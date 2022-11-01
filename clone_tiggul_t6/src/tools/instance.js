@@ -1,9 +1,8 @@
 import axios from "axios";
-// import { getCookie } from "../Components/estarlogin/cookiehook";
 
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOnsidXNlcklkIjoiMSJ9LCJpYXQiOjE2NjcyODgyODd9.enjRyabsUbMvONZb80h_YYdeNvXBZObabBqCyqCeEQg";
-// 인스턴스 사용 예시코드!!!!
+
 const instance = axios.create({
   // baseURL: "http://localhost:3001/",
   baseURL: "http://hi-prac.shop:3000/",

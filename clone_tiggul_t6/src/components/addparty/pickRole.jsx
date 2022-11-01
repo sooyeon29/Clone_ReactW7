@@ -1,12 +1,25 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import kakao from "../../style/img/kakao.png";
 import MyRole from "../addparty/myRole";
 import useToggle from "../../hooks/useToggle";
+import LoginModal from "../../components/loginmodal";
+import { useState } from "react";
+import Button from "../../elements/buttons";
+import { useNavigate } from "react-router-dom";
 
 const PickRole = () => {
   const [toggle, setToggle, clickedToggle] = useToggle();
+  const [LoginModalOpen, setLoginModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const showLModal = () => {
+    setLoginModalOpen(true);
+  };
+  const movePageHandler = () => {
+    iAmLeader.isLeader && navigate(`/leaderone`);
+    !iAmLeader.isLeader && navigate(`/memberone`);
+  };
+
   const iAmLeader = JSON.parse(window.sessionStorage.getItem("isLeader"));
   console.log(iAmLeader);
   return (
@@ -32,10 +45,22 @@ const PickRole = () => {
               변경
             </button>
           </Before>
-          <KakaoButton>
-            <img alt="" src={kakao} width="24" />
+          <KakaoButton onClick={showLModal}>
+            <FontAwesomeIcon
+              style={{
+                color: "#fdedb7",
+                marginRight: "15",
+              }}
+              icon={faUser}
+            />
             로그인하고 계속하기
           </KakaoButton>
+          {LoginModalOpen && (
+            <LoginModal setLoginModalOpen={setLoginModalOpen} />
+          )}
+          <Button onClick={movePageHandler}>
+            {iAmLeader.isLeader ? "파티장으로 계속하기" : "파티원으로 계속하기"}
+          </Button>
         </>
       )}
     </>
@@ -93,7 +118,7 @@ const Before = styled.div`
 const KakaoButton = styled.button`
   height: 52px;
   padding: 11px 0px 10px;
-  background: rgb(254, 229, 0);
+  background: #ffcd2a;
   display: flex;
   /* -webkit-box-align: center; */
   align-items: center;
