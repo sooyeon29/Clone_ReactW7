@@ -7,14 +7,23 @@ const initialState = {
   error: null,
 };
 
-export const __getUserInfo = createAsyncThunk(
-  "leader/postOne",
+export const __postUserInfo = createAsyncThunk(
+  "leaderSlice/getUserInfo",
   async (payload, thunkAPI) => {
+    console.log("안녕", payload);
+    const token = localStorage.getItem("token");
     try {
-      const data = await axios.get("https://hi-prac.shop/api/ott/1");
-      console.log(data);
-    } catch (error) {
-      console.log(error);
+      const getUser = await axios.post(
+        `http://hi-prac.shop:3000/api/addparty/host`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return thunkAPI.fulfillWithValue(getUser.data.getUser);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
     }
   }
 );
@@ -24,14 +33,14 @@ const leaderSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [__getUserInfo.pending]: (state) => {
+    [__postUserInfo.pending]: (state) => {
       state.isLoading = true;
     },
-    [__getUserInfo.fulfilled]: (state, action) => {
+    [__postUserInfo.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.user = action.payload;
     },
-    [__getUserInfo.rejected]: (state, action) => {
+    [__postUserInfo.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.error;
     },

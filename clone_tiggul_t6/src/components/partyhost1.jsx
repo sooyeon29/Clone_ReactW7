@@ -4,9 +4,24 @@ import tving from "../style/img/tving.png";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Button from "../elements/buttons";
+import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
 
 const PartyHost1 = () => {
   const navigate = useNavigate();
+
+  const [cookies, setCookies, removeCookie] = useCookies();
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    console.log("cookies콘솔", cookies);
+    if (cookies.Authorization) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  });
+
   return (
     <>
       <LeaderHead>
@@ -86,7 +101,17 @@ const PartyHost1 = () => {
           </form>
         </TotalPriceBox>
       </CheckPrice>
-      <Button>다음</Button>
+      <Button
+        onClick={() => {
+          if (!isLogin) {
+            alert("로그인해주세요");
+          } else {
+            alert("로그인상태입니다");
+          }
+        }}
+      >
+        다음
+      </Button>
     </>
   );
 };

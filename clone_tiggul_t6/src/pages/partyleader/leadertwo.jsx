@@ -12,6 +12,9 @@ const LeaderTwo = () => {
   const goToNext = () => {
     navigate("/leaderfour");
   };
+  const getOtt = useSelector((state) => state.data.data);
+  console.log("과연 디비값을가져올수 있을까", getOtt);
+  // window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
 
   //   axios.get("https://hi-prac.shop/api/ott/1").then((res) => {
   //     console.log(res.data.data);
@@ -21,16 +24,13 @@ const LeaderTwo = () => {
   //     // }
   //   });
 
-  // const getOtt = useSelector((state) => state.data.data);
-  // console.log("과연 디비값을가져올수 있을까", getOtt);
-
   return (
     <Layout>
       <Before>
         <Last>매월 정산받는 금액을 확인해주세요</Last>
         <Ott>
           <Inbox>
-            티빙 프리미엄
+            {getOtt.ottService} 프리미엄
             <Color>
               <BlueBox></BlueBox>
               <YellowBox></YellowBox>

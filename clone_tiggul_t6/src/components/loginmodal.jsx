@@ -4,7 +4,7 @@ import kakao from "../style/img/kakao.png";
 import { useNavigate } from "react-router-dom";
 
 function ModalBasic({ setModalOpen }) {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   // 모달 끄기
   const closeModal = () => {
@@ -18,7 +18,7 @@ function ModalBasic({ setModalOpen }) {
         <div></div>
         <StButton
           onClick={() => {
-            navigate("https://hi-prac.shop/api/auth/kakao");
+            navigate("http://hi-prac.shop:3000/token/1");
           }}
         >
           <div>

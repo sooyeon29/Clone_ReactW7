@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import Layout from "../../elements/layout";
 import Button from "../../elements/buttons";
-import { useNavigate, useParams } from "react-router-dom";
-import { Cookies } from "react-cookie";
-
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useCookies } from "react-cookie";
+import { __postUserInfo } from "../../redux/modules/leaderSlice";
 // const cookies = new Cookies();
 
 // export const setCookie = (name, value, option) => {
@@ -23,7 +24,22 @@ const LeaderFive = () => {
     navigate("/mypage");
   };
 
-  const param = useParams();
+  // const getOtt = useSelector((state) => state.data.data);
+  // console.log("과연 디비값을가져올수 있을까", getOtt);
+
+  const [cookies] = useCookies();
+  // const [isLogin, setIsLogin] = useState(false);
+  // useEffect(() => {
+  //   console.log("cookies콘솔", cookies);
+  //   if (cookies.Authorization) {
+  //     setIsLogin(true);
+  //   } else {
+  //     setIsLogin(false);
+  //   }
+  // });
+  console.log(cookies);
+
+  const dispatch = useDispatch();
 
   return (
     <Layout>
@@ -54,6 +70,7 @@ const LeaderFive = () => {
             <input ref={idRef} placeholder="아이디 입력" />
           </Id>
         </Inbox>
+
         <Inbox>
           <Id>
             PW
@@ -61,7 +78,23 @@ const LeaderFive = () => {
           </Id>
         </Inbox>
       </Before>
-      <Button onClick={goToNext}>다음</Button>
+      <Button
+        onClick={(e) => {
+          if (idRef.current.value == "" || pwRef.current.value == "") {
+            alert("내용을 입력해 주세요");
+            return;
+          }
+          const login = {
+            ID: idRef.current.value,
+            Password: pwRef.current.value,
+            // cookie: cookies,
+          };
+          console.log(login);
+          // dispatch(__postUserInfo(login));
+        }}
+      >
+        다음
+      </Button>
     </Layout>
   );
 };
