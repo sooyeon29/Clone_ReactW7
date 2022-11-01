@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import usePostOtt from "../hooks/usePostOtt";
-import netflix from "../style/img/netflix.png";
-import wavve from "../style/img/wavve.png";
-import watcha from "../style/img/watcha.png";
-import laftel from "../style/img/laftel.png";
-import tving from "../style/img/tving.png";
-import disney from "../style/img/disney.png";
+import usePostOtt from "../../hooks/usePostOtt";
+import netflix from "../../style/img/netflix.png";
+import wavve from "../../style/img/wavve.png";
+import watcha from "../../style/img/watcha.png";
+import laftel from "../../style/img/laftel.png";
+import tving from "../../style/img/tving.png";
+import disney from "../../style/img/disney.png";
 import { lighten } from "polished";
-import useToggle from "../hooks/useToggle";
-import { __getMyOtt } from "../redux/modules/addPartySlice";
+import useToggle from "../../hooks/useToggle";
+import { __getMyOtt } from "../../redux/modules/addPartySlice";
 
 const PickMyOtt = ({ toggle, setToggle }) => {
   // 각 ott onClickHandler

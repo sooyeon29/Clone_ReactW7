@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import MyRole from "../../components/myRole";
+import MyRole from "../../components/addparty/myRole";
 import Header from "../../elements/header";
 
 const AddOne = () => {

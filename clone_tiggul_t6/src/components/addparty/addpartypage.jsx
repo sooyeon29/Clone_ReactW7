@@ -1,11 +1,11 @@
 import React from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import styled from "styled-components";
-import matchingnum from "../style/img/matchingnum.png";
+import matchingnum from "../../style/img/matchingnum.png";
 import PickRole from "./pickRole";
-import tving from "../style/img/tving.png";
+import tving from "../../style/img/tving.png";
 import PickMyOtt from "./pickMyOtt";
-import useToggle from "../hooks/useToggle";
+import useToggle from "../../hooks/useToggle";
 
 const AddPartyPage = () => {
   const [toggle, setToggle, clickedToggle] = useToggle();
@@ -125,5 +125,6 @@ const Before = styled.div`
     font-size: 13px;
     background-color: transparent;
     border: 0px;
+    margin-right: 15px;
   }
 `;

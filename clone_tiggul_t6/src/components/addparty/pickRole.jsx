@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faUser } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import kakao from "../style/img/kakao.png";
+import kakao from "../../style/img/kakao.png";
 // import test from "../style/img/test.JPG";
-import MyRole from "./myRole";
-import useToggle from "../hooks/useToggle";
+import MyRole from "../addparty/myRole";
+import useToggle from "../../hooks/useToggle";
 
 const PickRole = ({ toggle }) => {
   const [toggle2, clickedToggle2] = useToggle();
@@ -276,6 +276,7 @@ const Before = styled.div`
     font-size: 13px;
     background-color: transparent;
     border: 0px;
+    margin-right: 15px;
   }
 `;
 const KakaoButton = styled.button`

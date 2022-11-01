@@ -2,8 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import test from "../style/img/test.JPG";
-import useToggle from "../hooks/useToggle";
+import test from "../../style/img/test.JPG";
+import useToggle from "../../hooks/useToggle";
 
 const MyRole = () => {
   const [toggle2, clickedToggle2] = useToggle();
