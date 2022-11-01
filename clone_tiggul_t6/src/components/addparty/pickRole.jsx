@@ -1,8 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import kakao from "../../style/img/kakao.png";
-// import test from "../style/img/test.JPG";
 import MyRole from "../addparty/myRole";
 import useToggle from "../../hooks/useToggle";
 

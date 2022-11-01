@@ -2,17 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { darken } from "polished";
 
-const Button = ({ children }) => {
+const Button = (props) => {
   return (
-    <>
-      <Btn>{children}</Btn>
-    </>
+    <Btn {...props} disabled={props.disabled}>
+      {props.children}
+    </Btn>
   );
 };
-
 export default Button;
 
-const Btn = styled.div`
+const Btn = styled.button`
   display: flex;
   flex-direction: row;
   -webkit-box-pack: center;

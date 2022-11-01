@@ -38,7 +38,7 @@ const PickMyOtt = ({ toggle, setToggle }) => {
 
   // 제이슨 스트링을 풀어주는 방법! JSON.parse
   // console.log(JSON.parse(window.sessionStorage.getItem("myott")));
-  // JSON.parse(window.sessionStorage.getItem("myott"))
+  // JSON.parse(window.sessionStorage.getItem("myott"));
 
   const getOtt = useSelector((state) => state.data.data);
   console.log("과연 디비값을가져올수 있을까", getOtt);
@@ -103,7 +103,6 @@ const PickMyOtt = ({ toggle, setToggle }) => {
           </Ott>
           <Ott>
             <Icon onClick={() => ChooseWatcha(3)}>
-              {" "}
               <img alt="" src={watcha} width="40" />
               왓차
             </Icon>
@@ -118,7 +117,6 @@ const PickMyOtt = ({ toggle, setToggle }) => {
           </Ott>
           <Ott>
             <Icon onClick={() => ChooseTving(5)}>
-              {" "}
               <img alt="" src={tving} width="40" />
               티빙
             </Icon>
@@ -133,33 +131,27 @@ const PickMyOtt = ({ toggle, setToggle }) => {
           </Ott>
         </OttWrap>
         <OttPrice>
-          {/* {clickedglobalOtt.map((clickOtt) => { */}
-          return (
           <HideBox>
-            <PriceBox
-            // key={clickOtt.id}
-            >
+            <PriceBox>
               💵
               <Mymoney>
-                {/* {clickOtt.ottService} */}
+                {getOtt.ottService}
                 프리미엄
                 <Howmuch>
-                  <span>{/* {clickOtt.price} */}원</span> →
-                  {/* {clickOtt.price / 4} */}원
+                  <span>{getOtt.price}원</span> →{getOtt.price / 4}원
                 </Howmuch>
               </Mymoney>
               <Mymoney>
                 수수료
                 <Howmuch>
                   파티장
-                  {/* {clickOtt.hostCommision} */}| 파티원
-                  {/* {clickOtt.memberCommision} */}
+                  {getOtt.hostCommision}| 파티원
+                  {getOtt.memberCommision}
                 </Howmuch>
               </Mymoney>
             </PriceBox>
           </HideBox>
-          );
-          {/* })} */}
+
           <Button onClick={clickedToggle} toggle={toggle}>
             다음
           </Button>
