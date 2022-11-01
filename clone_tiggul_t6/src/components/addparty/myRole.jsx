@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import test from "../../style/img/test.JPG";
+import Button from "../../elements/buttons";
 
 const MyRole = ({ toggle2, clickedToggle2 }) => {
   const [isHost, setIsHost] = useState(false);
@@ -100,9 +101,9 @@ const MyRole = ({ toggle2, clickedToggle2 }) => {
             </Event>
           </>
         )}
-        <button onClick={clickedToggle2} toggle={toggle2}>
+        <Button onClick={clickedToggle2} toggle={toggle2}>
           파티장으로 월 0000원에 이용하기
-        </button>
+        </Button>
       </WrapAll>
     </>
   );

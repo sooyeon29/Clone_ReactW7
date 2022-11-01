@@ -3,6 +3,7 @@ import { faChevronLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
 import tving from "../style/img/tving.png";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import Button from "../elements/buttons";
 
 const PartyHost1 = () => {
   const navigate = useNavigate();
@@ -85,7 +86,7 @@ const PartyHost1 = () => {
           </form>
         </TotalPriceBox>
       </CheckPrice>
-      <button>다음</button>
+      <Button>다음</Button>
     </>
   );
 };

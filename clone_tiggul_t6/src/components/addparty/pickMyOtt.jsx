@@ -11,6 +11,7 @@ import disney from "../../style/img/disney.png";
 import { lighten } from "polished";
 import useToggle from "../../hooks/useToggle";
 import { __getMyOtt } from "../../redux/modules/addPartySlice";
+import Button from "../../elements/buttons";
 
 const PickMyOtt = ({ toggle, setToggle }) => {
   // 각 ott onClickHandler
@@ -159,9 +160,9 @@ const PickMyOtt = ({ toggle, setToggle }) => {
           </HideBox>
           );
           {/* })} */}
-          <button onClick={clickedToggle} toggle={toggle}>
+          <Button onClick={clickedToggle} toggle={toggle}>
             다음
-          </button>
+          </Button>
         </OttPrice>
 
         {/* <p>{JSON.parse(window.sessionStorage.getItem("myott"))}</p> */}
