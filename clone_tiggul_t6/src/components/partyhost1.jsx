@@ -86,7 +86,7 @@ const PartyHost1 = () => {
           </form>
         </TotalPriceBox>
       </CheckPrice>
-      <Button>다음</Button>
+      <Button onClick={() => navigate(`/leaderfour`)}>다음</Button>
     </>
   );
 };

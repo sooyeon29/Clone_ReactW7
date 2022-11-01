@@ -5,7 +5,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import test from "../../style/img/test.JPG";
 import Button from "../../elements/buttons";
 
-const MyRole = ({ toggle2, clickedToggle2 }) => {
+const MyRole = ({ toggle, clickedToggle }) => {
   const [isLeader, setIsLeader] = useState(false);
 
   const LeaderHandler = () => {
@@ -15,7 +15,8 @@ const MyRole = ({ toggle2, clickedToggle2 }) => {
   };
 
   // 제이슨 스트링을 풀어주는 방법! JSON.parse
-  const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt")).name;
+  // 세션스토리지에 저장한 선택한 ott
+  const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt")).data;
   console.log(myOttName.price);
   return (
     <>
@@ -25,18 +26,7 @@ const MyRole = ({ toggle2, clickedToggle2 }) => {
           <>
             <LeaderOrMember>
               <Leader>파티장</Leader>
-              <Member
-                onClick={
-                  LeaderHandler
-                  // () => {
-                  // return setIsLeader(!isLeader)
-                  // const Leader = {name: isLeader}
-                  // window.sessionStorage.setItem("isLeader", JSON.stringify(iAmLeader))
-                  // }
-                }
-              >
-                파티원
-              </Member>
+              <Member onClick={LeaderHandler}>파티원</Member>
             </LeaderOrMember>
             <Info>
               <img alt="" src={test} width="100%" />
@@ -80,14 +70,7 @@ const MyRole = ({ toggle2, clickedToggle2 }) => {
         {isLeader && (
           <>
             <LeaderOrMember>
-              <Member
-                onClick={
-                  LeaderHandler
-                  // () => setIsLeader(!isLeader)
-                }
-              >
-                파티장
-              </Member>
+              <Member onClick={LeaderHandler}>파티장</Member>
               <Leader>파티원</Leader>
             </LeaderOrMember>
             <NowMatch>
@@ -128,7 +111,7 @@ const MyRole = ({ toggle2, clickedToggle2 }) => {
             </Event>
           </>
         )}
-        <Button onClick={clickedToggle2} toggle={toggle2}>
+        <Button onClick={clickedToggle} toggle={toggle}>
           {!isLeader
             ? `파티장으로 월 ${myOttName.price / 4}원에 이용하기`
             : `파티원으로 월 ${myOttName.price / 4}원에 이용하기`}

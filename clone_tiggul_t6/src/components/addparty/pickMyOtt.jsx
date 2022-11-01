@@ -9,7 +9,7 @@ import laftel from "../../style/img/laftel.png";
 import tving from "../../style/img/tving.png";
 import disney from "../../style/img/disney.png";
 import { lighten } from "polished";
-import useToggle from "../../hooks/useToggle";
+// import useToggle from "../../hooks/useToggle";
 import { __getMyOtt } from "../../redux/modules/addPartySlice";
 import Button from "../../elements/buttons";
 
@@ -48,37 +48,37 @@ const PickMyOtt = ({ toggle, setToggle }) => {
   const ChooseNetflix = (my) => {
     setheight(!height);
     dispatch(__getMyOtt(my));
-    const PickOtt = { name: getOtt };
+    const PickOtt = { data: getOtt };
     window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
   };
   const ChooseWavve = (my) => {
     setheight(!height);
     dispatch(__getMyOtt(my));
-    const PickOtt = { name: getOtt };
+    const PickOtt = { data: getOtt };
     window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
   };
   const ChooseWatcha = (my) => {
     setheight(!height);
     dispatch(__getMyOtt(my));
-    const PickOtt = { name: getOtt };
+    const PickOtt = { data: getOtt };
     window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
   };
   const ChooseLaftel = (my) => {
     setheight(!height);
     dispatch(__getMyOtt(my));
-    const PickOtt = { name: getOtt };
+    const PickOtt = { data: getOtt };
     window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
   };
   const ChooseTving = (my) => {
     setheight(!height);
     dispatch(__getMyOtt(my));
-    const PickOtt = { name: getOtt };
+    const PickOtt = { data: getOtt };
     window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
   };
   const ChooseDisney = (my) => {
     setheight(!height);
     dispatch(__getMyOtt(my));
-    const PickOtt = { name: getOtt };
+    const PickOtt = { data: getOtt };
     window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
   };
 

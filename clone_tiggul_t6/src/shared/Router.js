@@ -5,7 +5,6 @@ import Home from "../pages/home";
 import MyPage from "../pages/mypage";
 import AddMain from "../pages/addparty/addmain";
 import AddOne from "../pages/addparty/addone";
-
 import MyOne from "../pages/myparty/myone";
 import MyTwo from "../pages/myparty/mytwo";
 import LeaderFive from "../pages/partyleader/leaderfive";
@@ -22,7 +21,6 @@ const Router = () => {
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/addmain" element={<AddMain />} />
         <Route path="/addone" element={<AddOne />} />
-
         <Route path="/myone" element={<MyOne />} />
         <Route path="/mytwo" element={<MyTwo />} />
         <Route path="/leaderone" element={<LeaderOne />} />
