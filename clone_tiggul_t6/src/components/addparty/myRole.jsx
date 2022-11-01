@@ -3,19 +3,40 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import test from "../../style/img/test.JPG";
+import Button from "../../elements/buttons";
 
 const MyRole = ({ toggle2, clickedToggle2 }) => {
-  const [isHost, setIsHost] = useState(false);
+  const [isLeader, setIsLeader] = useState(false);
 
+  const LeaderHandler = () => {
+    setIsLeader(!isLeader);
+    const iAmLeader = { isLeader: isLeader };
+    window.sessionStorage.setItem("isLeader", JSON.stringify(iAmLeader));
+  };
+
+  // 제이슨 스트링을 풀어주는 방법! JSON.parse
+  const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt")).name;
+  console.log(myOttName.price);
   return (
     <>
       <WrapAll>
         <Title>이용 역할을 선택해주세요</Title>
-        {!isHost && (
+        {!isLeader && (
           <>
             <LeaderOrMember>
               <Leader>파티장</Leader>
-              <Member onClick={() => setIsHost(!isHost)}>파티원</Member>
+              <Member
+                onClick={
+                  LeaderHandler
+                  // () => {
+                  // return setIsLeader(!isLeader)
+                  // const Leader = {name: isLeader}
+                  // window.sessionStorage.setItem("isLeader", JSON.stringify(iAmLeader))
+                  // }
+                }
+              >
+                파티원
+              </Member>
             </LeaderOrMember>
             <Info>
               <img alt="" src={test} width="100%" />
@@ -56,10 +77,17 @@ const MyRole = ({ toggle2, clickedToggle2 }) => {
             </Event>
           </>
         )}
-        {isHost && (
+        {isLeader && (
           <>
             <LeaderOrMember>
-              <Member onClick={() => setIsHost(!isHost)}>파티장</Member>
+              <Member
+                onClick={
+                  LeaderHandler
+                  // () => setIsLeader(!isLeader)
+                }
+              >
+                파티장
+              </Member>
               <Leader>파티원</Leader>
             </LeaderOrMember>
             <NowMatch>
@@ -100,9 +128,11 @@ const MyRole = ({ toggle2, clickedToggle2 }) => {
             </Event>
           </>
         )}
-        <button onClick={clickedToggle2} toggle={toggle2}>
-          파티장으로 월 0000원에 이용하기
-        </button>
+        <Button onClick={clickedToggle2} toggle={toggle2}>
+          {!isLeader
+            ? `파티장으로 월 ${myOttName.price / 4}원에 이용하기`
+            : `파티원으로 월 ${myOttName.price / 4}원에 이용하기`}
+        </Button>
       </WrapAll>
     </>
   );
