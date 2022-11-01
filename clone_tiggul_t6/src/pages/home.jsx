@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "../elements/layout";
+import axios from "axios";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -18,6 +19,12 @@ const Home = () => {
           <First>
             <Secound>
               <User>
+                {axios.get("http://hi-prac.shop:3000/api/count").then((res) => {
+                  console.log(res);
+                  if (res.status === 200) {
+                    navigate("/home");
+                  }
+                })}
                 최근 일주일 매칭 현황 <Member>4100</Member>명
               </User>
               <OTT>대한민국 1등</OTT>
