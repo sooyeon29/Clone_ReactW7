@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { MyOttApi } from "../../tools/instance";
 
-export const __postMyOtt = createAsyncThunk(
-  "otts/postMyOtt",
+export const __getMyOtt = createAsyncThunk(
+  "otts/getMyOtt",
   async (payload, thunkApi) => {
     console.log("잘 받았니", payload);
     try {
-      const { data } = await MyOttApi.postOtt(payload);
+      const { data } = await MyOttApi.getOtt(payload);
       console.log(data);
       return thunkApi.fulfillWithValue(data);
     } catch (error) {
@@ -16,16 +16,14 @@ export const __postMyOtt = createAsyncThunk(
 );
 
 const initialState = {
-  addparty: [
-    {
-      ottService: "",
-      price: 0,
-      hostCommision: 0,
-      memberCommision: 0,
-      isClick: false,
-      id: 0,
+  data: {
+    Netflix: {
+      ottService: "Netflix",
+      price: 170000,
+      hostCommision: 490,
+      memberCommision: 990,
     },
-  ],
+  },
   isLoading: false,
   error: null,
 };
@@ -33,17 +31,20 @@ const initialState = {
 const addPartySlice = createSlice({
   name: "addparty",
   initialState,
+  reducers: {
+    // 동기적인 액션은 리듀서에서 관리
+  },
   extraReducers: {
     // 선택한 ott 서비스를 POST
-    [__postMyOtt.pending]: (state) => {
+    [__getMyOtt.pending]: (state) => {
       state.isLoading = true;
     },
-    [__postMyOtt.fulfilled]: (state, action) => {
+    [__getMyOtt.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.addparty.push(action.payload);
-      console.log("fulfilled 상태", state, action);
+      state.data = action.payload.data;
+      console.log("fulfilled 상태", state, action, state.data);
     },
-    [__postMyOtt.rejected]: (state, action) => {
+    [__getMyOtt.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },

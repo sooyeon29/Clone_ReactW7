@@ -1,11 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import MyRole from "../../components/addparty/myRole";
 import Header from "../../elements/header";
 
 const AddOne = () => {
   const navigate = useNavigate();
   return (
     <>
+      <MyRole />
       <Header />
       <div>
         <button

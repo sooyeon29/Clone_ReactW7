@@ -1,16 +1,14 @@
 import React from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import styled from "styled-components";
-import matchingnum from "../style/img/matchingnum.png";
+import matchingnum from "../../style/img/matchingnum.png";
 import PickRole from "./pickRole";
-import tving from "../style/img/tving.png";
+import tving from "../../style/img/tving.png";
 import PickMyOtt from "./pickMyOtt";
+import useToggle from "../../hooks/useToggle";
 
 const AddPartyPage = () => {
-  const [toggle, setToggle] = useState(false);
-  const clickedToggle = () => {
-    setToggle((prev) => !prev);
-  };
+  const [toggle, setToggle, clickedToggle] = useToggle();
 
   return (
     <>
@@ -18,7 +16,7 @@ const AddPartyPage = () => {
         최근 일주일 매칭 현황{" "}
         <div>
           <span>0000명 </span>
-          <img alt="" src={matchingnum} width="60" />
+          <img alt="" src={matchingnum} width="50" />
         </div>
       </WeekMatch>
       {!toggle ? (
@@ -26,9 +24,10 @@ const AddPartyPage = () => {
       ) : (
         <Before>
           <div>
-            <img alt="" src={tving} width="10" />
+            <img alt="" src={tving} width="20" />{" "}
+            <h4>프리미엄 • 최고화질 • 4인공유</h4>
           </div>
-          <h4>프리미엄 • 최고화질 • 4인공유</h4>
+
           <button onClick={clickedToggle} toggle={toggle}>
             변경
           </button>
@@ -51,7 +50,7 @@ const WeekMatch = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding: 12px 10px 12px 12px;
+  padding: 12px 55px 12px 12px;
   /* -webkit-box-align: center; */
   align-items: center;
   /* -webkit-box-pack: justify; */
@@ -61,6 +60,13 @@ const WeekMatch = styled.div`
   border-radius: 8px;
   /* position: relative; */
   margin-top: 20px;
+  span {
+    margin-right: 10px;
+  }
+
+  img {
+    position: absolute;
+  }
 `;
 
 const Next = styled.div`
@@ -86,7 +92,7 @@ const Next = styled.div`
     justify-content: center;
     background-color: var(--gray-400);
     color: var(--white);
-    margin: 0 15px;
+    margin: auto 15px;
   }
 `;
 const Before = styled.div`
@@ -96,11 +102,29 @@ const Before = styled.div`
   font-weight: 900;
   font-size: 16px;
   line-height: 24px;
-  color: var(--gray-900);
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: var(--gray-400);
+  justify-content: space-between;
   font-size: 16px;
   margin-top: 24px;
+  color: var(--gray-600);
+  div {
+    margin: auto 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    h4 {
+      margin-left: 15px;
+    }
+  }
+  button {
+    color: var(--gray-600);
+    cursor: pointer;
+    font-size: 13px;
+    background-color: transparent;
+    border: 0px;
+    margin-right: 15px;
+  }
 `;
