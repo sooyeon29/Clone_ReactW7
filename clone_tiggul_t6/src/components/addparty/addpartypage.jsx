@@ -10,10 +10,18 @@ import useToggle from "../../hooks/useToggle";
 const AddPartyPage = () => {
   const [toggle, setToggle, clickedToggle] = useToggle();
 
+  // 제이슨 스트링을 풀어주는 방법! JSON.parse
+  // console.log(
+  //   "ott저장한세션!!",
+  //   JSON.parse(window.sessionStorage.getItem("getOtt"))
+  // );
+  const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt")).name;
+  console.log("나는너가고른고!!", myOttName);
+
   return (
     <>
       <WeekMatch>
-        최근 일주일 매칭 현황{" "}
+        최근 일주일 매칭 현황
         <div>
           <span>0000명 </span>
           <img alt="" src={matchingnum} width="50" />
@@ -24,7 +32,9 @@ const AddPartyPage = () => {
       ) : (
         <Before>
           <div>
-            <img alt="" src={tving} width="20" />{" "}
+            <img alt="" src={myOttName.ottService} width="20" />
+            {/* .toLowerCase() 를 붙이면 오류가남
+            파일명을 만들어서 myOttName으로 만들어 주서서 써주었는데 이방식으로는 파일을 가져올수 없나용?ㅠㅠ */}
             <h4>프리미엄 • 최고화질 • 4인공유</h4>
           </div>
 

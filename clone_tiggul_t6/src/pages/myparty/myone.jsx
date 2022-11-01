@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "../../elements/layout";
+import MypartyCard from "../../components/mypartycard";
+import { useDispatch, useSelector } from "react-redux";
+// import { __getPartys } from "../../redux/modules/getMypartySlice";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronRight,
@@ -10,18 +14,29 @@ import {
 
 const MyOne = () => {
   const navigate = useNavigate();
-  const goToNext = () => {
-    navigate("/leaderfour");
-  };
+  // const dispatch = useDispatch();
+
+  // const items = useSelector((state) => state.items);
+
+  // useEffect(() => {
+  //   dispatch(__getPartys());
+  // }, [dispatch]);
+
   return (
     <Layout>
       <StDiv />
-      <StContainer
-        onClick={() => {
-          navigate("/addmain");
-        }}
-      >
-        <StAddPartyWrap>
+
+      {/* {partys?.map((item) => {
+        return <MypartyCard key={party.id} itemData={party} />;
+      })} */}
+
+      <StContainer>
+        <MypartyCard />
+        <StAddPartyWrap
+          onClick={() => {
+            navigate("/addmain");
+          }}
+        >
           <div>
             <StPlus>
               <FontAwesomeIcon

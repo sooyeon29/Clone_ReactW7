@@ -3,111 +3,137 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import test from "../../style/img/test.JPG";
-import useToggle from "../../hooks/useToggle";
+import Button from "../../elements/buttons";
 
-const MyRole = () => {
-  const [toggle2, clickedToggle2] = useToggle();
-  const [isHost, setIsHost] = useState(false);
+const MyRole = ({ toggle2, clickedToggle2 }) => {
+  const [isLeader, setIsLeader] = useState(false);
 
+  const LeaderHandler = () => {
+    setIsLeader(!isLeader);
+    const iAmLeader = { isLeader: isLeader };
+    window.sessionStorage.setItem("isLeader", JSON.stringify(iAmLeader));
+  };
+
+  // 제이슨 스트링을 풀어주는 방법! JSON.parse
+  const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt")).name;
+  console.log(myOttName.price);
   return (
     <>
-      {!isHost && (
-        <WrapAll>
-          <Title>이용 역할을 선택해주세요</Title>
-          <LeaderOrMember>
-            <Leader>파티장</Leader>
-            <Member onClick={() => setIsHost(!isHost)}>파티원</Member>
-          </LeaderOrMember>
-          <Info>
-            <img alt="" src={test} width="100%" />
-            <InfoDiv>
-              <span>4명에서 같이보면 4배 더 저렴하니깐!</span>
-              <br />
-              <span>파티장으로 시작하고 파티원으로 모집해보세요.</span>
-              <div>
-                <button>
-                  다음
-                  <FontAwesomeIcon
-                    style={{
-                      color: "black",
-                      marginLeft: "10px",
-                    }}
-                    icon={faArrowRight}
-                    beat
-                  />
-                </button>
-              </div>
-            </InfoDiv>
-          </Info>
-          <Event>
-            <div>💰'정산 보장제'를 적용받아요</div>
-            <li>
-              파티원이 구해지지 않아도 <span>정산받는 금액 100% 보장</span>
-            </li>
-          </Event>
-          <Event>
-            <div>🎁파티원 직접초대시 혜택을 받아요</div>
-            <li>
-              파티원을 1명이상 직접초대하면 <span>수수료 서로할인</span> 적용
-            </li>
-            <span>
-              (파티장 <span>490원</span>→ 0원 | 초대받은 파티원{" "}
-              <span>990원</span>→ 490원
-            </span>
-          </Event>
-          <button onClick={clickedToggle2} toggle={toggle2}>
-            파티장으로 월 0000원에 이용하기
-          </button>
-        </WrapAll>
-      )}
-      {isHost && (
-        <WrapAll>
-          <Title>이용 역할을 선택해주세요</Title>
-          <LeaderOrMember>
-            <Member onClick={() => setIsHost(!isHost)}>파티장</Member>
-            <Leader>파티원</Leader>
-          </LeaderOrMember>
-          <NowMatch>
-            🚀 지금 시작하면 대기시간 없이 <span> 즉시 매칭 </span> 가능!
-          </NowMatch>
-          <Info>
-            <img alt="" src={test} width="100%" />
-            <InfoDiv>
-              <span>4명에서 같이보면 4배 더 저렴하니깐!</span>
-              <br />
-              <span>파티원으로 파티를 매칭받아보세요.</span>
-              <div>
-                <button>
-                  다음
-                  <FontAwesomeIcon
-                    style={{
-                      color: "black",
-                      marginLeft: "10px",
-                    }}
-                    icon={faArrowRight}
-                    beat
-                  />
-                </button>
-              </div>
-            </InfoDiv>
-          </Info>
-          <Event>
-            <div>🚨 파티에 문제가 발생해도 즉시 해결해줘요</div>
-            <li>
-              파티 문제 발생시 <span>남은 기간만큼 100% 환불</span> 가능
-            </li>
-            <li>
-              파티가 해체돼도 <span>최우선순위</span>로 새로운 파티 재매칭
-            </li>
-            <li>
-              365일 연중무휴 <span>고객센터</span> 운영중
-            </li>
-          </Event>
-          <button onClick={clickedToggle2} toggle={toggle2}>
-            파티원으로 월 0000원에 이용하기
-          </button>
-        </WrapAll>
-      )}
+      <WrapAll>
+        <Title>이용 역할을 선택해주세요</Title>
+        {!isLeader && (
+          <>
+            <LeaderOrMember>
+              <Leader>파티장</Leader>
+              <Member
+                onClick={
+                  LeaderHandler
+                  // () => {
+                  // return setIsLeader(!isLeader)
+                  // const Leader = {name: isLeader}
+                  // window.sessionStorage.setItem("isLeader", JSON.stringify(iAmLeader))
+                  // }
+                }
+              >
+                파티원
+              </Member>
+            </LeaderOrMember>
+            <Info>
+              <img alt="" src={test} width="100%" />
+              <InfoDiv>
+                <span>4명에서 같이보면 4배 더 저렴하니깐!</span>
+                <br />
+                <span>파티장으로 시작하고 파티원으로 모집해보세요.</span>
+                <div>
+                  <button>
+                    다음
+                    <FontAwesomeIcon
+                      style={{
+                        color: "black",
+                        marginLeft: "10px",
+                      }}
+                      icon={faArrowRight}
+                      beat
+                    />
+                  </button>
+                </div>
+              </InfoDiv>
+            </Info>
+            <Event>
+              <div>💰'정산 보장제'를 적용받아요</div>
+              <li>
+                파티원이 구해지지 않아도 <span>정산받는 금액 100% 보장</span>
+              </li>
+            </Event>
+            <Event>
+              <div>🎁파티원 직접초대시 혜택을 받아요</div>
+              <li>
+                파티원을 1명이상 직접초대하면 <span>수수료 서로할인</span> 적용
+              </li>
+              <span>
+                (파티장 <span>490원</span>→ 0원 | 초대받은 파티원{" "}
+                <span>990원</span>→ 490원
+              </span>
+            </Event>
+          </>
+        )}
+        {isLeader && (
+          <>
+            <LeaderOrMember>
+              <Member
+                onClick={
+                  LeaderHandler
+                  // () => setIsLeader(!isLeader)
+                }
+              >
+                파티장
+              </Member>
+              <Leader>파티원</Leader>
+            </LeaderOrMember>
+            <NowMatch>
+              🚀 지금 시작하면 대기시간 없이 <span> 즉시 매칭 </span> 가능!
+            </NowMatch>
+            <Info>
+              <img alt="" src={test} width="100%" />
+              <InfoDiv>
+                <span>4명에서 같이보면 4배 더 저렴하니깐!</span>
+                <br />
+                <span>파티원으로 파티를 매칭받아보세요.</span>
+                <div>
+                  <button>
+                    다음
+                    <FontAwesomeIcon
+                      style={{
+                        color: "black",
+                        marginLeft: "10px",
+                      }}
+                      icon={faArrowRight}
+                      beat
+                    />
+                  </button>
+                </div>
+              </InfoDiv>
+            </Info>
+            <Event>
+              <div>🚨 파티에 문제가 발생해도 즉시 해결해줘요</div>
+              <li>
+                파티 문제 발생시 <span>남은 기간만큼 100% 환불</span> 가능
+              </li>
+              <li>
+                파티가 해체돼도 <span>최우선순위</span>로 새로운 파티 재매칭
+              </li>
+              <li>
+                365일 연중무휴 <span>고객센터</span> 운영중
+              </li>
+            </Event>
+          </>
+        )}
+        <Button onClick={clickedToggle2} toggle={toggle2}>
+          {!isLeader
+            ? `파티장으로 월 ${myOttName.price / 4}원에 이용하기`
+            : `파티원으로 월 ${myOttName.price / 4}원에 이용하기`}
+        </Button>
+      </WrapAll>
     </>
   );
 };

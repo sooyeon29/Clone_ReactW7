@@ -2,12 +2,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
 import tving from "../style/img/tving.png";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import Button from "../elements/buttons";
 
 const PartyHost1 = () => {
+  const navigate = useNavigate();
   return (
     <>
       <LeaderHead>
-        <button>
+        <button onClick={() => navigate(`/addmain`)}>
           <FontAwesomeIcon
             style={{
               color: "#646F7C",
@@ -20,7 +23,7 @@ const PartyHost1 = () => {
           <img alt="" src={tving} width="16" />
           티빙 파티 생성
         </div>
-        <button>
+        <button onClick={() => navigate(`/`)}>
           <FontAwesomeIcon
             style={{
               color: "#646F7C",
@@ -83,7 +86,7 @@ const PartyHost1 = () => {
           </form>
         </TotalPriceBox>
       </CheckPrice>
-      <button>다음</button>
+      <Button>다음</Button>
     </>
   );
 };

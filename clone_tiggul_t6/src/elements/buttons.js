@@ -9,10 +9,9 @@ const Button = (props) => {
     </Btn>
   );
 };
-
 export default Button;
 
-const Btn = styled.div`
+const Btn = styled.button`
   display: flex;
   flex-direction: row;
   -webkit-box-pack: center;

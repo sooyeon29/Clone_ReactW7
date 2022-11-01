@@ -1,69 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import kakao from "../../style/img/kakao.png";
-// import test from "../style/img/test.JPG";
 import MyRole from "../addparty/myRole";
 import useToggle from "../../hooks/useToggle";
 
-const PickRole = ({ toggle }) => {
-  const [toggle2, clickedToggle2] = useToggle();
-
-  // const [isHost, setIsHost] = useState(false);
+const PickRole = () => {
+  const [toggle2, setToggle2, clickedToggle2] = useToggle();
 
   return (
     <>
-      {!toggle2 && (
-        <MyRole />
-        // <WrapAll>
-        //   <Title>이용 역할을 선택해주세요</Title>
-        //   <LeaderOrMember>
-        //     <Leader>파티장</Leader>
-        //     <Member onClick={() => setIsHost(!isHost)}>파티원</Member>
-        //   </LeaderOrMember>
-        //   <Info>
-        //     <img alt="" src={test} width="100%" />
-        //     <InfoDiv>
-        //       <span>4명에서 같이보면 4배 더 저렴하니깐!</span>
-        //       <br />
-        //       <span>파티장으로 시작하고 파티원으로 모집해보세요.</span>
-        //       <div>
-        //         <button>
-        //           다음
-        //           <FontAwesomeIcon
-        //             style={{
-        //               color: "black",
-        //               marginLeft: "10px",
-        //             }}
-        //             icon={faArrowRight}
-        //             beat
-        //           />
-        //         </button>
-        //       </div>
-        //     </InfoDiv>
-        //   </Info>
-        //   <Event>
-        //     <div>💰'정산 보장제'를 적용받아요</div>
-        //     <li>
-        //       파티원이 구해지지 않아도 <span>정산받는 금액 100% 보장</span>
-        //     </li>
-        //   </Event>
-        //   <Event>
-        //     <div>🎁파티원 직접초대시 혜택을 받아요</div>
-        //     <li>
-        //       파티원을 1명이상 직접초대하면 <span>수수료 서로할인</span> 적용
-        //     </li>
-        //     <span>
-        //       (파티장 <span>490원</span>→ 0원 | 초대받은 파티원{" "}
-        //       <span>990원</span>→ 490원
-        //     </span>
-        //   </Event>
-        //   <button onClick={clickedToggle2} toggle={toggle2}>
-        //     파티장으로 월 0000원에 이용하기
-        //   </button>
-        // </WrapAll>
-      )}
-      {/* {!toggle2 && !isHost(<div>파티원일때</div>)} */}
+      {!toggle2 && <MyRole toggle2={toggle2} clickedToggle2={clickedToggle2} />}
       {toggle2 && (
         <>
           <Before>
@@ -78,8 +25,7 @@ const PickRole = ({ toggle }) => {
               </div>
               <h4>파티장으로 이용</h4>
             </form>
-
-            <button onClick={clickedToggle2} toggle={toggle2}>
+            <button onClick={clickedToggle2} setToggle2={setToggle2}>
               변경
             </button>
           </Before>

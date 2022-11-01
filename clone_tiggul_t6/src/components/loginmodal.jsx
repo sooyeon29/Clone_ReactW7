@@ -1,8 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import kakao from "../style/img/kakao.png";
+import { useNavigate } from "react-router-dom";
 
 function ModalBasic({ setModalOpen }) {
+  const navigate = useNavigate;
+
   // 모달 끄기
   const closeModal = () => {
     setModalOpen(false);
@@ -13,7 +16,11 @@ function ModalBasic({ setModalOpen }) {
       <StContainer>
         <h4>로그인 | 회원가입</h4>
         <div></div>
-        <StButton>
+        <StButton
+          onClick={() => {
+            navigate("https://hi-prac.shop/api/auth/kakao");
+          }}
+        >
           <div>
             <img src={kakao} />
             <h5>카카오로 시작하기</h5>
