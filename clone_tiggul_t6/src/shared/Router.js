@@ -11,6 +11,7 @@ import LeaderFive from "../pages/partyleader/leaderfive";
 import LeaderFour from "../pages/partyleader/leaderfour";
 import LeaderTwo from "../pages/partyleader/leadertwo";
 import LeaderOne from "../pages/partyleader/leaderone";
+import MemberOne from "../pages/partymember/memberone";
 
 // 2. Router 라는 함수를 만들고 아래와 같이 작성합니다.
 const Router = () => {
@@ -27,6 +28,7 @@ const Router = () => {
         <Route path="/leadertwo" element={<LeaderTwo />} />
         <Route path="/leaderfour" element={<LeaderFour />} />
         <Route path="/leaderfive" element={<LeaderFive />} />
+        <Route path="/memberone" element={<MemberOne />} />
       </Routes>
     </BrowserRouter>
   );
