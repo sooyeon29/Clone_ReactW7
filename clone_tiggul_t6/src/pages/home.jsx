@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "../elements/layout";
 import axios from "axios";
+import { useEffect } from "react";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [home, setHome] = useState("");
   const goToAddMain = () => {
     navigate("/addmain");
   };
+
+  useEffect(() => {
+    axios
+      .get("http://hi-prac.shop:3000/api/count")
+      .then((res) => setHome(res.data.data));
+  }, []);
+
   return (
     <Layout>
       <Main>
@@ -19,13 +28,7 @@ const Home = () => {
           <First>
             <Secound>
               <User>
-                {/* {axios.get("http://hi-prac.shop:3000/api/count").then((res) => {
-                  console.log(res);
-                  // if (res.status === 200) {
-                  //   navigate("/home");
-                  // }
-                })} */}
-                최근 일주일 매칭 현황 <Member>4100</Member>명
+                최근 일주일 매칭 현황 <Member>{home}</Member>명
               </User>
               <OTT>대한민국 1등</OTT>
               <OTT>"OTT 계정공유 서비스"</OTT>

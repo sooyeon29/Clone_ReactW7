@@ -1,11 +1,12 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import Layout from "../../elements/layout";
 import Button from "../../elements/buttons";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
-import { __postUserInfo } from "../../redux/modules/leaderSlice";
+import { __postLeader } from "../../redux/modules/leaderSlice";
+
 // const cookies = new Cookies();
 
 // export const setCookie = (name, value, option) => {
@@ -24,8 +25,8 @@ const LeaderFive = () => {
     navigate("/mypage");
   };
 
-  // const getOtt = useSelector((state) => state.data.data);
-  // console.log("과연 디비값을가져올수 있을까", getOtt);
+  const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt"));
+  console.log("나는너가고른고!!", myOttName.data);
 
   const [cookies] = useCookies();
   // const [isLogin, setIsLogin] = useState(false);
@@ -37,46 +38,53 @@ const LeaderFive = () => {
   //     setIsLogin(false);
   //   }
   // });
-  console.log(cookies);
 
   const dispatch = useDispatch();
 
   return (
     <Layout>
       <Before>
-        <Last>
-          마지막으로,
-          <br /> (get) 계정을 등록해주세요 !
-        </Last>
-        <p>(get) 바로가기</p>
+        {/* {getOtt.product.map((item) => ( */}
+        <div>
+          <Last>
+            마지막으로,
+            <br /> {myOttName.data.ottService} 계정을 등록해주세요 !
+          </Last>
+          <p>{myOttName.data.ottService} 바로가기</p>
 
-        <Ott>
-          <Acount>✔️ 계정을 준비해주세요</Acount>
-          <Ready>
-            <img style={{ transform: "scale(0.4)" }} src="/img/admit.png" />
-            <Color>티빙 프리미엄 이용권</Color> (4인공유) 구독중인 계정
-          </Ready>
-        </Ott>
+          <Ott>
+            <Acount>✔️ 계정을 준비해주세요</Acount>
+            <Ready>
+              <img style={{ transform: "scale(0.4)" }} src="/img/admit.png" />
+              <Color>{myOttName.data.ottService} 프리미엄 이용권</Color>{" "}
+              (4인공유) 구독중인 계정
+            </Ready>
+          </Ott>
 
-        <Ott>
-          ⚠️ 주의해주세요
-          <Ready>· (get)ID가 아닌 계정은 공유 불가능 (CJ One 등) </Ready>
-          <Ready>· 웹이 아닌 APP에서는 티빙이 최대 15% 더 비싸요</Ready>
-        </Ott>
+          <Ott>
+            ⚠️ 주의해주세요
+            <Worning>
+              · {myOttName.data.ottService} ID가 아닌 계정은 공유 불가능 (CJ One
+              등)
+            </Worning>
+            <Worning>· 웹이 아닌 APP에서는 티빙이 최대 15% 더 비싸요</Worning>
+          </Ott>
 
-        <Inbox>
-          <Id>
-            ID
-            <input ref={idRef} placeholder="아이디 입력" />
-          </Id>
-        </Inbox>
+          <Inbox>
+            <Id>
+              ID
+              <input ref={idRef} placeholder="아이디 입력" />
+            </Id>
+          </Inbox>
 
-        <Inbox>
-          <Id>
-            PW
-            <input ref={pwRef} type="password" placeholder="패스워드 입력" />
-          </Id>
-        </Inbox>
+          <Inbox>
+            <Id>
+              PW
+              <input ref={pwRef} type="password" placeholder="패스워드 입력" />
+            </Id>
+          </Inbox>
+        </div>
+        {/* ))} */}
       </Before>
       <Button
         onClick={(e) => {
@@ -85,12 +93,13 @@ const LeaderFive = () => {
             return;
           }
           const login = {
+            ottService: myOttName.data.ottService,
             ID: idRef.current.value,
             Password: pwRef.current.value,
-            // cookie: cookies,
+            cookie: cookies,
           };
           console.log(login);
-          // dispatch(__postUserInfo(login));
+          dispatch(__postLeader(login));
         }}
       >
         다음
@@ -153,6 +162,15 @@ const Ready = styled.div`
   }
 `;
 
+const Worning = styled.div`
+  display: block;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 7px;
+  font-weight: normal;
+  color: var(--gray-600);
+`;
+
 const Color = styled.div`
   font-weight: bold;
   color: var(--primary-600);
@@ -164,6 +182,7 @@ const Inbox = styled.div`
   border: 1px solid var(--gray-200);
   border-radius: 8px;
   background-color: var(--white);
+  margin-top: 6px;
 `;
 
 const Id = styled.div`

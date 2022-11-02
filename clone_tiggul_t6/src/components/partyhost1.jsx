@@ -1,26 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
-import tving from "../style/img/tving.png";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Button from "../elements/buttons";
-import { useCookies } from "react-cookie";
-import { useEffect, useState } from "react";
 
 const PartyHost1 = () => {
   const navigate = useNavigate();
-
-  const [cookies, setCookies, removeCookie] = useCookies();
-  const [isLogin, setIsLogin] = useState(false);
-
-  useEffect(() => {
-    console.log("cookies콘솔", cookies);
-    if (cookies.Authorization) {
-      setIsLogin(true);
-    } else {
-      setIsLogin(false);
-    }
-  });
+  const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt"));
 
   return (
     <>
@@ -35,8 +21,9 @@ const PartyHost1 = () => {
           />
         </button>
         <div>
-          <img alt="" src={tving} width="16" />
-          티빙 파티 생성
+          {/* <img alt="" src={tving} width="16" /> */}
+          <span>{myOttName.data.ottService}</span>
+          파티 생성
         </div>
         <button onClick={() => navigate(`/`)}>
           <FontAwesomeIcon
@@ -53,17 +40,20 @@ const PartyHost1 = () => {
         <PriceBox>
           <PricePic>
             <OttPrice>
-              <div>티빙 프리미엄</div> 13,900원/월
+              <div>{myOttName.data.ottService} 프리미엄</div>{" "}
+              {myOttName.data.price}원/월
             </OttPrice>
             <ColorBox>
               <PriceDiv>
-                <span>3,475</span>
-                <div>3,475</div>
-                <div>3,475</div>
-                <div>3,475</div>
+                <span>{myOttName.data.price / 4}</span>
+                <div>{myOttName.data.price / 4}</div>
+                <div>{myOttName.data.price / 4}</div>
+                <div>{myOttName.data.price / 4}</div>
               </PriceDiv>
               <div>
-                <button>티빙 이용권 금액이 다른가요?</button>
+                <button>
+                  {myOttName.data.ottService} 이용권 금액이 다른가요?
+                </button>
               </div>
             </ColorBox>
           </PricePic>
@@ -73,14 +63,14 @@ const PartyHost1 = () => {
                 <div>.</div>
                 <span>내 1/4 부담금</span>
               </div>
-              <div>3,475원/월</div>
+              <div>{myOttName.data.price / 4}원/월</div>
             </div>
             <div>
               <div>
                 <div>.</div>
                 <span>파티원 3명의 몫</span>
               </div>
-              <div>10,425원/월</div>
+              <div>{(myOttName.data.price / 4) * 3}원/월</div>
             </div>
           </MyPrice>
         </PriceBox>
@@ -95,23 +85,17 @@ const PartyHost1 = () => {
           <Line></Line>
           <form>
             <div>
-              매월 정산받는 금액<span>+9,935원</span>
+              매월 정산받는 금액
+              <span>
+                +{(myOttName.data.price / 4) * 3 - myOttName.data.hostCommision}
+                원
+              </span>
             </div>
             <span>(파티원 3명의 몫 - 피클플러스 수수료)</span>
           </form>
         </TotalPriceBox>
       </CheckPrice>
-      <Button
-        onClick={() => {
-          if (!isLogin) {
-            alert("로그인해주세요");
-          } else {
-            alert("로그인상태입니다");
-          }
-        }}
-      >
-        다음
-      </Button>
+      <Button onClick={() => navigate(`/leaderfour`)}>다음</Button>
     </>
   );
 };
@@ -134,7 +118,14 @@ const LeaderHead = styled.div`
     align-items: center;
     font-size: 16px;
     font-weight: bold;
-    img {
+    /* img {
+      margin-right: 10px;
+    } */
+    span {
+      background-color: var(--gray-200);
+      color: #3db88b;
+      border-radius: 15px;
+      padding: 5px;
       margin-right: 10px;
     }
   }
