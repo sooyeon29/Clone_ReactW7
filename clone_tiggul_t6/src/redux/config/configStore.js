@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import data from "../modules/addPartySlice";
+import leader from "../modules/leaderSlice";
 // import logger from "redux-logger";
 
 /*reducer toolkit Slice.reducer
@@ -9,6 +10,7 @@ import data from "../modules/addPartySlice";
 const store = configureStore({
   reducer: {
     data: data,
+    leader: leader,
   },
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
   devTools: process.env.NODE_ENV !== "production",

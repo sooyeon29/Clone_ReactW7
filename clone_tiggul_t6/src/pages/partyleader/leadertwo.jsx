@@ -2,33 +2,49 @@ import React from "react";
 import styled from "styled-components";
 import Layout from "../../elements/layout";
 import Button from "../../elements/buttons";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { __getMyOtt } from "../../redux/modules/addPartySlice";
+import { useNavigate } from "react-router-dom";
 
-const LeaderTwo = (props) => {
-  axios.get("https://hi-prac.shop/api/ott/1").then((res) => {
-    console.log(res.data.Netfilix);
-  });
+const LeaderTwo = () => {
+  const navigate = useNavigate();
+  const goToNext = () => {
+    navigate("/leaderfour");
+  };
+  const getOtt = useSelector((state) => state.data.data);
+  console.log("과연 디비값을가져올수 있을까", getOtt);
+  // window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
+
+  //   axios.get("https://hi-prac.shop/api/ott/1").then((res) => {
+  //     console.log(res.data.data);
+  //     // localStorage.setItem('token', res.data.token);
+  //     // if (res.status === 200) {
+  //     //   navigate('/home');
+  //     // }
+  //   });
+
   return (
     <Layout>
       <Before>
         <Last>매월 정산받는 금액을 확인해주세요</Last>
-
         <Ott>
           <Inbox>
-            티빙 프리미엄
+            {getOtt.ottService} 프리미엄
             <Color>
-              <BlueBox>3,475</BlueBox>
-              <YellowBox>3,475</YellowBox>
-              <YellowBox>3,475</YellowBox>
-              <YellowBox>3,475</YellowBox>
+              <BlueBox></BlueBox>
+              <YellowBox></YellowBox>
+              <YellowBox></YellowBox>
+              <YellowBox></YellowBox>
             </Color>
             티빙 이용권 금액이 다른가요?
           </Inbox>
           <FirstMoney>
             <BlueMiniBox />내 1/4 부담금
+            {/* {res.data.data.price / 4} */}
             <br />
             <YellowMiniBox />
-            파티원 3명의 몫
+            {/* {(getOtt.price / 4) * 3} */}
           </FirstMoney>
         </Ott>
         <Ott>
@@ -37,7 +53,7 @@ const LeaderTwo = (props) => {
           매월 정산받는 금액
         </Ott>
       </Before>
-      <Button>다음</Button>
+      <Button onClick={goToNext}>다음</Button>
     </Layout>
   );
 };
