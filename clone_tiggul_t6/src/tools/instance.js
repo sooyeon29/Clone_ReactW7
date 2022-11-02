@@ -14,10 +14,13 @@ const instance = axios.create({
 
 export const MyOttApi = {
   getOtt: (num) => instance.get(`/api/ott/${num}`),
-  postBankAccount: (payload) => instance.post(`/api/mypage/account`),
+  postBankAccount: (payload) => instance.post(`/api/mypage/account`, payload),
   login: (payload) => instance.post(`/api/user/login`, payload),
   signup: (payload) => instance.post(`/api/user`, payload),
   postcard: (payload) => instance.post(`/api/mypage/card`, payload),
+  editbank: (payload) => instance.put(`/api/mypage/account`, payload),
+  editcard: (payload) => instance.put(`/api/mypage/card`, payload),
+  getmyparty: (payload) => instance.get(`/api/myparty`),
 };
 
 // 로그인할때 헤더에 토큰 붙여서 주는 방식사용할때 쓰는 식

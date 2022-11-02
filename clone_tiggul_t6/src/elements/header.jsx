@@ -73,7 +73,7 @@ const Header = (props) => {
               <StButton>
                 <Sta
                   onClick={() => {
-                    navigate(`/myone`);
+                    window.location.replace(`/myone`);
                   }}
                 >
                   MY파티
@@ -97,7 +97,13 @@ const Header = (props) => {
             )}
             {myshow && (
               <StUserbox>
-                <StLogin>Mypage</StLogin>
+                <StLogin
+                  onClick={() => {
+                    navigate(`/mypage`);
+                  }}
+                >
+                  Mypage
+                </StLogin>
                 <StLogin onClick={logout}>Logout</StLogin>
               </StUserbox>
             )}

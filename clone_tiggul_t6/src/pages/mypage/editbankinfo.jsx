@@ -7,7 +7,7 @@ import Button from "../../elements/buttons";
 import { MyOttApi } from "../../tools/instance";
 import { useForm } from "react-hook-form";
 
-const LeaderFour = () => {
+const EditBankInfo = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const initialState = {
@@ -22,14 +22,15 @@ const LeaderFour = () => {
       return alert("모든 항목을 입력해주세요");
     } else {
       //console.log("클릭", accountinfo);
-      MyOttApi.postBankAccount({
+      MyOttApi.editbank({
         bank: accountinfo.bank,
         account: accountinfo.account,
       })
         .then((res) => {
           console.log("성공", res);
           setAccountinfo(initialState);
-          navigate("/leaderfive");
+          navigate("/mypage");
+          alert("수정 완료");
         })
         .catch((error) => {
           alert("다시 입력해주세요");
@@ -87,13 +88,13 @@ const LeaderFour = () => {
             </StInputWrap>
           </div>
         </Stcontainer>
-        <Button type="submit">다음</Button>
+        <Button type="submit">수정하기</Button>
         <StDiv />
       </form>
     </Layout>
   );
 };
-export default LeaderFour;
+export default EditBankInfo;
 
 const StDiv = styled.div`
   width: 100%;
