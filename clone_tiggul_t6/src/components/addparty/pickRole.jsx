@@ -3,13 +3,14 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import MyRole from "../addparty/myRole";
 import useToggle from "../../hooks/useToggle";
-import LoginModal from "../../components/loginmodal";
+import LoginModal from "../loginmodal";
 import { useState } from "react";
 import Button from "../../elements/buttons";
 import { useNavigate } from "react-router-dom";
+import { lighten } from "polished";
 
 const PickRole = () => {
-  const [toggle, setToggle, clickedToggle] = useToggle();
+  const [toggle, clickedToggle] = useToggle();
   const [LoginModalOpen, setLoginModalOpen] = useState(false);
   const navigate = useNavigate();
   const showLModal = () => {
@@ -41,7 +42,10 @@ const PickRole = () => {
                 {iAmLeader?.isLeader ? "파티장으로 이용" : "파티원으로 이동"}
               </h4>
             </form>
-            <button onClick={clickedToggle} setToggle={setToggle}>
+            <button
+              onClick={clickedToggle}
+              // setToggle={setToggle}
+            >
               변경
             </button>
           </Before>
@@ -136,5 +140,8 @@ const KakaoButton = styled.button`
   margin-top: 32px;
   img {
     margin: auto 10px;
+  }
+  &:hover {
+    background-color: ${lighten(0.1, "#ffcd2a")};
   }
 `;

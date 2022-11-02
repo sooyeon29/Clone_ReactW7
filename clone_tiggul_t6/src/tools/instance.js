@@ -24,9 +24,11 @@ export const leaderApi = {
   ottpw: (payload) => instance.get(`/api/myparty`),
 };
 
-// 로그인할때 헤더에 토큰 붙여서 주는 방식사용할때 쓰는 식
-// {
-//   headers: {
-//     Authorization: `Bearer ${getCookie("token")}`,
-//   },
-// }
+export const MyPageApi = {
+  getUsers: () => instance.get(`/api/mypage/`),
+  putUsers: (payload) =>
+    // console.log("페이로드너는누구", ),
+    instance.put(`/api/mypage/user`, { nickname: payload }),
+
+  exit: () => instance.delete(`/api/mypage/user`),
+};

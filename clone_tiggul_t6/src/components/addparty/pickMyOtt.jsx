@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import usePostOtt from "../../hooks/usePostOtt";
+// import usePostOtt from "../../hooks/usePostOtt";
 import netflix from "../../style/img/netflix.png";
 import wavve from "../../style/img/wavve.png";
 import watcha from "../../style/img/watcha.png";
@@ -13,73 +13,15 @@ import { lighten } from "polished";
 import { __getMyOtt } from "../../redux/modules/addPartySlice";
 import Button from "../../elements/buttons";
 
-const PickMyOtt = ({ toggle, setToggle }) => {
-  // 각 ott onClickHandler
-  // const [ChooseNetflix] = usePostOtt();
-  // const [ChooseWavve] = usePostOtt();
-  // const [ChooseWatcha] = usePostOtt();
-  // const [ChooseLaftel] = usePostOtt();
-  // const [ChooseTving] = usePostOtt();
-  // const [ChooseDisney] = usePostOtt();
-  // const [height] = usePostOtt();
-
-  // 선택한 ott를 리덕스에서 꺼내옴
-  // const globalOtt = useSelector((state) => state.addparty.addparty);
-  // console.log(globalOtt);
-  // 리덕스에서 꺼낸 ott중 isclick값이 true 인것만 선택
-  // const clickedglobalOtt = globalOtt.filter((ott) => ott.isClick === true);
-  // console.log(clickedglobalOtt);
-
-  //   const [toggle, setToggle] = useState(false);
-  const clickedToggle = () => {
-    setToggle((prev) => !prev);
-  };
-  // const [clickedToggle] = useToggle();
-
-  // 제이슨 스트링을 풀어주는 방법! JSON.parse
-  // console.log(JSON.parse(window.sessionStorage.getItem("myott")));
-  // JSON.parse(window.sessionStorage.getItem("myott"));
-
+const PickMyOtt = ({ toggle, clickedToggle }) => {
   const getOtt = useSelector((state) => state.data.data);
-  console.log("과연 디비값을가져올수 있을까", getOtt);
+  // console.log("과연 디비값을가져올수 있을까", getOtt);
 
   const [height, setheight] = useState(false);
   const dispatch = useDispatch();
-  const ChooseNetflix = (my) => {
+  const choosePlatform = (my) => {
     setheight(!height);
     dispatch(__getMyOtt(my));
-    const PickOtt = { data: getOtt };
-    window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
-  };
-  const ChooseWavve = (my) => {
-    setheight(!height);
-    dispatch(__getMyOtt(my));
-    const PickOtt = { data: getOtt };
-    window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
-  };
-  const ChooseWatcha = (my) => {
-    setheight(!height);
-    dispatch(__getMyOtt(my));
-    const PickOtt = { data: getOtt };
-    window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
-  };
-  const ChooseLaftel = (my) => {
-    setheight(!height);
-    dispatch(__getMyOtt(my));
-    const PickOtt = { data: getOtt };
-    window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
-  };
-  const ChooseTving = (my) => {
-    setheight(!height);
-    dispatch(__getMyOtt(my));
-    const PickOtt = { data: getOtt };
-    window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
-  };
-  const ChooseDisney = (my) => {
-    setheight(!height);
-    dispatch(__getMyOtt(my));
-    const PickOtt = { data: getOtt };
-    window.sessionStorage.setItem("getOtt", JSON.stringify(PickOtt));
   };
 
   return (
@@ -88,42 +30,42 @@ const PickMyOtt = ({ toggle, setToggle }) => {
         <Title>보고싶은 OTT를 선택해주세요</Title>
         <OttWrap>
           <Ott>
-            <Icon onClick={() => ChooseNetflix(1)}>
+            <Icon onClick={() => choosePlatform(1)}>
               <img alt="" src={netflix} width="40" />
               넷플릭스
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
-            <Icon onClick={() => ChooseWavve(2)}>
+            <Icon onClick={() => choosePlatform(2)}>
               <img alt="" src={wavve} width="40" />
               웨이브
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
-            <Icon onClick={() => ChooseWatcha(3)}>
+            <Icon onClick={() => choosePlatform(3)}>
               <img alt="" src={watcha} width="40" />
               왓차
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
-            <Icon onClick={() => ChooseLaftel(4)}>
+            <Icon onClick={() => choosePlatform(4)}>
               <img alt="" src={laftel} width="40" />
               라프텔
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
-            <Icon onClick={() => ChooseTving(5)}>
+            <Icon onClick={() => choosePlatform(5)}>
               <img alt="" src={tving} width="40" />
               티빙
             </Icon>
             <Match>✓ 즉시매칭 가능</Match>
           </Ott>
           <Ott>
-            <Icon onClick={() => ChooseDisney(6)}>
+            <Icon onClick={() => choosePlatform(6)}>
               <img alt="" src={disney} width="40" />
               디즈니+
             </Icon>
