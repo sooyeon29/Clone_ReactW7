@@ -37,8 +37,9 @@ function LoginModal({ setLoginModalOpen }) {
         setLoginModalOpen(false);
       })
       .catch((error) => {
-        alert(error.response.data.errorMessage);
-        console("로그인에러", error);
+        alert(error.response.data.Message);
+        //console("로그인에러", error.response.data.Message);
+        //console("로그인에러", error);
       });
   };
 

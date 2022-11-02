@@ -1,8 +1,9 @@
 import axios from "axios";
+
 // import { getCookie } from "../Components/estarlogin/cookiehook";
 const token = document.cookie.replace("Authorization=", "");
-console.log(document.cookie);
-console.log(token);
+// console.log(document.cookie);
+// console.log(token);
 const instance = axios.create({
   baseURL: "http://hi-prac.shop:3000/",
   headers: {
@@ -12,9 +13,15 @@ const instance = axios.create({
 
 export const MyOttApi = {
   getOtt: (num) => instance.get(`/api/ott/${num}`),
-  postBankAccount: (payload) => instance.post(`/mypage/account`),
+  postBankAccount: (payload) => instance.post(`/api/mypage/account`),
   login: (payload) => instance.post(`/api/user/login`, payload),
   signup: (payload) => instance.post(`/api/user`, payload),
+  postcard: (payload) => instance.post(`/api/mypage/card`, payload),
+};
+
+export const leaderApi = {
+  leader: () => instance.post(`/api/addparty/leader`),
+  ottpw: () => instance.get(`/api/myparty/`),
 };
 
 export const MyPageApi = {
