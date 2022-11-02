@@ -76,7 +76,7 @@ const Header = (props) => {
                 )}
               </StUserbox>
             )}
-            <StLogin>마이페이지</StLogin>
+            <StLogin onClick={() => navigate(`/mypage`)}>마이페이지</StLogin>
           </StMypageWrap>
         </StWrap>
         <Stline />

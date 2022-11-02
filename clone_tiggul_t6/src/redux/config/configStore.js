@@ -9,6 +9,7 @@ import data from "../modules/addPartySlice";
 const store = configureStore({
   reducer: {
     data: data,
+    // data: addparty,
   },
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
   devTools: process.env.NODE_ENV !== "production",

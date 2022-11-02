@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import matchingnum from "../../style/img/matchingnum.png";
 import PickRole from "./pickRole";
-import tving from "../../style/img/tving.png";
+// import tving from "../../style/img/tving.png";
 import PickMyOtt from "./pickMyOtt";
 import useToggle from "../../hooks/useToggle";
 
@@ -15,7 +15,6 @@ const AddPartyPage = () => {
   //   "ott저장한세션!!",
   //   JSON.parse(window.sessionStorage.getItem("getOtt"))
   // );
-
   const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt"));
   console.log("나는너가고른고!!", myOttName);
 
@@ -29,7 +28,7 @@ const AddPartyPage = () => {
         </div>
       </WeekMatch>
       {!toggle ? (
-        <PickMyOtt toggle={toggle} setToggle={setToggle} />
+        <PickMyOtt toggle={toggle} clickedToggle={clickedToggle} />
       ) : (
         <Before>
           <div>
@@ -40,7 +39,10 @@ const AddPartyPage = () => {
             <h4>프리미엄 • 최고화질 • 4인공유</h4>
           </div>
 
-          <button onClick={clickedToggle} toggle={toggle}>
+          <button
+            onClick={clickedToggle}
+            // toggle={toggle}
+          >
             변경
           </button>
         </Before>

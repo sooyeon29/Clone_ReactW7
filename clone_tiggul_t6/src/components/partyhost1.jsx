@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
-import tving from "../style/img/tving.png";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Button from "../elements/buttons";

@@ -1,10 +1,9 @@
 import axios from "axios";
-
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOnsidXNlcklkIjoiMSJ9LCJpYXQiOjE2NjcyODgyODd9.enjRyabsUbMvONZb80h_YYdeNvXBZObabBqCyqCeEQg";
-
+// import { getCookie } from "../Components/estarlogin/cookiehook";
+const token = document.cookie.replace("Authorization=", "");
+console.log(document.cookie);
+console.log(token);
 const instance = axios.create({
-  // baseURL: "http://localhost:3001/",
   baseURL: "http://hi-prac.shop:3000/",
   headers: {
     Authorization: `Bearer ${token}`,
@@ -18,9 +17,11 @@ export const MyOttApi = {
   signup: (payload) => instance.post(`/api/user`, payload),
 };
 
-// 로그인할때 헤더에 토큰 붙여서 주는 방식사용할때 쓰는 식
-// {
-//   headers: {
-//     Authorization: `Bearer ${getCookie("token")}`,
-//   },
-// }
+export const MyPageApi = {
+  getUsers: () => instance.get(`/api/mypage/`),
+  putUsers: (payload) =>
+    // console.log("페이로드너는누구", ),
+    instance.put(`/api/mypage/user`, { nickname: payload }),
+
+  exit: () => instance.delete(`/api/mypage/user`),
+};

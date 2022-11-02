@@ -11,6 +11,7 @@ import LeaderFive from "../pages/partyleader/leaderfive";
 import LeaderFour from "../pages/partyleader/leaderfour";
 import LeaderTwo from "../pages/partyleader/leadertwo";
 import LeaderOne from "../pages/partyleader/leaderone";
+import MyPageUser from "../pages/mypageuser";
 
 // 2. Router 라는 함수를 만들고 아래와 같이 작성합니다.
 const Router = () => {
@@ -19,6 +20,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypageuser" element={<MyPageUser />} />
         <Route path="/addmain" element={<AddMain />} />
         <Route path="/addone" element={<AddOne />} />
         <Route path="/myone" element={<MyOne />} />
