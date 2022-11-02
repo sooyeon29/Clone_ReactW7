@@ -47,7 +47,7 @@ function SignupModal({ setSignupModalOpen }) {
         .then((res) => {
           alert(res.data.message);
           setPersonal(initialState);
-          navigate(-1);
+          setSignupModalOpen(false);
         })
         .catch((error) => {
           // console.log(error);

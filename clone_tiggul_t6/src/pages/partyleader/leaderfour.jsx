@@ -23,7 +23,7 @@ const LeaderFour = () => {
   } = useForm({ mode: "onBlur" });
 
   const onAccountHandler = (e) => {
-    console.log("클릭했다.");
+    // console.log("클릭했다.");
     if (accountinfo.bank === "" || accountinfo.account === "") {
       return alert("모든 항목을 입력해주세요");
     } else {
@@ -33,13 +33,13 @@ const LeaderFour = () => {
         account: accountinfo.account,
       })
         .then((res) => {
-          console.log(res);
-          //alert(res.data.message);
+          console.log("성공", res);
           setAccountinfo(initialState);
           navigate("/leaderfive");
         })
         .catch((error) => {
-          console.log("에러", error);
+          alert(error.response.data.Message);
+          //console.log("에러", error.response.data.Message);
         });
     }
   };

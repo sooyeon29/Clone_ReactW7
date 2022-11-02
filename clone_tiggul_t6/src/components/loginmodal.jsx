@@ -17,7 +17,7 @@ function LoginModal({ setLoginModalOpen }) {
   const [loginpwd, onChangePwd] = useInput("");
 
   const formRef = useRef();
-  const [tokens, setTokens] = useCookies(["token"]); // 쿠키 훅
+  const [tokens, setTokens] = useCookies(["Authorization"]); // 쿠키 훅
 
   //   console.log(typeof loginid);
   //   console.log(typeof loginpwd);
@@ -32,17 +32,14 @@ function LoginModal({ setLoginModalOpen }) {
       password: formRef.current.password.value,
     })
       .then((res) => {
-        // console.log(res);
-        setTokens("token", res.data.token);
-        // 쿠키(token이라는 이름의)에 토큰 저장
+        setTokens("Authorization", res.data.token);
         alert("로그인 성공!");
-        navigate(-1);
-        //window.location.replace(`/Mainpage`);
+        setLoginModalOpen(false);
       })
       .catch((error) => {
-        // console.log(error);
-        // console.log(error.response.data.errorMessage);
-        alert(error.response.data.errorMessage);
+        alert(error.response.data.Message);
+        //console("로그인에러", error.response.data.Message);
+        //console("로그인에러", error);
       });
   };
 
@@ -78,11 +75,6 @@ function LoginModal({ setLoginModalOpen }) {
               로그인
             </Button>
           </form>
-          <BtContain>
-            <Link to="/signUp">
-              <Button size="md">회원가입</Button>
-            </Link>
-          </BtContain>
           <Link to="/PasswordEdit" style={{ textDecoration: "none" }}>
             <Stp> 비밀번호를 잊어버리셨나요?</Stp>
           </Link>
