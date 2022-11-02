@@ -4,6 +4,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useInput from "../hooks/useInput";
@@ -13,12 +14,39 @@ import { MyPageApi } from "../tools/instance";
 const MyPageUser = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [wantToChange] = useToggle();
-  const [newInfo, fixUsersHandler] = useInput({
+  const [isChange, setIsChange, wantToChange] = useToggle();
+  const [cookies, setCookie, removeCookie] = useCookies(["Authorization"]);
+  const [newInfo, setNewInfo] = useState({
     nickname: "",
     phone: "",
   });
+
+  const fixUsersHandler = (e) => {
+    const { name, value } = e.target;
+    setNewInfo({ ...newInfo, [name]: value });
+  };
+
+  const saveChanges = (e) => {
+    e.preventDefault();
+    if (newInfo.nickname.trim() === "" || newInfo.phone.trim() === "") return;
+    setIsChange((prev) => !prev);
+    MyPageApi.putUsers(newInfo)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => console.log("수정실패라우...", error));
+  };
+
+  const exitHandler = () => {
+    alert("정말로 회원탈퇴하시겠습니까?");
+    MyPageApi.exit()
+      .then((res) => {
+        if (res.status === 200) alert("회원 탈퇴가 완료되었습니다.");
+        removeCookie("Authorization");
+        window.location.replace(`/`);
+      })
+      .catch((error) => alert("회원 탈퇴에 실패하였습니다."));
+  };
 
   useEffect(() => {
     MyPageApi.getUsers()
@@ -30,21 +58,7 @@ const MyPageUser = () => {
       })
       // 실패했을때는 에러!
       .catch((error) => console.log("에러메세지를 보여줘", error));
-  }, []);
-
-  const saveChanges = () => {
-    setIsEditMode((prev) => !prev);
-    MyPageApi.putUsers()
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => console.log("수정실패라우...", error));
-  };
-
-  const exitHandler = () => {
-    alert("정말로 회원탈퇴하시겠습니까?");
-    MyPageApi.exit().then((res) => console.log(res));
-  };
+  }, [saveChanges]);
 
   return (
     <>
@@ -65,7 +79,7 @@ const MyPageUser = () => {
         return (
           <>
             <WrapOne key={user.userId}>
-              {!isEditMode && (
+              {!isChange && (
                 <div>
                   😊
                   <div>
@@ -77,7 +91,7 @@ const MyPageUser = () => {
                   </div>
                 </div>
               )}
-              {isEditMode && (
+              {isChange && (
                 <div>
                   😊
                   <div>
@@ -86,6 +100,7 @@ const MyPageUser = () => {
                       required
                       minLength="1"
                       placeholder={user.nickname}
+                      name="nickname"
                       onChange={fixUsersHandler}
                     />
                   </div>
@@ -96,16 +111,15 @@ const MyPageUser = () => {
                       required
                       minLength="1"
                       placeholder={user.phone}
+                      name="phone"
                       onChange={fixUsersHandler}
                     />
                   </div>
                 </div>
               )}
 
-              {!isEditMode && <button onClick={wantToChange}>수정하기</button>}
-              {isEditMode && (
-                <button onClick={() => saveChanges(newInfo)}>수정저장</button>
-              )}
+              {!isChange && <button onClick={wantToChange}>수정하기</button>}
+              {isChange && <button onClick={saveChanges}>수정저장</button>}
             </WrapOne>
           </>
         );

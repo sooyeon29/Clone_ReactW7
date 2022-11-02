@@ -11,6 +11,10 @@ const instance = axios.create({
   },
 });
 
+export const TigguleApi = {
+  getNum: () => instance.get(`api/count`),
+};
+
 export const MyOttApi = {
   getOtt: (num) => instance.get(`/api/ott/${num}`),
   postBankAccount: (payload) => instance.post(`/api/mypage/account`),
@@ -27,8 +31,10 @@ export const leaderApi = {
 export const MyPageApi = {
   getUsers: () => instance.get(`/api/mypage/`),
   putUsers: (payload) =>
-    // console.log("페이로드너는누구", ),
-    instance.put(`/api/mypage/user`, { nickname: payload }),
-
-  exit: () => instance.delete(`/api/mypage/user`),
+    // console.log("페이로드너는누구", payload),
+    instance.put(`/api/mypage`, {
+      nickname: payload.nickname,
+      phone: payload.phone,
+    }),
+  exit: () => instance.delete(`/api/mypage`),
 };

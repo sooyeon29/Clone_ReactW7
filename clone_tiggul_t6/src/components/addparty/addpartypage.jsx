@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import { useState } from "react";
 import styled from "styled-components";
 import matchingnum from "../../style/img/matchingnum.png";
@@ -6,24 +6,24 @@ import PickRole from "./pickRole";
 // import tving from "../../style/img/tving.png";
 import PickMyOtt from "./pickMyOtt";
 import useToggle from "../../hooks/useToggle";
+import { TigguleApi } from "../../tools/instance";
 
 const AddPartyPage = () => {
   const [toggle, setToggle, clickedToggle] = useToggle();
-
-  // 제이슨 스트링을 풀어주는 방법! JSON.parse
-  // console.log(
-  //   "ott저장한세션!!",
-  //   JSON.parse(window.sessionStorage.getItem("getOtt"))
-  // );
+  const [home, setHome] = useState("");
   const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt"));
   console.log("나는너가고른고!!", myOttName);
+
+  useEffect(() => {
+    TigguleApi.getNum().then((res) => setHome(res.data.data));
+  }, []);
 
   return (
     <>
       <WeekMatch>
         최근 일주일 매칭 현황
         <div>
-          <span>0000명 </span>
+          <span>{home}명 </span>
           <img alt="" src={matchingnum} width="50" />
         </div>
       </WeekMatch>

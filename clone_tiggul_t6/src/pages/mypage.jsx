@@ -2,11 +2,13 @@ import { faChevronRight, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const MyPage = () => {
   const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(["Authorization"]);
   return (
     <>
       <LeaderHead>
@@ -78,7 +80,15 @@ const MyPage = () => {
           />
         </button>
       </WrapAll>
-      <Logout>로그아웃</Logout>
+      <Logout
+        onClick={() => {
+          removeCookie("Authorization");
+          alert("로그아웃 되었습니다.");
+          window.location.replace(`/`);
+        }}
+      >
+        로그아웃
+      </Logout>
     </>
   );
 };
