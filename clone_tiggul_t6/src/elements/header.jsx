@@ -1,13 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../style/img/logo.svg";
 import { useCookies } from "react-cookie";
-import LoginModal from "../components/loginmodal";
+import LoginModal from "../components/loginModal";
 import SignupModal from "../components/signupModal";
 
 const Header = (props) => {
   const [show, setShow] = useState(true);
+  const [myshow, setMyShow] = useState(true);
+  const [cookies, setCookie, removeCookie] = useCookies(["Authorization"]);
+
+  const logout = () => {
+    removeCookie("Authorization");
+    alert("로그아웃 되었습니다.");
+    window.location.replace(`/`);
+  };
+
+  useEffect(() => {
+    if (document.cookie !== "") {
+      setMyShow(true);
+      setShow(false);
+    } else {
+      setMyShow(false);
+      setShow(true);
+    }
+  });
+
   const [LoginModalOpen, setLoginModalOpen] = useState(false);
   const showLModal = () => {
     setLoginModalOpen(true);
@@ -82,7 +101,12 @@ const Header = (props) => {
                 )}
               </StUserbox>
             )}
-            <StLogin>마이페이지</StLogin>
+            {myshow && (
+              <StUserbox>
+                <StLogin>Mypage</StLogin>
+                <StLogin onClick={logout}>Logout</StLogin>
+              </StUserbox>
+            )}
           </StMypageWrap>
         </StWrap>
         <Stline />
