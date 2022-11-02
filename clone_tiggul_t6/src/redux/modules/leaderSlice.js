@@ -24,7 +24,7 @@ const initialState = {
 export const __postLeader = createAsyncThunk(
   "leaderSlice/getUserInfo",
   async (payload, thunkAPI) => {
-    console.log(payload.ID, payload.Password, payload.ottService);
+    console.log(payload.cookie);
     const ottService = payload.ottService;
     const ID = payload.ID;
     const password = payload.Password;
@@ -35,6 +35,7 @@ export const __postLeader = createAsyncThunk(
         ID: ID,
         password: password,
       });
+      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -43,11 +44,11 @@ export const __postLeader = createAsyncThunk(
 );
 
 export const __getOttPw = createAsyncThunk(
-  "GET_PARTYS",
+  "GET_OTTPW",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await detailApi.ottpw(payload);
-      //console.log('데이터', data);
+      const { data } = await leaderApi.ottpw(payload);
+      console.log("데이터", data);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -66,11 +67,21 @@ const leaderSlice = createSlice({
     [__postLeader.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.user = action.payload;
-      console.log("fulfilled 상태", state, action);
     },
     [__postLeader.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.error;
+    },
+    [__getOttPw.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__getOttPw.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.partys = action.payload;
+    },
+    [__getOttPw.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
 });

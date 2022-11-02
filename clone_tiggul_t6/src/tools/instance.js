@@ -20,8 +20,8 @@ export const MyOttApi = {
 };
 
 export const leaderApi = {
-  leader: () => instance.post(`/api/addparty/leader`),
-  ottpw: () => instance.get(`/api/myparty/`),
+  leader: (payload) => instance.post(`/api/addparty/leader`, payload),
+  ottpw: (payload) => instance.get(`/api/myparty`),
 };
 
 // 로그인할때 헤더에 토큰 붙여서 주는 방식사용할때 쓰는 식

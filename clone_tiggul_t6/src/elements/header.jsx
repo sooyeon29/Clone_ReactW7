@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../style/img/logo.svg";
 import { useCookies } from "react-cookie";
-import LoginModal from "../components/loginModal";
+import LoginModal from "../components/loginmodal";
 import SignupModal from "../components/signupModal";
 
 const Header = (props) => {
@@ -35,12 +35,6 @@ const Header = (props) => {
   const showSModal = () => {
     setSignupModalOpen(true);
   };
-  // const [cookies, setCookie, removeCookie] = useCookies(["Authorization"]);
-
-  // setCookie(
-  //   "Authorization",
-  //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOnsidXNlcklkIjoiMSJ9LCJpYXQiOjE2NjcyOTM2ODl9.sUHtaChcRVV - P2TkDhEresKdAoFx44n6WvqxodLaLjs"
-  // );
 
   const navigate = useNavigate();
   return (

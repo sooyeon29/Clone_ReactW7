@@ -3,7 +3,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import MyRole from "../addparty/myRole";
 import useToggle from "../../hooks/useToggle";
-import LoginModal from "../../components/loginModal";
+import LoginModal from "../../components/loginmodal";
 import { useState } from "react";
 import Button from "../../elements/buttons";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +38,7 @@ const PickRole = () => {
                 />
               </div>
               <h4>
-                {iAmLeader.isLeader ? "파티장으로 이용" : "파티원으로 이동"}
+                {iAmLeader?.isLeader ? "파티장으로 이용" : "파티원으로 이동"}
               </h4>
             </form>
             <button onClick={clickedToggle} setToggle={setToggle}>
@@ -59,7 +59,9 @@ const PickRole = () => {
             <LoginModal setLoginModalOpen={setLoginModalOpen} />
           )}
           <Button onClick={movePageHandler}>
-            {iAmLeader.isLeader ? "파티장으로 계속하기" : "파티원으로 계속하기"}
+            {iAmLeader?.isLeader
+              ? "파티장으로 계속하기"
+              : "파티원으로 계속하기"}
           </Button>
         </>
       )}

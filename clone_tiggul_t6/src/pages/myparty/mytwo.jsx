@@ -4,8 +4,20 @@ import Layout from "../../elements/layout";
 import Button from "../../elements/buttons";
 import Ott from "../../components/mytwo/ott";
 import Patch from "../../components/mytwo/patch";
+import { useSelector } from "react-redux";
 
 const LeaderFive = () => {
+  const { isLoading, error, leader } = useSelector((state) => state.leader);
+  console.log(leader);
+
+  if (isLoading) {
+    return "...isLoding";
+  }
+
+  if (error) {
+    return <div>{error.message}</div>;
+  }
+
   return (
     <Layout>
       <Before>

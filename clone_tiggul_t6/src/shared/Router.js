@@ -23,7 +23,7 @@ const Router = () => {
         <Route path="/addmain" element={<AddMain />} />
         <Route path="/addone" element={<AddOne />} />
         <Route path="/myone" element={<MyOne />} />
-        <Route path="/mytwo" element={<MyTwo />} />
+        <Route path="/mytwo/:id" element={<MyTwo />} />
         <Route path="/leaderone" element={<LeaderOne />} />
         <Route path="/leadertwo" element={<LeaderTwo />} />
         <Route path="/leaderfour" element={<LeaderFour />} />

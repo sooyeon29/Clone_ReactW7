@@ -1,8 +1,12 @@
 import styled from "styled-components";
-import useToggle from "../../hooks/useToggle";
+import { useState } from "react";
 
 const Patch = () => {
-  const [toggle, setToggle, clickedToggle] = useToggle();
+  const [toggle, setToggle] = useState(false);
+
+  const clickedToggle = () => {
+    setToggle((prev) => !prev);
+  };
 
   return (
     <div>
@@ -39,9 +43,7 @@ const Patch = () => {
           </Inbox>
         </TotalPriceBox>
       )}
-      <button onClick={clickedToggle} setToggle={setToggle}>
-        ID/PW 변경하기
-      </button>
+      <button onClick={clickedToggle}>ID/PW 변경하기</button>
     </div>
   );
 };
