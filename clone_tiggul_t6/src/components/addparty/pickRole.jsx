@@ -30,7 +30,7 @@ const PickRole = () => {
 
   useEffect(() => {
     console.log("쿠키있니~~?", cookies);
-    if (cookies.token) {
+    if (cookies.Authorization) {
       setIsLogin(true);
     } else {
       setIsLogin(false);
@@ -58,7 +58,7 @@ const PickRole = () => {
             </form>
             <button onClick={clickedToggle}>변경</button>
           </Before>
-          {isLogin && (
+          {!isLogin && (
             <KakaoButton onClick={showLModal}>
               <FontAwesomeIcon
                 style={{
@@ -74,7 +74,7 @@ const PickRole = () => {
           {LoginModalOpen && (
             <LoginModal setLoginModalOpen={setLoginModalOpen} />
           )}
-          {!isLogin && (
+          {isLogin && (
             <Button onClick={movePageHandler}>
               {iAmLeader.isLeader
                 ? "파티장으로 계속하기"
