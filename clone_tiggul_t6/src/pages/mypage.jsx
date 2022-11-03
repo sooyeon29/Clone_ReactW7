@@ -42,7 +42,7 @@ const MyPage = () => {
                 // className="move-page"
               />
             </button>
-            <button>
+            <button onClick={() => navigate(`/editcard`)}>
               💳 결제카드 관리
               <FontAwesomeIcon
                 style={{
@@ -52,7 +52,7 @@ const MyPage = () => {
                 icon={faChevronRight}
               />
             </button>
-            <button>
+            <button onClick={() => navigate(`/editbank`)}>
               💰 정산계좌 관리
               <FontAwesomeIcon
                 style={{
@@ -62,7 +62,7 @@ const MyPage = () => {
                 icon={faChevronRight}
               />
             </button>
-            <button>
+            <button onClick={() => alert("준비중인 서비스입니다.")}>
               🗣️ 자주 묻는 질문
               <FontAwesomeIcon
                 style={{
@@ -72,7 +72,7 @@ const MyPage = () => {
                 icon={faChevronRight}
               />
             </button>
-            <button>
+            <button onClick={() => alert("준비중인 서비스입니다.")}>
               📮 건의하기
               <FontAwesomeIcon
                 style={{
