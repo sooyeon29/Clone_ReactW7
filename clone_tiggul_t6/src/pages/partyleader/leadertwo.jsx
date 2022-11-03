@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const LeaderTwo = () => {
   const navigate = useNavigate();
   const goToNext = () => {
-    navigate("/leaderfour");
+    window.location.replace(`/leaderfour`);
   };
   const getOtt = useSelector((state) => state.data.data);
   console.log("과연 디비값을가져올수 있을까", getOtt);
