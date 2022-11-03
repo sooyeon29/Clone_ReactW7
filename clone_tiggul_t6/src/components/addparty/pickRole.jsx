@@ -3,7 +3,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import MyRole from "../addparty/myRole";
 import useToggle from "../../hooks/useToggle";
-import LoginModal from "../loginmodal";
+import LoginModal from "../loginModal";
 import { useState } from "react";
 import Button from "../../elements/buttons";
 import { useNavigate } from "react-router-dom";

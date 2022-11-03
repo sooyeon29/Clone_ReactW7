@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../style/img/logo.svg";
 import { useCookies } from "react-cookie";
-import LoginModal from "../components/loginmodal";
+import LoginModal from "../components/loginModal";
 import SignupModal from "../components/signupModal";
 
 const Header = (props) => {
