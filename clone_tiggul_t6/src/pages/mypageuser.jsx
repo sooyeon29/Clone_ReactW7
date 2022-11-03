@@ -3,7 +3,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -27,7 +27,7 @@ const MyPageUser = () => {
     console.log(name);
   };
 
-  const saveChanges = useCallback((e) => {
+  const saveChanges = (e) => {
     e.preventDefault();
     if (newInfo.nickname.trim() === "" || newInfo.phone.trim() === "") return;
     setIsChange((prev) => !prev);
@@ -36,7 +36,7 @@ const MyPageUser = () => {
         console.log(res);
       })
       .catch((error) => console.log("수정실패라우...", error));
-  }, []);
+  };
 
   useEffect(() => {
     MyPageApi.getUsers()
@@ -48,7 +48,7 @@ const MyPageUser = () => {
       })
       // 실패했을때는 에러!
       .catch((error) => console.log("에러메세지를 보여줘", error));
-  }, [saveChanges]);
+  }, []);
 
   const exitHandler = () => {
     alert("정말로 회원탈퇴하시겠습니까?");
