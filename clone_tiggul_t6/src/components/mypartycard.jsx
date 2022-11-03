@@ -48,7 +48,7 @@ const MypartyCard = ({ partyData }) => {
   }
 
   return (
-    <StAddPartyWrap onClick={() => navigate(`/mytwo:{partyid}`)}>
+    <StAddPartyWrap onClick={() => navigate(`/mytwo:${partyid}`)}>
       <div>
         <StPlus>
           <Stimg src={img} alt="" />
