@@ -47,8 +47,8 @@ export const __getOttPw = createAsyncThunk(
   "GET_OTTPW",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await leaderApi.ottpw(payload);
-      console.log("데이터", data);
+      const data = await leaderApi.getottpw(payload);
+      console.log(data.data);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -77,7 +77,8 @@ const leaderSlice = createSlice({
     },
     [__getOttPw.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.partys = action.payload;
+      state.data = action.payload.data;
+      console.log(action.payload.data);
     },
     [__getOttPw.rejected]: (state, action) => {
       state.isLoading = false;

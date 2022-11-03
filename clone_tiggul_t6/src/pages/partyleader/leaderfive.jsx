@@ -97,7 +97,7 @@ const LeaderFive = () => {
           console.log(login);
           dispatch(__postLeader(login));
           window.alert("매칭이 시작되었습니다!");
-          // navigate("/myone");
+          navigate("/myone");
         }}
       >
         다음

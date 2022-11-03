@@ -21,11 +21,11 @@ export const MyOttApi = {
 
 export const leaderApi = {
   leader: (payload) => instance.post(`/api/addparty/leader`, payload),
-  ottpw: (payload) => instance.get(`/api/myparty`),
+  getottpw: (payload) => instance.get(`/api/myparty/`),
 };
 
 export const MyPageApi = {
-  getUsers: () => instance.get(`/api/mypage/`),
+  getUsers: () => instance.get(`api/mypage/`),
   putUsers: (payload) =>
     // console.log("페이로드너는누구", ),
     instance.put(`/api/mypage/user`, { nickname: payload }),

@@ -4,29 +4,28 @@ import Layout from "../../elements/layout";
 import Button from "../../elements/buttons";
 import Ott from "../../components/mytwo/ott";
 import Patch from "../../components/mytwo/patch";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { __getOttPw } from "../../redux/modules/leaderSlice";
 
 const LeaderFive = () => {
-  const { isLoading, error, leader } = useSelector((state) => state.leader);
-  console.log(leader);
+  const getottpw = useSelector((state) => state.leader.data);
+  console.log("환영해", getottpw);
 
-  if (isLoading) {
-    return "...isLoding";
-  }
-
-  if (error) {
-    return <div>{error.message}</div>;
-  }
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(__getOttPw());
+  }, [dispatch]);
 
   return (
     <Layout>
       <Before>
         <Ott />
         정산안내
+        {/* {getottpw.map((item,) => ( */}
         <PriceBox>
           <PricePic>
             <OttPrice>
-              <div>티빙 프리미엄</div> 13,900원/월
+              <div> 프리미엄</div> 13,900원/월
             </OttPrice>
             <ColorBox>
               <PriceDiv>
@@ -36,7 +35,7 @@ const LeaderFive = () => {
                 <div>3,475</div>
               </PriceDiv>
               <div>
-                <button>티빙 이용권 금액이 다른가요?</button>
+                <button> 이용권 금액이 다른가요?</button>
               </div>
             </ColorBox>
           </PricePic>
@@ -58,6 +57,7 @@ const LeaderFive = () => {
             <Button>수수료 및 정산일 보기</Button>
           </MyPrice>
         </PriceBox>
+        {/* ))} */}
         ID/PW
         <Patch />
       </Before>
