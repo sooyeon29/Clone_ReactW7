@@ -15,7 +15,13 @@ const MemberOne = () => {
     birth: "",
     password: "",
   };
+  const memberinitial = {
+    ottService: "",
+  };
   const [cardinfo, setCardinfo] = useState(initialState);
+  const [ottinfo, setOttinfo] = useState(memberinitial);
+  const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt"));
+  setOttinfo(myOttName?.data?.ottService);
 
   const onCardHandler = (e) => {
     console.log("클릭했다.");
@@ -39,6 +45,18 @@ const MemberOne = () => {
         .then((res) => {
           console.log(res);
           //alert(res.data.message);
+          setCardinfo(initialState);
+        })
+        .catch((error) => {
+          console.log("에러", error);
+          alert(error.response.data.errorMessage);
+        });
+
+      MyOttApi.member({
+        ottService: ottinfo,
+      })
+        .then((res) => {
+          console.log(res);
           setCardinfo(initialState);
           alert(
             "매칭이 시작되었습니다.\n 매칭이 성공되면 문자로 알려드릴게요."

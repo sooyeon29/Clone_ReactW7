@@ -24,6 +24,7 @@ export const MyOttApi = {
   editbank: (payload) => instance.put(`/api/mypage/account`, payload),
   editcard: (payload) => instance.put(`/api/mypage/card`, payload),
   getmyparty: (payload) => instance.get(`/api/myparty`),
+  member: (payload) => instance.post(`/api/addparty/member`, payload),
 };
 
 export const leaderApi = {
