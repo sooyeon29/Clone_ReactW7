@@ -54,7 +54,8 @@ const MyPageUser = () => {
     alert("정말로 회원탈퇴하시겠습니까?");
     MyPageApi.exit()
       .then((res) => {
-        alert("회원 탈퇴가 완료되었습니다.");
+        console.log("리스판스?", res);
+        if (res.status === parseInt(200)) alert("회원 탈퇴가 완료되었습니다.");
         removeCookie("Authorization");
         window.location.replace(`/`);
       })
