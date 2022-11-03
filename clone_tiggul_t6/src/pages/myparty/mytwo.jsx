@@ -16,48 +16,52 @@ const LeaderFive = () => {
     dispatch(__getOttPw());
   }, [dispatch]);
 
+  // if(getottpw.isLeader= true){
+
+  // }
+
   return (
     <Layout>
       <Before>
         <Ott />
         정산안내
-        {/* {getottpw.map((item,) => ( */}
-        <PriceBox>
-          <PricePic>
-            <OttPrice>
-              <div> 프리미엄</div> 13,900원/월
-            </OttPrice>
-            <ColorBox>
-              <PriceDiv>
-                <span>3,475</span>
-                <div>3,475</div>
-                <div>3,475</div>
-                <div>3,475</div>
-              </PriceDiv>
+        <div>
+          <PriceBox>
+            <PricePic>
+              <OttPrice>
+                <div> 프리미엄</div> 13,900원/월
+              </OttPrice>
+              <ColorBox>
+                <PriceDiv>
+                  <span>3,475</span>
+                  <div>3,475</div>
+                  <div>3,475</div>
+                  <div>3,475</div>
+                </PriceDiv>
+                <div>
+                  <button> 이용권 금액이 다른가요?</button>
+                </div>
+              </ColorBox>
+            </PricePic>
+            <MyPrice>
               <div>
-                <button> 이용권 금액이 다른가요?</button>
+                <div>
+                  <div>.</div>
+                  <span>내 1/4 부담금</span>
+                </div>
+                <div>3,475원/월</div>
               </div>
-            </ColorBox>
-          </PricePic>
-          <MyPrice>
-            <div>
               <div>
-                <div>.</div>
-                <span>내 1/4 부담금</span>
+                <div>
+                  <div>.</div>
+                  <span>파티원 3명의 몫</span>
+                </div>
+                <div>10,425원/월</div>
               </div>
-              <div>3,475원/월</div>
-            </div>
-            <div>
-              <div>
-                <div>.</div>
-                <span>파티원 3명의 몫</span>
-              </div>
-              <div>10,425원/월</div>
-            </div>
-            <Button>수수료 및 정산일 보기</Button>
-          </MyPrice>
-        </PriceBox>
-        {/* ))} */}
+              <Button>수수료 및 정산일 보기</Button>
+            </MyPrice>
+          </PriceBox>
+        </div>
         ID/PW
         <Patch />
       </Before>

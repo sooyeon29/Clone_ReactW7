@@ -95,9 +95,8 @@ const LeaderFive = () => {
             Password: pwRef.current.value,
           };
           console.log(login);
-          dispatch(__postLeader(login));
-          window.alert("매칭이 시작되었습니다!");
-          navigate("/myone");
+          alert("매칭이 시작되었습니다.\n매칭이 성공되면 문자로 알려드릴게요.");
+          window.location.replace(`/myone`);
         }}
       >
         다음
