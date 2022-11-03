@@ -21,8 +21,6 @@ const MyOne = () => {
     MyOttApi.getmyparty().then((res) => {
       //console.log(res.data.data);
       setPartys(res.data.data);
-      alert("매칭이 시작되었습니다.\n 매칭이 성공되면 문자로 알려드릴게요.");
-      window.location.replace(`/myone`);
     });
   }, []);
 
