@@ -3,7 +3,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -27,7 +27,7 @@ const MyPageUser = () => {
     console.log(name);
   };
 
-  const saveChanges = (e) => {
+  const saveChanges = useCallback((e) => {
     e.preventDefault();
     if (newInfo.nickname.trim() === "" || newInfo.phone.trim() === "") return;
     setIsChange((prev) => !prev);
@@ -36,7 +36,7 @@ const MyPageUser = () => {
         console.log(res);
       })
       .catch((error) => console.log("수정실패라우...", error));
-  };
+  }, []);
 
   useEffect(() => {
     MyPageApi.getUsers()
