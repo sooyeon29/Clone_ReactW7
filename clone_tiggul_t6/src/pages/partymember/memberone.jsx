@@ -15,14 +15,14 @@ const MemberOne = () => {
     birth: "",
     password: "",
   };
-  const memberinitial = {
-    ottService: "",
-  };
+  // const memberinitial = {
+  //   ottService: "",
+  // };
   const [cardinfo, setCardinfo] = useState(initialState);
-  const [ottinfo, setOttinfo] = useState(memberinitial);
+  // const [ottinfo, setOttinfo] = useState(memberinitial);
   const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt"));
-  setOttinfo(myOttName.data.ottService);
-  console.log(myOttName.data.ottService, ottinfo);
+  // setOttinfo(myOttName.data.ottService);
+  console.log(myOttName.data.ottService);
 
   const onCardHandler = (e) => {
     console.log("클릭했다.");
@@ -56,7 +56,7 @@ const MemberOne = () => {
   };
   const onMatchingHandler = (e) => {
     MyOttApi.member({
-      ottService: ottinfo,
+      ottService: myOttName.data.ottService,
     })
       .then((res) => {
         console.log(res);
