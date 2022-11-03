@@ -180,7 +180,14 @@ const MemberOne = () => {
         </StWrap>
         <Button>카드정보 입력하기</Button>
       </form>
-      <Button onclick={onMatchingHandler}>파티매칭 시작하기</Button>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          onMatchingHandler();
+        }}
+      >
+        <Button onclick={onMatchingHandler}>파티매칭 시작하기</Button>
+      </form>
     </Layout>
   );
 };
