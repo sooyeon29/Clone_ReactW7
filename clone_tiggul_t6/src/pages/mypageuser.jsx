@@ -21,18 +21,6 @@ const MyPageUser = () => {
     phone: "",
   });
 
-  useEffect(() => {
-    MyPageApi.getUsers()
-      // 성공했을때 .then
-      .then((response) => {
-        // console.log("겟을 성공한다면", response);
-        setUsers(response.data.data);
-        // console.log(users);
-      })
-      // 실패했을때는 에러!
-      .catch((error) => console.log("에러메세지를 보여줘", error));
-  });
-
   const fixUsersHandler = (e) => {
     const { name, value } = e.target;
     setNewInfo({ ...newInfo, [name]: value });
@@ -49,6 +37,18 @@ const MyPageUser = () => {
       })
       .catch((error) => console.log("수정실패라우...", error));
   };
+
+  useEffect(() => {
+    MyPageApi.getUsers()
+      // 성공했을때 .then
+      .then((response) => {
+        // console.log("겟을 성공한다면", response);
+        setUsers(response.data.data);
+        // console.log(users);
+      })
+      // 실패했을때는 에러!
+      .catch((error) => console.log("에러메세지를 보여줘", error));
+  }, [saveChanges]);
 
   const exitHandler = () => {
     alert("정말로 회원탈퇴하시겠습니까?");

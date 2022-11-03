@@ -51,7 +51,8 @@ const MemberOne = () => {
           console.log("에러", error);
           alert(error.response.data.errorMessage);
         });
-
+    }
+    const onMatchingHandler = (e) => {
       MyOttApi.member({
         ottService: ottinfo,
       })
@@ -67,7 +68,7 @@ const MemberOne = () => {
           console.log("에러", error);
           alert(error.response.data.errorMessage);
         });
-    }
+    };
   };
 
   return (
@@ -178,8 +179,9 @@ const MemberOne = () => {
             />
           </StInputWraps>
         </StWrap>
-        <Button>파티매칭 시작하기</Button>
+        <Button>카드정보 입력하기</Button>
       </form>
+      <Button onclick="onMatchingHandler">파티매칭 시작하기</Button>
     </Layout>
   );
 };
