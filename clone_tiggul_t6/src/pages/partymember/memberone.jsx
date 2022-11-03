@@ -40,7 +40,10 @@ const MemberOne = () => {
           console.log(res);
           //alert(res.data.message);
           setCardinfo(initialState);
-          navigate("/myone");
+          alert(
+            "매칭이 시작되었습니다.\n 매칭이 성공되면 문자로 알려드릴게요."
+          );
+          window.location.replace(`/myone`);
         })
         .catch((error) => {
           console.log("에러", error);
