@@ -2,88 +2,124 @@ import { faChevronRight, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const MyPage = () => {
   const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(["Authorization"]);
+
   return (
     <>
-      <LeaderHead>
-        <div></div>
-        <div>마이페이지</div>
-        <button onClick={() => navigate(`/`)}>
-          <FontAwesomeIcon
-            style={{
-              color: "#646F7C",
-              fontSize: "20",
+      <Wrap>
+        <Container>
+          <LeaderHead>
+            <div></div>
+            <div>마이페이지</div>
+            <button onClick={() => navigate(`/`)}>
+              <FontAwesomeIcon
+                style={{
+                  color: "#646F7C",
+                  fontSize: "20",
+                }}
+                icon={faXmark}
+              />
+            </button>
+          </LeaderHead>
+          <WrapAll>
+            <button
+              // className="hover-button"
+              onClick={() => navigate(`/mypageuser`)}
+            >
+              😊 계정 관리
+              <FontAwesomeIcon
+                style={{
+                  color: "#AEB4BF",
+                  fontSize: "17",
+                }}
+                icon={faChevronRight}
+                // className="move-page"
+              />
+            </button>
+            <button>
+              💳 결제카드 관리
+              <FontAwesomeIcon
+                style={{
+                  color: "#AEB4BF",
+                  fontSize: "17",
+                }}
+                icon={faChevronRight}
+              />
+            </button>
+            <button>
+              💰 정산계좌 관리
+              <FontAwesomeIcon
+                style={{
+                  color: "#AEB4BF",
+                  fontSize: "17",
+                }}
+                icon={faChevronRight}
+              />
+            </button>
+            <button>
+              🗣️ 자주 묻는 질문
+              <FontAwesomeIcon
+                style={{
+                  color: "#AEB4BF",
+                  fontSize: "17",
+                }}
+                icon={faChevronRight}
+              />
+            </button>
+            <button>
+              📮 건의하기
+              <FontAwesomeIcon
+                style={{
+                  color: "#AEB4BF",
+                  fontSize: "17",
+                }}
+                icon={faChevronRight}
+              />
+            </button>
+          </WrapAll>
+          <Logout
+            onClick={() => {
+              removeCookie("Authorization");
+              alert("로그아웃 되었습니다.");
+              window.location.replace(`/`);
             }}
-            icon={faXmark}
-          />
-        </button>
-      </LeaderHead>
-      <WrapAll>
-        <button
-          // className="hover-button"
-          onClick={() => navigate(`/mypageuser`)}
-        >
-          😊 계정 관리
-          <FontAwesomeIcon
-            style={{
-              color: "#AEB4BF",
-              fontSize: "17",
-            }}
-            icon={faChevronRight}
-            // className="move-page"
-          />
-        </button>
-        <button>
-          💳 결제카드 관리
-          <FontAwesomeIcon
-            style={{
-              color: "#AEB4BF",
-              fontSize: "17",
-            }}
-            icon={faChevronRight}
-          />
-        </button>
-        <button>
-          💰 정산계좌 관리
-          <FontAwesomeIcon
-            style={{
-              color: "#AEB4BF",
-              fontSize: "17",
-            }}
-            icon={faChevronRight}
-          />
-        </button>
-        <button>
-          🗣️ 자주 묻는 질문
-          <FontAwesomeIcon
-            style={{
-              color: "#AEB4BF",
-              fontSize: "17",
-            }}
-            icon={faChevronRight}
-          />
-        </button>
-        <button>
-          📮 건의하기
-          <FontAwesomeIcon
-            style={{
-              color: "#AEB4BF",
-              fontSize: "17",
-            }}
-            icon={faChevronRight}
-          />
-        </button>
-      </WrapAll>
-      <Logout>로그아웃</Logout>
+          >
+            로그아웃
+          </Logout>
+        </Container>
+      </Wrap>
     </>
   );
 };
 
 export default MyPage;
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--gray-050);
+  position: absolute;
+  z-index: -1;
+  left: 0px;
+  top: 0px;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  max-width: 640px;
+  box-sizing: border-box;
+  display: block;
+`;
 
 const LeaderHead = styled.div`
   display: flex;

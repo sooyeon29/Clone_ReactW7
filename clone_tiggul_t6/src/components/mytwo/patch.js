@@ -1,12 +1,37 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { __deleteOttPw, __putOttPw } from "../../redux/modules/leaderSlice";
 
 const Patch = () => {
   const [toggle, setToggle] = useState(false);
+  const [modifyId, setModifyId] = useState("");
+  const [modifyPw, setModifyPw] = useState("");
+  const [modify, setModify] = useState({
+    ID: "",
+    password: "",
+  });
+  // const idRef = useRef();
+  // const pwRef = useRef();
 
-  const clickedToggle = () => {
-    setToggle((prev) => !prev);
-  };
+  const dispatch = useDispatch;
+  const getottpw = useSelector((state) => state.leader.data);
+
+  // const clickedToggle = () => {
+  //   setToggle((prev) => !prev);
+  // };
+  // const fixUsersHandler = (e) => {
+  //   const { ID, password } = e.target;
+  //   setNewInfo({ ...modify, [ID]: value });
+  // };
+
+  // const saveChanges = (e) => {
+  //   e.preventDefault();
+  //   if (modify.ID.trim() === "" || modify.password.trim() === "") return;
+  //   setToggle((prev) => !prev);
+  //   MyPageApi.putUsers(modify)
+
+  // };
 
   return (
     <div>
@@ -15,14 +40,14 @@ const Patch = () => {
           <Inbox>
             <Id>
               ID
-              <p />
+              <p>{getottpw?.ID}</p>
             </Id>
           </Inbox>
 
           <Inbox>
             <Id>
               PW
-              <p />
+              <p>{getottpw?.password}</p>
             </Id>
           </Inbox>
         </TotalPriceBox>
@@ -31,19 +56,50 @@ const Patch = () => {
           <Inbox>
             <Id>
               ID
-              <input placeholder="아이디 입력" />
+              <input
+                onChange={(e) => {
+                  setModifyId(e.target.value);
+                }}
+                defaultValue={getottpw?.ID}
+              />
             </Id>
           </Inbox>
 
           <Inbox>
             <Id>
               PW
-              <input type="password" placeholder="패스워드 입력" />
+              <input
+                maxLength="10"
+                onChange={(e) => {
+                  setModifyPw(e.target.value);
+                }}
+                defaultValue={getottpw?.password}
+              />
             </Id>
           </Inbox>
         </TotalPriceBox>
       )}
-      <button onClick={clickedToggle}>ID/PW 변경하기</button>
+      <button
+        onClick={() => {
+          if (!toggle) {
+            setToggle(!toggle);
+          } else {
+            dispatch(
+              __putOttPw({
+                ...getottpw,
+                Id: modifyId,
+                password: modifyPw,
+              })
+            );
+            setToggle(!toggle);
+          }
+        }}
+      >
+        ID/PW 변경하기
+      </button>
+      {/* <button onClick={() => dispatch(__deleteOttPw(getottpw.partyId))}>
+        삭제하기
+      </button> */}
     </div>
   );
 };

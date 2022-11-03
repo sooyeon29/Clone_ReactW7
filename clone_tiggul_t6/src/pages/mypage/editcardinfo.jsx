@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { MyOttApi } from "../../tools/instance";
 
-const MemberOne = () => {
+const EditCardInfo = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const initialState = {
@@ -29,7 +29,7 @@ const MemberOne = () => {
       return alert("모든 항목을 입력해주세요");
     } else {
       //console.log("클릭", cardinfo);
-      MyOttApi.postcard({
+      MyOttApi.editcard({
         bank: cardinfo.bank,
         card: cardinfo.card,
         MMYY: cardinfo.MMYY,
@@ -40,11 +40,12 @@ const MemberOne = () => {
           console.log(res);
           //alert(res.data.message);
           setCardinfo(initialState);
-          navigate("/myone");
+          navigate("/mypage");
+          alert("수정 완료");
         })
         .catch((error) => {
           console.log("에러", error);
-          alert(error.response.data.errorMessage);
+          alert("다시 입력해주세요");
         });
     }
   };
@@ -52,7 +53,7 @@ const MemberOne = () => {
   return (
     <Layout>
       <Sth3>
-        <span>매달 이용료 결제를 위한</span>
+        <span>수정할</span>
         <br />
         <span>카드 정보를 입력해주세요</span>
       </Sth3>
@@ -157,12 +158,12 @@ const MemberOne = () => {
             />
           </StInputWraps>
         </StWrap>
-        <Button>파티매칭 시작하기</Button>
+        <Button>수정하기</Button>
       </form>
     </Layout>
   );
 };
-export default MemberOne;
+export default EditCardInfo;
 
 const StL = styled.div`
   width: 100%;

@@ -8,19 +8,6 @@ const initialState = {
   error: null,
 };
 
-// export const __getPartys = createAsyncThunk(
-//   "GET_PARTYS",
-//   async (payload, thunkAPI) => {
-//     try {
-//       const { data } = await detailApi.party(payload);
-//       //console.log('데이터', data);
-//       return thunkAPI.fulfillWithValue(data.data);
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error);
-//     }
-//   }
-// );
-
 export const __postLeader = createAsyncThunk(
   "leaderSlice/getUserInfo",
   async (payload, thunkAPI) => {
@@ -46,8 +33,23 @@ export const __postLeader = createAsyncThunk(
 export const __getOttPw = createAsyncThunk(
   "GET_OTTPW",
   async (payload, thunkAPI) => {
+    // console.log(payload);
     try {
       const data = await leaderApi.getottpw(payload);
+      // console.log(data.data);
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __putOttPw = createAsyncThunk(
+  "PUT_OTTPW",
+  async (payload, thunkAPI) => {
+    console.log("어떻게 생겼니?", payload);
+    try {
+      const data = await leaderApi.putottpw(payload);
       console.log(data.data);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -55,6 +57,21 @@ export const __getOttPw = createAsyncThunk(
     }
   }
 );
+
+// export const __deleteOttPw = createAsyncThunk(
+//   "Slice/delete",
+//   async (payload, thunkAPI) => {
+//     try {
+//       const data = await axios.delete(
+//         `https://chamchimayo.shop/users/${payload.userId}`,
+//         { headers }
+//       );
+//       return thunkAPI.fulfillWithValue(data);
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error);
+//     }
+//   }
+// );
 
 const leaderSlice = createSlice({
   name: "leader",
@@ -78,12 +95,35 @@ const leaderSlice = createSlice({
     [__getOttPw.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.data = action.payload.data;
-      console.log(action.payload.data);
+      // console.log(action.payload.data);
     },
     [__getOttPw.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
+    [__putOttPw.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__putOttPw.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.data = action.payload.data;
+      // console.log(action.payload.data);
+    },
+    [__putOttPw.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    // [__deleteOttPw.pending]: (state) => {
+    //   state.isLoading = true;
+    // },
+    // [__deleteOttPw.fulfilled]: (state, action) => {
+    //   state.isLoading = false;
+    //   window.location.href = "/";
+    // },
+    // [__deleteOttPw.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.error;
+    // },
   },
 });
 

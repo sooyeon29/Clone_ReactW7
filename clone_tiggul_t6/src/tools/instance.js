@@ -11,24 +11,35 @@ const instance = axios.create({
   },
 });
 
+export const TigguleApi = {
+  getNum: () => instance.get(`api/count`),
+};
+
 export const MyOttApi = {
   getOtt: (num) => instance.get(`/api/ott/${num}`),
-  postBankAccount: (payload) => instance.post(`/api/mypage/account`),
+  postBankAccount: (payload) => instance.post(`/api/mypage/account`, payload),
   login: (payload) => instance.post(`/api/user/login`, payload),
   signup: (payload) => instance.post(`/api/user`, payload),
   postcard: (payload) => instance.post(`/api/mypage/card`, payload),
+  editbank: (payload) => instance.put(`/api/mypage/account`, payload),
+  editcard: (payload) => instance.put(`/api/mypage/card`, payload),
+  getmyparty: (payload) => instance.get(`/api/myparty`),
 };
 
 export const leaderApi = {
   leader: (payload) => instance.post(`/api/addparty/leader`, payload),
-  getottpw: (payload) => instance.get(`/api/myparty/`),
+  getottpw: (payload) => instance.get(`/api/myparty/${payload.partyid}`),
+  putottpw: (payload) =>
+    instance.get(`/api/myparty/${payload.partyid}`, payload),
 };
 
 export const MyPageApi = {
   getUsers: () => instance.get(`api/mypage/`),
   putUsers: (payload) =>
-    // console.log("페이로드너는누구", ),
-    instance.put(`/api/mypage/user`, { nickname: payload }),
-
-  exit: () => instance.delete(`/api/mypage/user`),
+    // console.log("페이로드너는누구", payload),
+    instance.put(`/api/mypage`, {
+      nickname: payload.nickname,
+      phone: payload.phone,
+    }),
+  exit: () => instance.delete(`/api/mypage`),
 };

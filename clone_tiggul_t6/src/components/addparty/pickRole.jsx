@@ -3,26 +3,40 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import MyRole from "../addparty/myRole";
 import useToggle from "../../hooks/useToggle";
-import LoginModal from "../loginmodal";
-import { useState } from "react";
+import LoginModal from "../../components/loginmodal";
+import { useEffect, useState } from "react";
 import Button from "../../elements/buttons";
 import { useNavigate } from "react-router-dom";
 import { lighten } from "polished";
+import { Cookies, useCookies } from "react-cookie";
 
 const PickRole = () => {
-  const [toggle, clickedToggle] = useToggle();
+  const [toggle, setToggle, clickedToggle] = useToggle();
   const [LoginModalOpen, setLoginModalOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+  const [cookies, setCookies, removeCookie] = useCookies();
+  // console.log("쿠키몬스터어어", cookies);
   const navigate = useNavigate();
   const showLModal = () => {
     setLoginModalOpen(true);
   };
   const movePageHandler = () => {
-    iAmLeader.isLeader && navigate(`/leaderone`);
-    !iAmLeader.isLeader && navigate(`/memberone`);
+    iAmLeader?.isLeader && navigate(`/leaderone`);
+    !iAmLeader?.isLeader && navigate(`/memberone`);
   };
 
   const iAmLeader = JSON.parse(window.sessionStorage.getItem("isLeader"));
-  console.log(iAmLeader);
+  // console.log(iAmLeader);
+
+  useEffect(() => {
+    console.log("쿠키있니~~?", cookies);
+    if (cookies.Authorization) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  }, [cookies.Authorization]);
+
   return (
     <>
       {!toggle && <MyRole toggle={toggle} clickedToggle={clickedToggle} />}
@@ -42,31 +56,31 @@ const PickRole = () => {
                 {iAmLeader?.isLeader ? "파티장으로 이용" : "파티원으로 이동"}
               </h4>
             </form>
-            <button
-              onClick={clickedToggle}
-              // setToggle={setToggle}
-            >
-              변경
-            </button>
+            <button onClick={clickedToggle}>변경</button>
           </Before>
-          <KakaoButton onClick={showLModal}>
-            <FontAwesomeIcon
-              style={{
-                color: "#fdedb7",
-                marginRight: "15",
-              }}
-              icon={faUser}
-            />
-            로그인하고 계속하기
-          </KakaoButton>
+          {!isLogin && (
+            <KakaoButton onClick={showLModal}>
+              <FontAwesomeIcon
+                style={{
+                  color: "#fdedb7",
+                  marginRight: "15",
+                }}
+                icon={faUser}
+              />
+              로그인하고 계속하기
+            </KakaoButton>
+          )}
+
           {LoginModalOpen && (
             <LoginModal setLoginModalOpen={setLoginModalOpen} />
           )}
-          <Button onClick={movePageHandler}>
-            {iAmLeader?.isLeader
-              ? "파티장으로 계속하기"
-              : "파티원으로 계속하기"}
-          </Button>
+          {isLogin && (
+            <Button onClick={movePageHandler}>
+              {iAmLeader?.isLeader
+                ? "파티장으로 계속하기"
+                : "파티원으로 계속하기"}
+            </Button>
+          )}
         </>
       )}
     </>
@@ -138,10 +152,10 @@ const KakaoButton = styled.button`
   font-size: 16px;
   line-height: 24px;
   margin-top: 32px;
-  img {
-    margin: auto 10px;
-  }
   &:hover {
     background-color: ${lighten(0.1, "#ffcd2a")};
+  }
+  img {
+    margin: auto 10px;
   }
 `;
