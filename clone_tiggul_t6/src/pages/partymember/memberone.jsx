@@ -52,23 +52,21 @@ const MemberOne = () => {
           alert(error.response.data.errorMessage);
         });
     }
-    const onMatchingHandler = (e) => {
-      MyOttApi.member({
-        ottService: ottinfo,
+  };
+  const onMatchingHandler = (e) => {
+    MyOttApi.member({
+      ottService: ottinfo,
+    })
+      .then((res) => {
+        console.log(res);
+        setCardinfo(initialState);
+        alert("매칭이 시작되었습니다.\n 매칭이 성공되면 문자로 알려드릴게요.");
+        window.location.replace(`/myone`);
       })
-        .then((res) => {
-          console.log(res);
-          setCardinfo(initialState);
-          alert(
-            "매칭이 시작되었습니다.\n 매칭이 성공되면 문자로 알려드릴게요."
-          );
-          window.location.replace(`/myone`);
-        })
-        .catch((error) => {
-          console.log("에러", error);
-          alert(error.response.data.errorMessage);
-        });
-    };
+      .catch((error) => {
+        console.log("에러", error);
+        alert(error.response.data.errorMessage);
+      });
   };
 
   return (
@@ -181,7 +179,7 @@ const MemberOne = () => {
         </StWrap>
         <Button>카드정보 입력하기</Button>
       </form>
-      <Button onclick="onMatchingHandler">파티매칭 시작하기</Button>
+      <Button onclick={onMatchingHandler}>파티매칭 시작하기</Button>
     </Layout>
   );
 };
