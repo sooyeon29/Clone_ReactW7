@@ -7,10 +7,10 @@ const Patch = () => {
   const [toggle, setToggle] = useState(false);
   const [modifyId, setModifyId] = useState("");
   const [modifyPw, setModifyPw] = useState("");
-  const [modify, setModify] = useState({
-    ID: "",
-    password: "",
-  });
+  // const [modify, setModify] = useState({
+  //   ID: "",
+  //   password: "",
+  // });
   // const idRef = useRef();
   // const pwRef = useRef();
 
@@ -40,14 +40,14 @@ const Patch = () => {
           <Inbox>
             <Id>
               ID
-              <p>{getottpw?.ID}</p>
+              <p>{getottpw.ID}</p>
             </Id>
           </Inbox>
 
           <Inbox>
             <Id>
               PW
-              <p>{getottpw?.password}</p>
+              <p>{getottpw.password}</p>
             </Id>
           </Inbox>
         </TotalPriceBox>
@@ -60,7 +60,7 @@ const Patch = () => {
                 onChange={(e) => {
                   setModifyId(e.target.value);
                 }}
-                defaultValue={getottpw?.ID}
+                defaultValue={getottpw.ID}
               />
             </Id>
           </Inbox>
@@ -73,7 +73,7 @@ const Patch = () => {
                 onChange={(e) => {
                   setModifyPw(e.target.value);
                 }}
-                defaultValue={getottpw?.password}
+                defaultValue={getottpw.password}
               />
             </Id>
           </Inbox>
