@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
-const Ott = () => {
+const Ott = ({ service }) => {
   return (
     <Wrap>
       <Acount>프리미엄 파티</Acount>
       <Ready>
-        <Img>
+        {/* <Img>
           <img style={{ transform: "scale(0.4)" }} src="/img/user.png" />
-        </Img>
-        <Color>티빙 프리미엄 이용권</Color> (4인공유) 구독중인 계정
+        </Img> */}
+        <Color>{service?.ottService} 프리미엄 이용권</Color> (4인공유) 구독중인
+        계정
       </Ready>
     </Wrap>
   );

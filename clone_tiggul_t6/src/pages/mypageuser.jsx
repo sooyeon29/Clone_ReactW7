@@ -24,6 +24,7 @@ const MyPageUser = () => {
   const fixUsersHandler = (e) => {
     const { name, value } = e.target;
     setNewInfo({ ...newInfo, [name]: value });
+    console.log(name);
   };
 
   const saveChanges = (e) => {

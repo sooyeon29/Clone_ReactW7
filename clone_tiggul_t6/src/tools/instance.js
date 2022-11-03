@@ -27,12 +27,14 @@ export const MyOttApi = {
 };
 
 export const leaderApi = {
-  leader: () => instance.post(`/api/addparty/leader`),
-  ottpw: () => instance.get(`/api/myparty/`),
+  leader: (payload) => instance.post(`/api/addparty/leader`, payload),
+  getottpw: (payload) => instance.get(`/api/myparty/${payload.partyid}`),
+  putottpw: (payload) =>
+    instance.get(`/api/myparty/${payload.partyid}`, payload),
 };
 
 export const MyPageApi = {
-  getUsers: () => instance.get(`/api/mypage/`),
+  getUsers: () => instance.get(`api/mypage/`),
   putUsers: (payload) =>
     // console.log("페이로드너는누구", payload),
     instance.put(`/api/mypage`, {

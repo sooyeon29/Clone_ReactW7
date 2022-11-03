@@ -21,9 +21,6 @@ const LeaderFive = () => {
   const idRef = useRef("");
   const pwRef = useRef("");
   const navigate = useNavigate();
-  const goToNext = () => {
-    navigate("/mypage");
-  };
 
   const myOttName = JSON.parse(window.sessionStorage.getItem("getOtt"));
   console.log("나는너가고른고!!", myOttName.data);
@@ -96,10 +93,10 @@ const LeaderFive = () => {
             ottService: myOttName.data.ottService,
             ID: idRef.current.value,
             Password: pwRef.current.value,
-            cookie: cookies,
           };
           console.log(login);
-          dispatch(__postLeader(login));
+          alert("매칭이 시작되었습니다.\n매칭이 성공되면 문자로 알려드릴게요.");
+          window.location.replace(`/myone`);
         }}
       >
         다음

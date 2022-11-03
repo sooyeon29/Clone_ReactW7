@@ -73,6 +73,7 @@ const MyOne = () => {
       <StDiv />
       <StContainer>
         {partys?.map((party) => {
+          console.log(party);
           return <MypartyCard key={party.id} partyData={party} />;
         })}
         <StAddPartyWrap

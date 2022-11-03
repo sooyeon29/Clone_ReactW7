@@ -21,8 +21,8 @@ const PickRole = () => {
     setLoginModalOpen(true);
   };
   const movePageHandler = () => {
-    iAmLeader.isLeader && navigate(`/leaderone`);
-    !iAmLeader.isLeader && navigate(`/memberone`);
+    iAmLeader?.isLeader && navigate(`/leaderone`);
+    !iAmLeader?.isLeader && navigate(`/memberone`);
   };
 
   const iAmLeader = JSON.parse(window.sessionStorage.getItem("isLeader"));
@@ -53,7 +53,7 @@ const PickRole = () => {
                 />
               </div>
               <h4>
-                {iAmLeader.isLeader ? "파티장으로 이용" : "파티원으로 이동"}
+                {iAmLeader?.isLeader ? "파티장으로 이용" : "파티원으로 이동"}
               </h4>
             </form>
             <button onClick={clickedToggle}>변경</button>
@@ -76,7 +76,7 @@ const PickRole = () => {
           )}
           {isLogin && (
             <Button onClick={movePageHandler}>
-              {iAmLeader.isLeader
+              {iAmLeader?.isLeader
                 ? "파티장으로 계속하기"
                 : "파티원으로 계속하기"}
             </Button>
