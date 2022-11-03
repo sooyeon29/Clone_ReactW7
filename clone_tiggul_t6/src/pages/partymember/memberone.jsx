@@ -25,7 +25,6 @@ const MemberOne = () => {
   console.log(myOttName.data.ottService);
 
   const onCardHandler = (e) => {
-    console.log("클릭했다.");
     if (
       cardinfo.bank === "" ||
       cardinfo.card === "" ||
@@ -54,7 +53,8 @@ const MemberOne = () => {
         });
     }
   };
-  const onMatchingHandler = (e) => {
+  const onMatchingHandler = () => {
+    console.log("클릭했다.");
     MyOttApi.member({
       ottService: myOttName.data.ottService,
     })
