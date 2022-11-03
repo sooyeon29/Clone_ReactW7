@@ -15,7 +15,7 @@ const PickRole = () => {
   const [LoginModalOpen, setLoginModalOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [cookies, setCookies, removeCookie] = useCookies();
-  console.log("쿠키몬스터어어", cookies);
+  // console.log("쿠키몬스터어어", cookies);
   const navigate = useNavigate();
   const showLModal = () => {
     setLoginModalOpen(true);
@@ -29,12 +29,13 @@ const PickRole = () => {
   // console.log(iAmLeader);
 
   useEffect(() => {
-    // if(cookies.token) {
-    setIsLogin(true);
-    // } else {
-    //   setIslogin(false)
-    // }
-  }, [cookies.token]);
+    console.log("쿠키있니~~?", cookies);
+    if (cookies.token) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  }, []);
 
   return (
     <>

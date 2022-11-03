@@ -62,86 +62,113 @@ const MyPageUser = () => {
 
   return (
     <>
-      <LeaderHead>
-        <button onClick={() => navigate(`/mypage`)}>
-          <FontAwesomeIcon
-            style={{
-              color: "#646F7C",
-              fontSize: "17",
-            }}
-            icon={faChevronLeft}
-          />
-        </button>
-        <div>마이페이지</div>
-        <div></div>
-      </LeaderHead>
-      {users?.map((user) => {
-        return (
-          <>
-            <WrapOne key={user.userId}>
-              {!isChange && (
-                <div>
-                  😊
-                  <div>
-                    <div>닉네임:{user.nickname}</div>
-                  </div>
-                  📱
-                  <div>
-                    <div>전화번호:{user.phone}</div>
-                  </div>
-                </div>
-              )}
-              {isChange && (
-                <div>
-                  😊
-                  <div>
-                    <input
-                      type="text"
-                      required
-                      minLength="1"
-                      placeholder={user.nickname}
-                      name="nickname"
-                      onChange={fixUsersHandler}
-                    />
-                  </div>
-                  📱
-                  <div>
-                    <input
-                      type="text"
-                      required
-                      minLength="1"
-                      placeholder={user.phone}
-                      name="phone"
-                      onChange={fixUsersHandler}
-                    />
-                  </div>
-                </div>
-              )}
+      <Wrap>
+        <Container>
+          <LeaderHead>
+            <button onClick={() => navigate(`/mypage`)}>
+              <FontAwesomeIcon
+                style={{
+                  color: "#646F7C",
+                  fontSize: "17",
+                }}
+                icon={faChevronLeft}
+              />
+            </button>
+            <div>마이페이지</div>
+            <div></div>
+          </LeaderHead>
+          {users?.map((user) => {
+            return (
+              <>
+                <WrapOne key={user.userId}>
+                  {!isChange && (
+                    <div>
+                      😊
+                      <div>
+                        <div>닉네임:{user.nickname}</div>
+                      </div>
+                      📱
+                      <div>
+                        <div>전화번호:{user.phone}</div>
+                      </div>
+                    </div>
+                  )}
+                  {isChange && (
+                    <div>
+                      😊
+                      <div>
+                        <input
+                          type="text"
+                          required
+                          minLength="1"
+                          placeholder={user.nickname}
+                          name="nickname"
+                          onChange={fixUsersHandler}
+                        />
+                      </div>
+                      📱
+                      <div>
+                        <input
+                          type="text"
+                          required
+                          minLength="1"
+                          placeholder={user.phone}
+                          name="phone"
+                          onChange={fixUsersHandler}
+                        />
+                      </div>
+                    </div>
+                  )}
 
-              {!isChange && <button onClick={wantToChange}>수정하기</button>}
-              {isChange && <button onClick={saveChanges}>수정저장</button>}
-            </WrapOne>
-          </>
-        );
-      })}
+                  {!isChange && (
+                    <button onClick={wantToChange}>수정하기</button>
+                  )}
+                  {isChange && <button onClick={saveChanges}>수정저장</button>}
+                </WrapOne>
+              </>
+            );
+          })}
 
-      <WrapThree>
-        <button onClick={exitHandler}>
-          🥲 회원탈퇴
-          <FontAwesomeIcon
-            style={{
-              color: "#F1626D",
-              fontSize: "17",
-            }}
-            icon={faChevronRight}
-          />
-        </button>
-      </WrapThree>
+          <WrapThree>
+            <button onClick={exitHandler}>
+              🥲 회원탈퇴
+              <FontAwesomeIcon
+                style={{
+                  color: "#F1626D",
+                  fontSize: "17",
+                }}
+                icon={faChevronRight}
+              />
+            </button>
+          </WrapThree>
+        </Container>
+      </Wrap>
     </>
   );
 };
 
 export default MyPageUser;
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--gray-050);
+  position: absolute;
+  z-index: -1;
+  left: 0px;
+  top: 0px;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  max-width: 640px;
+  box-sizing: border-box;
+  display: block;
+`;
 
 const LeaderHead = styled.div`
   display: flex;
