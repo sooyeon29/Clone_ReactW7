@@ -59,7 +59,7 @@ const MyPageUser = () => {
       })
       // 실패했을때는 에러!
       .catch((error) => console.log("에러메세지를 보여줘", error));
-  }, [saveChanges]);
+  }, []);
 
   return (
     <>
