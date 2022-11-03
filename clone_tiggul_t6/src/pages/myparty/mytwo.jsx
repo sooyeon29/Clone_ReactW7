@@ -6,8 +6,10 @@ import Ott from "../../components/mytwo/ott";
 import Patch from "../../components/mytwo/patch";
 import { useSelector, useDispatch } from "react-redux";
 import { __getOttPw } from "../../redux/modules/leaderSlice";
+import { useNavigate, useParams } from "react-router-dom";
 
 const LeaderFive = () => {
+  const { id } = useParams();
   const getottpw = useSelector((state) => state.leader.data);
   console.log("환영해", getottpw);
 
