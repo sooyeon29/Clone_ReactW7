@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "../../elements/layout";
 import MypartyCard from "../../components/mypartycard";
 import { useDispatch, useSelector } from "react-redux";
-// import { __getPartys } from "../../redux/modules/getMypartySlice";
+import { MyOttApi } from "../../tools/instance";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,25 +13,70 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const MyOne = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const [partys, setPartys] = useState([]);
 
-  // const items = useSelector((state) => state.items);
+  useEffect(() => {
+    MyOttApi.getmyparty().then((res) => {
+      //console.log(res.data.data);
+      setPartys(res.data.data);
+      alert("매칭이 시작되었습니다.\n 매칭이 성공되면 문자로 알려드릴게요.");
+      window.location.replace(`/myone`);
+    });
+  }, []);
 
-  // useEffect(() => {
-  //   dispatch(__getPartys());
-  // }, [dispatch]);
+  // console.log(partys);
+  // console.log(partys[0].ottService);
+
+  if (!partys) {
+    return null;
+  }
+  let pricesum = 0;
+  let price = 0;
+
+  for (let i = 0; i < partys.length; i++) {
+    if (partys[i].ottService === "Netflix") {
+      price += 43500;
+    } else if (partys[i].ottService === "Wavve") {
+      price += 35750;
+    } else if (partys[i].ottService === "Watcha") {
+      price += 33250;
+    } else if (partys[i].ottService === "Laftel") {
+      price += 38250;
+    } else if (partys[i].ottService === "DisneyPlus") {
+      price += 25750;
+    } else if (partys[i].ottService === "Tving") {
+      price += 35750;
+    } else {
+      return;
+    }
+  }
+  for (let i = 0; i < partys.length; i++) {
+    if (partys[i].ottService === "Netflix") {
+      pricesum += 170000;
+    } else if (partys[i].ottService === "Wavve") {
+      pricesum += 139000;
+    } else if (partys[i].ottService === "Watcha") {
+      pricesum += 129000;
+    } else if (partys[i].ottService === "Laftel") {
+      pricesum += 149000;
+    } else if (partys[i].ottService === "DisneyPlus") {
+      pricesum += 99000;
+    } else if (partys[i].ottService === "Tving") {
+      pricesum += 139000;
+    } else {
+      return;
+    }
+  }
 
   return (
     <Layout>
       <StDiv />
-
-      {/* {partys?.map((item) => {
-        return <MypartyCard key={party.id} itemData={party} />;
-      })} */}
-
       <StContainer>
-        <MypartyCard />
+        {partys?.map((party) => {
+          return <MypartyCard key={party.id} partyData={party} />;
+        })}
         <StAddPartyWrap
           onClick={() => {
             navigate("/addmain");
@@ -66,10 +111,10 @@ const MyOne = () => {
       <br />
       <StOttPrice>
         <h3>
-          OTT 2개를 <br />
-          <span>17,205원</span> 에 즐기고 있어요.
+          OTT {partys.length}개를 <br />
+          <span>{price}원</span> 에 즐기고 있어요.
         </h3>
-        <div>혼자 쓸 때보다 월 13,695원씩 절약중!</div>
+        <div>혼자 쓸 때보다 월 {pricesum - price}원씩 절약중!</div>
       </StOttPrice>
     </Layout>
   );

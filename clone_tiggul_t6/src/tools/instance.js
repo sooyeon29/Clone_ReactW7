@@ -17,10 +17,13 @@ export const TigguleApi = {
 
 export const MyOttApi = {
   getOtt: (num) => instance.get(`/api/ott/${num}`),
-  postBankAccount: (payload) => instance.post(`/api/mypage/account`),
+  postBankAccount: (payload) => instance.post(`/api/mypage/account`, payload),
   login: (payload) => instance.post(`/api/user/login`, payload),
   signup: (payload) => instance.post(`/api/user`, payload),
   postcard: (payload) => instance.post(`/api/mypage/card`, payload),
+  editbank: (payload) => instance.put(`/api/mypage/account`, payload),
+  editcard: (payload) => instance.put(`/api/mypage/card`, payload),
+  getmyparty: (payload) => instance.get(`/api/myparty`),
 };
 
 export const leaderApi = {
