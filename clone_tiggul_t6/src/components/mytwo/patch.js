@@ -1,37 +1,14 @@
 import styled from "styled-components";
 import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { __deleteOttPw, __putOttPw } from "../../redux/modules/leaderSlice";
+import { __delOttPw, __putOttPw } from "../../redux/modules/leaderSlice";
 
-const Patch = () => {
+const Patch = (getottpw) => {
   const [toggle, setToggle] = useState(false);
   const [modifyId, setModifyId] = useState("");
   const [modifyPw, setModifyPw] = useState("");
-  const [modify, setModify] = useState({
-    ID: "",
-    password: "",
-  });
-  // const idRef = useRef();
-  // const pwRef = useRef();
 
   const dispatch = useDispatch;
-  const getottpw = useSelector((state) => state.leader.data);
-
-  // const clickedToggle = () => {
-  //   setToggle((prev) => !prev);
-  // };
-  // const fixUsersHandler = (e) => {
-  //   const { ID, password } = e.target;
-  //   setNewInfo({ ...modify, [ID]: value });
-  // };
-
-  // const saveChanges = (e) => {
-  //   e.preventDefault();
-  //   if (modify.ID.trim() === "" || modify.password.trim() === "") return;
-  //   setToggle((prev) => !prev);
-  //   MyPageApi.putUsers(modify)
-
-  // };
 
   return (
     <div>
@@ -97,9 +74,7 @@ const Patch = () => {
       >
         ID/PW 변경하기
       </button>
-      {/* <button onClick={() => dispatch(__deleteOttPw(getottpw.partyId))}>
-        삭제하기
-      </button> */}
+      {/* <button onClick={() => dispatch(__delOttPw())}>삭제하기</button> */}
     </div>
   );
 };

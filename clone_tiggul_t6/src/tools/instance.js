@@ -32,6 +32,7 @@ export const leaderApi = {
   getottpw: (payload) => instance.get(`/api/myparty/${payload.partyid}`),
   putottpw: (payload) =>
     instance.get(`/api/myparty/${payload.partyid}`, payload),
+  // delottpw: (payload) => instance.delete(`/api/myparty/${payload.partyid}`),
 };
 
 export const MyPageApi = {

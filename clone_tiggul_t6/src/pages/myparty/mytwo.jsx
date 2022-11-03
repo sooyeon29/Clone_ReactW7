@@ -64,7 +64,7 @@ const LeaderFive = () => {
           </PriceBox>
         </div>
         ID/PW
-        <Patch />
+        <Patch getottpw={getottpw} />
       </Before>
     </Layout>
   );

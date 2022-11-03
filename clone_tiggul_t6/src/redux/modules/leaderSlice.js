@@ -61,12 +61,10 @@ export const __putOttPw = createAsyncThunk(
 // export const __deleteOttPw = createAsyncThunk(
 //   "Slice/delete",
 //   async (payload, thunkAPI) => {
+//     console.log(payload);
 //     try {
-//       const data = await axios.delete(
-//         `https://chamchimayo.shop/users/${payload.userId}`,
-//         { headers }
-//       );
-//       return thunkAPI.fulfillWithValue(data);
+//       const data = await leaderApi.delottpw(payload);
+//       return thunkAPI.fulfillWithValue(data.data);
 //     } catch (error) {
 //       return thunkAPI.rejectWithValue(error);
 //     }
