@@ -5,7 +5,7 @@ const token = document.cookie.replace("Authorization=", "");
 // console.log(document.cookie);
 // console.log(token);
 const instance = axios.create({
-  baseURL: "http://hi-prac.shop:3000/",
+  baseURL: "https://hi-prac.shop/",
   headers: {
     Authorization: `Bearer ${token}`,
   },

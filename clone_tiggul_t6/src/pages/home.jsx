@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("http://hi-prac.shop:3000/api/count")
+      .get("https://hi-prac.shop/api/count")
       .then((res) => setHome(res.data.data));
   }, []);
 
