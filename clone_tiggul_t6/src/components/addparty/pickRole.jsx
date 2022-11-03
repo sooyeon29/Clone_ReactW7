@@ -35,7 +35,7 @@ const PickRole = () => {
     } else {
       setIsLogin(false);
     }
-  }, []);
+  }, [cookies.Authorization]);
 
   return (
     <>

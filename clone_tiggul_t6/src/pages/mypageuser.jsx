@@ -83,35 +83,32 @@ const MyPageUser = () => {
                 <WrapOne key={user.userId}>
                   {!isChange && (
                     <div>
-                      😊
-                      <div>
-                        <div>닉네임:{user.nickname}</div>
-                      </div>
-                      📱
-                      <div>
-                        <div>전화번호:{user.phone}</div>
-                      </div>
+                      <div>😊 닉네임:{user.nickname}</div>
+                      <span>📱 전화번호:{user.phone}</span>
                     </div>
                   )}
                   {isChange && (
                     <div>
-                      😊
                       <div>
+                        😊 닉네임:
                         <input
                           type="text"
                           required
                           minLength="1"
+                          title="정보를 입력해주세요"
                           placeholder={user.nickname}
                           name="nickname"
                           onChange={fixUsersHandler}
                         />
                       </div>
-                      📱
+
                       <div>
+                        📱 전화번호:
                         <input
                           type="text"
                           required
                           minLength="1"
+                          title="정보를 입력해주세요"
                           placeholder={user.phone}
                           name="phone"
                           onChange={fixUsersHandler}
@@ -190,7 +187,7 @@ const LeaderHead = styled.div`
   button {
     border: 0px;
     border-radius: 30px;
-    background-color: var(--gray-100);
+    background-color: var(--gray-200);
     width: 24px;
   }
 `;
@@ -209,32 +206,29 @@ const WrapOne = styled.div`
   align-items: center;
   justify-content: space-between;
   div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    div {
-      font-size: 16px;
-      font-weight: bold;
-      margin-left: 5px;
-    }
+    font-size: 16px;
+    font-weight: bold;
+  }
+  span {
+    font-size: 14px;
+    color: var(--gray-700);
+  }
+  button {
+    background-color: transparent;
+    border: 0px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: rgb(0 0 0 / 10%) 0px 2px 8px;
+    padding: 3px;
   }
 `;
-const WrapTwo = styled(WrapOne)`
-  div {
-    div {
-      font-size: 14px;
-      color: var(--gray-700);
-    }
-  }
-`;
+
 const WrapThree = styled(WrapOne)`
   button {
     color: red;
     font-weight: 500;
     font-size: 16px;
-
+    box-shadow: none;
     width: 100%;
     border: 0px;
     background-color: transparent;
