@@ -154,6 +154,8 @@ function SignupModal({ setSignupModalOpen }) {
                   });
                 }}
                 placeholder="숫자로 된 핸드폰 번호를 입력하세요."
+                maxLength={11}
+                pattern="^[0-9]+$"
               ></Stinput>
             </Stbox>
             <Button>회원가입</Button>
