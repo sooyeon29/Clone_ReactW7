@@ -41,6 +41,7 @@
 |FE🔰|김수연|BE|김재준|
 |FE|정원지|BE|김민재|	
 |FE|박하은|BE|오윤지|
+
 백엔드 주소: https://github.com/KJJDSA/Clone_ExpressW7
 
 ### 📍기술 스택
